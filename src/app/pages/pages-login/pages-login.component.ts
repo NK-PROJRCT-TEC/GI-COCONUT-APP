@@ -17,6 +17,7 @@ export class PagesLoginComponent implements OnInit {
   ngOnInit(): void {
     this.username = "admin@gmail.com";
     this.password = "123456";
+    console.log("TEST UPDATE GITHUB");
   }
   dashboard() {
     // localStorage.setItem("username", this.username);
