@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Kanit-Regular";
+
+    src: url("../../../assets/fonts/Kanit-Regular.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+h5,
+p,
+label,
+button,
+input,
+select,
+span {
+    font-family: Kanit-Regular;
+    /* font-size: 2vw; */
+}

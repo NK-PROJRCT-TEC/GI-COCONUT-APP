@@ -1,0 +1,1294 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs"></script>
+<main id="main" class="main">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">บันทึกการเยี่ยมบ้าน</h5>
+                    <div class="row" style="text-align: center;">
+                        <div class="col-3">
+                            <div style="font-size: 1vw;color: #63dc2a;"><span>นักเรียน</span></div>
+                            <i class="bx bxs-contact" style="font-size:50px;color: #63dc2a;" (click)="student()"></i>
+                        </div>
+                        <div class="col-3">
+                            <div style="font-size: 1vw;color: #2acddc;"><span>ความสัมพันธ์ในครอบครัว</span></div>
+                            <i class="bx bxs-home" style="font-size:50px;color: #2acddc;" (click)="relationship()"></i>
+
+                        </div>
+                        <div class="col-3">
+                            <div style="font-size: 1vw;color: #dc2a54;"><span>พฤติกรรมและความเสี่ยง</span></div>
+                            <i class="bx bxs-report" style="font-size:50px;color: #dc2a54;"
+                                (click)="behavior_and_risk()"></i>
+                        </div>
+                        <div class="col-3">
+                            <div style="font-size: 1vw;color: #dc5f2a;"><span>ภาพถ่ายบ้านนักเรียน</span></div>
+                            <i class="bx bxs-file-image" style="font-size:50px;color: #dc5f2a;"
+                                (click)="student_house_photos()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="is_student">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">1. นักเรียน</h5>
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="student_prefix" class="form-label">คำนำหน้า</label>
+                            <select id="inputprefix" class="form-select" (change)="func_prefix()"
+                                [(ngModel)]="student_prefix" name="prefix">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option selected value="เด็กชาย">เด็กชาย</option>
+                                <option value="เด็กหญิง">เด็กหญิง</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นางสาว">นางสาว</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="student_firstname" class="form-label">ชื่อ</label>
+                            <input type="text" class="form-control" id="student_firstname"
+                                [(ngModel)]="student_firstname" name="student_firstname">
+                        </div>
+                        <div class="col-md-3"> <label for="student_surname" class="form-label">นามสกุล</label>
+                            <input type="text" class="form-control" id="student_surname" [(ngModel)]="student_surname"
+                                name="student_surname">
+                        </div>
+                        <div class="col-md-3"> <label for="student_nickname" class="form-label">ชื่อเล่นนักเรียน</label>
+                            <input type="text" class="form-control" id="student_nickname" [(ngModel)]="student_nickname"
+                                name="student_nickname">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="student_grade" class="form-label">ระดับชั้น</label>
+                            <select id="inputState" class="form-select" (change)="func_grade()"
+                                [(ngModel)]="student_grade" name="student_grade">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="ประถมศึกษาปีที่ 1">ประถมศึกษาปีที่ 1</option>
+                                <option value="ประถมศึกษาปีที่ 2">ประถมศึกษาปีที่ 2</option>
+                                <option value="ประถมศึกษาปีที่ 3">ประถมศึกษาปีที่ 3</option>
+                                <option value="ประถมศึกษาปีที่ 4">ประถมศึกษาปีที่ 4</option>
+                                <option value="ประถมศึกษาปีที่ 5">ประถมศึกษาปีที่ 5</option>
+                                <option value="ประถมศึกษาปีที่ 6">ประถมศึกษาปีที่ 6</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="student_room" class="form-label">ห้อง</label>
+                            <select id="student_room" class="form-select" (change)="func_grade()"
+                                [(ngModel)]="student_room" name="student_room">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="ห้อง 1">ห้อง 1</option>
+                                <option value="ห้อง 2">ห้อง 2</option>
+                                <option value="ห้อง 3">ห้อง 3</option>
+                                <option value="ห้อง 4">ห้อง 4</option>
+                                <option value="ห้อง 5">ห้อง 5</option>
+                                <option value="ห้อง 6">ห้อง 6</option>
+                                <option value="ห้อง 7">ห้อง 7</option>
+                                <option value="ห้อง 8">ห้อง 8</option>
+                                <option value="ห้อง 9">ห้อง 9</option>
+                                <option value="ห้อง 10">ห้อง 10</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="student_residence" class="form-label">บ้านเลขที่</label>
+                            <input type="text" class="form-control" id="student_residence"
+                                [(ngModel)]="student_residence" name="student_residence">
+                        </div>
+                        <div class="col-md-3"> <label for="student_moo" class="form-label">หมู่ที่</label>
+                            <input type="number" class="form-control" id="student_moo" [(ngModel)]="student_moo"
+                                name="student_moo">
+                        </div>
+                        <div class="col-md-3"> <label for="student_road" class="form-label">ถนน</label>
+                            <input type="text" class="form-control" id="student_road" [(ngModel)]="student_road"
+                                name="student_road">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="student_province" class="form-label">จังหวัด</label>
+                            <select id="student_province" class="form-select" [(ngModel)]="student_province"
+                                name="student_province">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                                <option value="กระบี่">กระบี่</option>
+                                <option value="กาญจนบุรี">กาญจนบุรี</option>
+                                <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+                                <option value="กำแพงเพชร">กำแพงเพชร</option>
+                                <option value="ขอนแก่น">ขอนแก่น</option>
+                                <option value="จันทบุรี">จันทบุรี</option>
+                                <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+                                <option value="ชลบุรี">ชลบุรี</option>
+                                <option value="ชัยนาท">ชัยนาท</option>
+                                <option value="ชัยภูมิ">ชัยภูมิ</option>
+                                <option value="ชุมพร">ชุมพร</option>
+                                <option value="เชียงราย">เชียงราย</option>
+                                <option value="เชียงใหม่">เชียงใหม่</option>
+                                <option value="ตรัง">ตรัง</option>
+                                <option value="ตราด">ตราด</option>
+                                <option value="ตาก">ตาก</option>
+                                <option value="นครนายก">นครนายก</option>
+                                <option value="นครปฐม">นครปฐม</option>
+                                <option value="นครพนม">นครพนม</option>
+                                <option value="นครราชสีมา">นครราชสีมา</option>
+                                <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                                <option value="นครสวรรค์">นครสวรรค์</option>
+                                <option value="นนทบุรี">นนทบุรี</option>
+                                <option value="นราธิวาส">นราธิวาส</option>
+                                <option value="น่าน">น่าน</option>
+                                <option value="บึงกาฬ">บึงกาฬ</option>
+                                <option value="บุรีรัมย์">บุรีรัมย์</option>
+                                <option value="ปทุมธานี">ปทุมธานี</option>
+                                <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+                                <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+                                <option value="ปัตตานี">ปัตตานี</option>
+                                <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+                                <option value="พังงา">พังงา</option>
+                                <option value="พัทลุง">พัทลุง</option>
+                                <option value="พิจิตร">พิจิตร</option>
+                                <option value="พิษณุโลก">พิษณุโลก</option>
+                                <option value="เพชรบุรี">เพชรบุรี</option>
+                                <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+                                <option value="แพร่">แพร่</option>
+                                <option value="พะเยา">พะเยา</option>
+                                <option value="ภูเก็ต">ภูเก็ต</option>
+                                <option value="มหาสารคาม">มหาสารคาม</option>
+                                <option value="มุกดาหาร">มุกดาหาร</option>
+                                <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                                <option value="ยะลา">ยะลา</option>
+                                <option value="ยโสธร">ยโสธร</option>
+                                <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+                                <option value="ระนอง">ระนอง</option>
+                                <option value="ระยอง">ระยอง</option>
+                                <option value="ราชบุรี">ราชบุรี</option>
+                                <option value="ลพบุรี">ลพบุรี</option>
+                                <option value="ลำปาง">ลำปาง</option>
+                                <option value="ลำพูน">ลำพูน</option>
+                                <option value="เลย">เลย</option>
+                                <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+                                <option value="สกลนคร">สกลนคร</option>
+                                <option value="สงขลา">สงขลา</option>
+                                <option value="สตูล">สตูล</option>
+                                <option value="สมุทรปราการ">สมุทรปราการ</option>
+                                <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                                <option value="สมุทรสาคร">สมุทรสาคร</option>
+                                <option value="สระแก้ว">สระแก้ว</option>
+                                <option value="สระบุรี">สระบุรี</option>
+                                <option value="สิงห์บุรี">สิงห์บุรี</option>
+                                <option value="สุโขทัย">สุโขทัย</option>
+                                <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+                                <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                                <option value="สุรินทร์">สุรินทร์</option>
+                                <option value="หนองคาย">หนองคาย</option>
+                                <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+                                <option value="อ่างทอง">อ่างทอง</option>
+                                <option value="อุดรธานี">อุดรธานี</option>
+                                <option value="อุทัยธานี">อุทัยธานี</option>
+                                <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                                <option value="อุบลราชธานี">อุบลราชธานี</option>
+                                <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="student_district" class="form-label">อำเภอ</label>
+                            <input type="text" class="form-control" id="student_district" [(ngModel)]="student_district"
+                                name="student_district">
+
+                        </div>
+                        <!-- <div class="col-md-3">
+                            <label for="student_district" class="form-label">อำเภอ</label>
+                            <select id="student_district" class="form-select"
+                                [(ngModel)]="student_district" name="student_district">
+                                <option *ngIf="student_province == 1" value="1">เขตคลองเตย</option>
+                                <option *ngIf="student_province == 1" value="2">เขตคลองสาน</option>
+                                <option *ngIf="student_province == 1" value="3">เขตคลองสามวา</option>
+                                <option *ngIf="student_province == 1" value="4">เขตคันนายาว</option>
+                                <option *ngIf="student_province == 1" value="5">เขตจตุจักร</option>
+                                <option *ngIf="student_province == 1" value="6">เขตจอมทอง</option>
+                                <option *ngIf="student_province == 1" value="7">เขตดอนเมือง</option>
+                                <option *ngIf="student_province == 1" value="8">เขตดินแดง</option>
+                                <option *ngIf="student_province == 1" value="9">เขตดุสิต</option>
+                                <option *ngIf="student_province == 1" value="10">เขตตลิ่งชัน</option>
+                                <option *ngIf="student_province == 1" value="11">เขตทวีวัฒนา</option>
+                                <option *ngIf="student_province == 1" value="12">เขตทุ่งครุ</option>
+                                <option *ngIf="student_province == 1" value="13">เขตธนบุรี</option>
+                                <option *ngIf="student_province == 1" value="14">เขตบางเขน</option>
+                                <option *ngIf="student_province == 1" value="15">เขตบางแค</option>
+                                <option *ngIf="student_province == 1" value="16">เขตบางกอกใหญ่</option>
+                                <option *ngIf="student_province == 1" value="17">เขตบางกอกน้อย</option>
+                                <option *ngIf="student_province == 1" value="18">เขตบางกะปิ</option>
+                                <option *ngIf="student_province == 1" value="19">เขตบางขุนเทียน</option>
+                                <option *ngIf="student_province == 1" value="20">เขตบางคอแหลม</option>
+                                <option *ngIf="student_province == 1" value="21">เขตบางซื่อ</option>
+                                <option *ngIf="student_province == 1" value="22">เขตบางนา</option>
+                                <option *ngIf="student_province == 1" value="23">เขตบางบอน</option>
+                                <option *ngIf="student_province == 1" value="24">เขตบางพลัด</option>
+                                <option *ngIf="student_province == 1" value="25">เขตบางรัก</option>
+                                <option *ngIf="student_province == 1" value="26">เขตบึงกุ่ม</option>
+                                <option *ngIf="student_province == 1" value="27">เขตปทุมวัน</option>
+                                <option *ngIf="student_province == 1" value="28">เขตประเวศ</option>
+                                <option *ngIf="student_province == 1" value="29">เขตป้อมปราบศัตรูพ่าย</option>
+                                <option *ngIf="student_province == 1" value="30">เขตพญาไท</option>
+                                <option *ngIf="student_province == 1" value="31">เขตพระโขนง</option>
+                                <option *ngIf="student_province == 1" value="32">เขตพระนคร</option>
+                                <option *ngIf="student_province == 1" value="33">เขตภาษีเจริญ</option>
+                                <option *ngIf="student_province == 1" value="34">เขตมีนบุรี</option>
+                                <option *ngIf="student_province == 1" value="35">เขตยานนาวา</option>
+                                <option *ngIf="student_province == 1" value="36">เขตราชเทวี</option>
+                                <option *ngIf="student_province == 1" value="37">เขตราษฎร์บูรณะ</option>
+                                <option *ngIf="student_province == 1" value="38">เขตลาดกระบัง</option>
+                                <option *ngIf="student_province == 1" value="39">เขตลาดพร้าว</option>
+                                <option *ngIf="student_province == 1" value="40">เขตวังทองหลาง</option>
+                                <option *ngIf="student_province == 1" value="41">เขตวัฒนา</option>
+                                <option *ngIf="student_province == 1" value="42">เขตสวนหลวง</option>
+                                <option *ngIf="student_province == 1" value="43">เขตสะพานสูง</option>
+                                <option *ngIf="student_province == 1" value="44">เขตสัมพันธวงศ์</option>
+                                <option *ngIf="student_province == 1" value="45">เขตสาทร</option>
+                                <option *ngIf="student_province == 1" value="46">เขตสายไหม</option>
+                                <option *ngIf="student_province == 1" value="47">เขตหนองแขม</option>
+                                <option *ngIf="student_province == 1" value="48">เขตหนองจอก</option>
+                                <option *ngIf="student_province == 1" value="49">เขตหลักสี่</option>
+                                <option *ngIf="student_province == 1" value="50">เขตห้วยขวาง</option>
+                                <option *ngIf="student_province == 2" value="51">เมือง</option>
+                                <option *ngIf="student_province == 2" value="52">เหนือคลอง</option>
+                                <option *ngIf="student_province == 2" value="53">เขาพนม</option>
+                                <option *ngIf="student_province == 2" value="54">คลองท่อม</option>
+                                <option *ngIf="student_province == 2" value="55">อ่าวลึก</option>
+                                <option *ngIf="student_province == 2" value="56">ปลายพระยา</option>
+                                <option *ngIf="student_province == 2" value="57">ลำทับ</option>
+                                <option *ngIf="student_province == 2" value="58">เกาะลันตา</option>
+                                <option *ngIf="student_province == 3" value="59">เมือง</option>
+                                <option *ngIf="student_province == 3" value="60">ท่าม่วง</option>
+                                <option *ngIf="student_province == 3" value="61">พนมทวน</option>
+                                <option *ngIf="student_province == 3" value="62">ท่ามะกา</option>
+                                <option *ngIf="student_province == 3" value="63">ด่านมะขามเตี้ย</option>
+                                <option *ngIf="student_province == 3" value="64">บ่อพลอย</option>
+                                <option *ngIf="student_province == 3" value="65">ไทรโยค</option>
+                                <option *ngIf="student_province == 3" value="66">ห้วยกระเจา</option>
+                                <option *ngIf="student_province == 3" value="67">หนองปรือ</option>
+                                <option *ngIf="student_province == 3" value="68">เลาขวัญ</option>
+                                <option *ngIf="student_province == 3" value="69">ศรีสวัสดิ์</option>
+                                <option *ngIf="student_province == 3" value="70">ทองผาภูมิ</option>
+                                <option *ngIf="student_province == 3" value="71">สังขละบุรี</option>
+                            </select>
+                        </div> -->
+                        <div class="col-md-3"> <label for="student_tambon" class="form-label">ตำบล</label>
+                            <input type="text" class="form-control" id="student_tambon" [(ngModel)]="student_tambon"
+                                name="student_tambon">
+                        </div>
+                        <!-- <div class="col-md-3">
+                            <label for="student_tambon" class="form-label">ตำบล</label>
+                            <select id="student_tambon" class="form-select"
+                                [(ngModel)]="student_tambon" name="student_tambon" (change)="func_tambon()">
+                                <option selected value="0">Choose...</option> 
+                                <option *ngIf="student_district == 1" value="1">แขวงคลองเตย</option>
+                                <option *ngIf="student_district == 1" value="2">แขวงคลองตัน</option>
+                                <option *ngIf="student_district == 1" value="3">แขวงพระโขนง</option>
+                                <option *ngIf="student_district == 2" value="4">แขวงคลองต้นไทร</option>
+                                <option *ngIf="student_district == 2" value="5">แขวงคลองสาน</option>
+                                <option *ngIf="student_district == 2" value="6">แขวงบางลำภูล่าง</option>
+                                <option *ngIf="student_district == 2" value="7">แขวงสมเด็จเจ้าพระยา</option>
+                                <option *ngIf="student_district == 1" value="8">เขตดินแดง</option>
+                                <option *ngIf="student_district == 1" value="9">เขตดุสิต</option>
+                                <option *ngIf="student_district == 1" value="10">เขตตลิ่งชัน</option>
+                                <option *ngIf="student_district == 1" value="11">เขตทวีวัฒนา</option>
+                                <option *ngIf="student_district == 1" value="12">เขตทุ่งครุ</option>
+                                <option *ngIf="student_district == 1" value="13">เขตธนบุรี</option>
+                                <option *ngIf="student_district == 1" value="14">เขตบางเขน</option>
+                                <option *ngIf="student_district == 1" value="15">เขตบางแค</option>
+                                <option *ngIf="student_district == 1" value="16">เขตบางกอกใหญ่</option>
+                                <option *ngIf="student_district == 1" value="17">เขตบางกอกน้อย</option>
+                                <option *ngIf="student_district == 1" value="18">เขตบางกะปิ</option>
+                                <option *ngIf="student_district == 1" value="19">เขตบางขุนเทียน</option>
+                                <option *ngIf="student_district == 1" value="20">เขตบางคอแหลม</option>
+                                <option *ngIf="student_district == 1" value="21">เขตบางซื่อ</option>
+                                <option *ngIf="student_district == 1" value="22">เขตบางนา</option>
+                                <option *ngIf="student_district == 1" value="23">เขตบางบอน</option>
+                                <option *ngIf="student_district == 1" value="24">เขตบางพลัด</option>
+                                <option *ngIf="student_district == 1" value="25">เขตบางรัก</option>
+                                <option *ngIf="student_district == 1" value="26">เขตบึงกุ่ม</option>
+                                <option *ngIf="student_district == 1" value="27">เขตปทุมวัน</option>
+                                <option *ngIf="student_district == 1" value="28">เขตประเวศ</option>
+                                <option *ngIf="student_district == 1" value="29">เขตป้อมปราบศัตรูพ่าย</option>
+                                <option *ngIf="student_district == 1" value="30">เขตพญาไท</option>
+                                <option *ngIf="student_district == 1" value="31">เขตพระโขนง</option>
+                                <option *ngIf="student_district == 1" value="32">เขตพระนคร</option>
+                                <option *ngIf="student_district == 1" value="33">เขตภาษีเจริญ</option>
+                                <option *ngIf="student_district == 1" value="34">เขตมีนบุรี</option>
+                                <option *ngIf="student_district == 1" value="35">เขตยานนาวา</option>
+                                <option *ngIf="student_district == 1" value="36">เขตราชเทวี</option>
+                                <option *ngIf="student_district == 1" value="37">เขตราษฎร์บูรณะ</option>
+                                <option *ngIf="student_district == 1" value="38">เขตลาดกระบัง</option>
+                                <option *ngIf="student_district == 1" value="39">เขตลาดพร้าว</option>
+                                <option *ngIf="student_district == 1" value="40">เขตวังทองหลาง</option>
+                                <option *ngIf="student_district == 1" value="41">เขตวัฒนา</option>
+                                <option *ngIf="student_district == 1" value="42">เขตสวนหลวง</option>
+                                <option *ngIf="student_district == 1" value="43">เขตสะพานสูง</option>
+                                <option *ngIf="student_district == 1" value="44">เขตสัมพันธวงศ์</option>
+                                <option *ngIf="student_district == 1" value="45">เขตสาทร</option>
+                                <option *ngIf="student_district == 1" value="46">เขตสายไหม</option>
+                                <option *ngIf="student_district == 1" value="47">เขตหนองแขม</option>
+                                <option *ngIf="student_district == 1" value="48">เขตหนองจอก</option>
+                                <option *ngIf="student_district == 1" value="49">เขตหลักสี่</option>
+                                <option *ngIf="student_district == 1" value="50">เขตห้วยขวาง</option>
+                                <option *ngIf="student_district == 2" value="51">เมือง</option>
+                                <option *ngIf="student_district == 2" value="52">เหนือคลอง</option>
+                                <option *ngIf="student_district == 2" value="53">เขาพนม</option>
+                                <option *ngIf="student_district == 2" value="54">คลองท่อม</option>
+                                <option *ngIf="student_district == 2" value="55">อ่าวลึก</option>
+                                <option *ngIf="student_district == 2" value="56">ปลายพระยา</option>
+                                <option *ngIf="student_district == 2" value="57">ลำทับ</option>
+                                <option *ngIf="student_district == 2" value="58">เกาะลันตา</option>
+                                <option *ngIf="student_district == 3" value="59">เมือง</option>
+                                <option *ngIf="student_district == 3" value="60">ท่าม่วง</option>
+                                <option *ngIf="student_district == 3" value="61">พนมทวน</option>
+                                <option *ngIf="student_district == 3" value="62">ท่ามะกา</option>
+                                <option *ngIf="student_district == 3" value="63">ด่านมะขามเตี้ย</option>
+                                <option *ngIf="student_district == 3" value="64">บ่อพลอย</option>
+                                <option *ngIf="student_district == 3" value="65">ไทรโยค</option>
+                                <option *ngIf="student_district == 3" value="66">ห้วยกระเจา</option>
+                                <option *ngIf="student_district == 3" value="67">หนองปรือ</option>
+                                <option *ngIf="student_district == 3" value="68">เลาขวัญ</option>
+                                <option *ngIf="student_district == 3" value="69">ศรีสวัสดิ์</option>
+                                <option *ngIf="student_district == 3" value="70">ทองผาภูมิ</option>
+                                <option *ngIf="student_district == 3" value="71">สังขละบุรี</option> 
+                            </select>
+                        </div>-->
+                        <div class="col-md-3"> <label for="student_province_post"
+                                class="form-label">รหัสไปรษณีย์</label>
+                            <input type="number" class="form-control" id="student_province_post"
+                                [(ngModel)]="student_province_post" name="student_province_post">
+                        </div>
+                        <div class="col-md-12"> <label for="student_id_card" class="form-label">รหัสนักเรียน</label>
+                            <input type="text" class="form-control" id="student_id_card" [(ngModel)]="student_id_card"
+                                name="student_id_card">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="is_student">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">2. ผู้ปกครอง (อาศัยอยู่กับ)</h5>
+                    <div class="col-12">
+                        <div class="form-check"> <input class="form-check-input" type="checkbox" id="have_parent"
+                                [(ngModel)]="have_parent" name="have_parent">
+                            <label class="form-check-label" for="have_parent"> ไม่มีผู้ปกครอง </label>
+                        </div>
+                    </div>
+                    <form class="row g-3" *ngIf="have_parent == false">
+                        <div class="col-md-12">
+                            <label for="parent_with_student" class="form-label">นักเรียนอาศัยอยู่กับ</label>
+                            <select id="inputState" class="form-select" [(ngModel)]="parent_with_student"
+                                name="parent_with_student">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="พ่อ แม่">พ่อ แม่</option>
+                                <option value="พ่อหรือแม่">พ่อหรือแม่</option>
+                                <option value="ปู่ ย่า ตา ยาย หรือญาติ">ปู่ ย่า ตา ยาย หรือญาติ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="parent_prefix" class="form-label">คำนำหน้า</label>
+                            <select id="inputState" class="form-select" [(ngModel)]="parent_prefix"
+                                name="parent_prefix">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="นาย">นาย</option>
+                                <option value="นาง">นาง</option>
+                                <option value="นางสาว">นางสาว</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4"> <label for="parent_name" class="form-label">ชื่อ</label>
+                            <input type="text" class="form-control" id="parent_name" [(ngModel)]="parent_name"
+                                name="parent_name">
+                        </div>
+                        <div class="col-md-4"> <label for="parent_surname" class="form-label">นามสกุล</label>
+                            <input type="text" class="form-control" id="parent_surname" [(ngModel)]="parent_surname"
+                                name="parent_surname">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="parent_relationship" class="form-label">ความสัมพันธ์ของปกครองกับนักเรียน</label>
+                            <select id="parent_relationship" class="form-select" [(ngModel)]="parent_relationship"
+                                name="parent_relationship">
+                                <option value="บิดา">บิดา</option>
+                                <option value="มารดา">มารดา</option>
+                                <option value="ปู่ ย่า ตา ยาย หรือญาติ">ปู่ ย่า ตา ยาย หรือญาติ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="parent_work" class="form-label">อาชีพ</label>
+                            <select id="parent_work" class="form-select" [(ngModel)]="parent_work" name="parent_work">
+                                <option value="รับราชการ">รับราชการ</option>
+                                <option value="เกษตรกร">เกษตรกร</option>
+                                <option value="ค้าขาย">ค้าขาย</option>
+                                <option value="รับจ้าง">รับจ้าง</option>
+                                <option value="อื่น ๆ">อื่น ๆ</option>
+                            </select>
+                        </div>
+                        <!-- <div class="col-md-4">
+                            <label for="parent_education" class="form-label">การศึกษาสูงสุด</label>
+                            <select id="parent_education" class="form-select" [(ngModel)]="parent_education"
+                                name="parent_education">
+                                <option value="ประถมศึกษา">ประถมศึกษา</option>
+                                <option value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น</option>
+                                <option value="มัธยมศึกษาตอนปลาย">มัธยมศึกษาตอนปลาย</option>
+                                <option value="ปริญาตรี">ปริญาตรี</option>
+                                <option value="ปริญาโท">ปริญาโท</option>
+                                <option value="ปริญาเอก">ปริญาเอก</option>
+                            </select>
+                        </div> -->
+                        <!-- <div class="col-md-4">
+                            <div class="form-check"> <input class="form-check-input" type="checkbox" id="have_id_code"
+                                    [(ngModel)]="have_id_code" name="have_id_code">
+                                <label class="form-check-label" for="have_id_code"> ไม่มีรหัสประชาชน </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4"> <label for="id_code_parent" class="form-label"
+                                *ngIf="have_id_code == false">รหัสประชาชน</label>
+                            <input type="text" class="form-control" id="id_code_parent" [(ngModel)]="id_code_parent" name="id_code_parent" *ngIf="have_id_code == false">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check"> <input class="form-check-input" type="checkbox"
+                                    id="register_the_poor" [(ngModel)]="register_the_poor" name="register_the_poor">
+                                <label class="form-check-label" for="register_the_poor">
+                                    เคยลงทะเบียนเพื่อสวัสดิการแห่งรัฐ </label>
+                            </div>
+                        </div> -->
+                    </form>
+
+                    <div class="text-center" style="margin-top: 5px;">
+                        <button type="reset" style="margin-right: 5px;" class="btn btn-secondary">รีเซ็ต</button>
+                        <button (click)="submit_student()" data-bs-toggle="modal" data-bs-target="#verticalycentered"
+                            class="btn btn-primary">ถัดไป</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="is_relationship">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">3. ข้อมูลครอบครัว</h5>
+                    <form class="row g-3">
+                        <!-- <div class="col-md-12">
+                            <label for="prefix" class="form-label">มีเวลาอยู่ร่วมกันกี่ชั่วโมง</label>
+                            <select id="take_time_together" class="form-select" [(ngModel)]="take_time_together" name="take_time_together">
+                                
+                                <option value="0" selected>กรุณาเลือก</option>
+                                <option value="1">1 ชั่วโมง</option>
+                                <option value="2">2 ชั่วโมง</option>
+                                <option value="3">3 ชั่วโมง</option>
+                                <option value="4">4 ชั่วโมง</option>
+                                <option value="5">5 ชั่วโมง</option>
+                                <option value="6">6 ชั่วโมง</option>
+                                <option value="7">7 ชั่วโมง</option>
+                                <option value="8">8 ชั่วโมง</option>
+                                <option value="9">9 ชั่วโมง</option>
+                                <option value="10">10 ชั่วโมง</option>
+                                <option value="11">11 ชั่วโมง</option>
+                                <option value="12">12 ชั่วโมง</option>
+                                <option value="13">13 ชั่วโมง</option>
+                                <option value="14">14 ชั่วโมง</option>
+                                <option value="15">15 ชั่วโมง</option>
+                                <option value="16">16 ชั่วโมง</option>
+                                <option value="17">17 ชั่วโมง</option>
+                                <option value="18">18 ชั่วโมง</option>
+                                <option value="19">19 ชั่วโมง</option>
+                                <option value="20">20 ชั่วโมง</option>
+                                <option value="21">21 ชั่วโมง</option>
+                                <option value="22">22 ชั่วโมง</option>
+                                <option value="23">23 ชั่วโมง</option>
+                                <option value="24">24 ชั่วโมง</option>
+                            </select>
+                        </div> -->
+                        <!-- <fieldset class="col-md-12">
+                            <label class="form-label">ความสัมพันธ์ของนักเรียนกับสมาชิกในครอบครัว</label>
+                            <div class="col-sm-10">
+                                <label class="form-label">บิดา</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_father" 
+                                        name="relationship_father" id="relationship_father1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_father1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_father"
+                                        name="relationship_father" id="relationship_father2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_father2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_father" 
+                                        name="relationship_father" id="relationship_father3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_father3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_father" 
+                                        name="relationship_father" id="relationship_father4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_father4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_father" 
+                                        name="relationship_father" id="relationship_father5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_father5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">มารดา</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_mother" 
+                                        name="relationship_mother" id="relationship_mother1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_mother1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_mother" 
+                                        name="relationship_mother" id="relationship_mother2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_mother2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_mother" 
+                                        name="relationship_mother" id="relationship_mother3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_mother3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_mother" 
+                                        name="relationship_mother" id="relationship_mother4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_mother4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_mother" 
+                                        name="relationship_mother" id="relationship_mother5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_mother5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">พี่ชาย/น้องชาย</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_brother" 
+                                        name="relationship_brother" id="relationship_brother1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_brother1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_brother" 
+                                        name="relationship_brother" id="relationship_brother2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_brother2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_brother" 
+                                        name="relationship_brother" id="relationship_brother3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_brother3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_brother" 
+                                        name="relationship_brother" id="relationship_brother4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_brother4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_brother" 
+                                        name="relationship_brother" id="relationship_brother5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_brother5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">พี่สาว/น้องสาว</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_sister" 
+                                        name="relationship_sister" id="relationship_sister1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_sister1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_sister" 
+                                        name="relationship_sister" id="relationship_sister2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_sister2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_sister" 
+                                        name="relationship_sister" id="relationship_sister3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_sister3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_sister" 
+                                        name="relationship_sister" id="relationship_sister4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_sister4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_sister" 
+                                        name="relationship_sister" id="relationship_sister5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_sister5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">ปู/ย่า/ตา/ยาย</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_grandfather" 
+                                        name="relationship_grandfather" id="relationship_grandfather1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_grandfather1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_grandfather" 
+                                        name="relationship_grandfather" id="relationship_grandfather2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_grandfather2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_grandfather" 
+                                        name="relationship_grandfather" id="relationship_grandfather3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_grandfather3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_grandfather" 
+                                        name="relationship_grandfather" id="relationship_grandfather4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_grandfather4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_grandfather" 
+                                        name="relationship_grandfather" id="relationship_grandfather5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_grandfather5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">ญาติ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_relative" 
+                                        name="relationship_relative" id="relationship_relative1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_relative1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_relative" 
+                                        name="relationship_relative" id="relationship_relative2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_relative2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_relative" 
+                                        name="relationship_relative" id="relationship_relative3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_relative3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_relative" 
+                                        name="relationship_relative" id="relationship_relative4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_relative4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_relative" 
+                                        name="relationship_relative" id="relationship_relative5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_relative5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">อื่นๆ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_other" 
+                                        name="relationship_other" id="relationship_other1" value="สนิทสนม" checked> <label
+                                        class="form-check-label" for="relationship_other1"> สนิทสนม </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_other" 
+                                        name="relationship_other" id="relationship_other2" value="เฉยๆ"> <label
+                                        class="form-check-label" for="relationship_other2"> เฉยๆ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_other" 
+                                        name="relationship_other" id="relationship_other3" value="ห่างเหิน"> <label
+                                        class="form-check-label" for="relationship_other3"> ห่างเหิน </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_other" 
+                                        name="relationship_other" id="relationship_other4" value="ขัดแย้ง"> <label
+                                        class="form-check-label" for="relationship_other4"> ขัดแย้ง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" [(ngModel)]="relationship_other" 
+                                        name="relationship_other" id="relationship_other5" value="ไม่มี"> <label
+                                        class="form-check-label" for="relationship_other5"> ไม่มี </label></div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12">
+                            <label for="live_with_who"
+                                class="form-label">กรณีผู้ปกครองไม่อยู่บ้านฝากเด็กนักเรียนอยู่บ้านกับใคร</label>
+                            <select id="inputState" class="form-select" name="live_with_who" [(ngModel)]="live_with_who" >
+                                
+                                <option value="0">กรุณาเลือก</option>
+                                <option value="ปู่">ปู่</option>
+                                <option value="ย่า">ย่า</option>
+                                <option value="ตา">ตา</option>
+                                <option value="ยาย">ยาย</option>
+                                <option value="ญาติ">ญาติ</option>
+                                <option value="เพื่อนบ้าน">เพื่อนบ้าน</option>
+                            </select>
+                        </div>-->
+                        <div class="col-md-12">
+                            <label for="students_receive_expenses"
+                                class="form-label">นักเรียนได้รับค่าใช้จ่ายจาก</label>
+                            <select id="inputState" class="form-select" name="students_receive_expenses"
+                                [(ngModel)]="students_receive_expenses">
+                                <option value="0">กรุณาเลือก</option>
+                                <option value="บิดา">บิดา</option>
+                                <option value="มารดา">มารดา</option>
+                                <option value="พี่ชาย/น้องชาย/พี่สาว/น้องสาว">พี่ชาย/น้องชาย/พี่สาว/น้องสาว
+                                </option>
+                                <option value="ปู่">ปู่</option>
+                                <option value="ย่า">ย่า</option>
+                                <option value="ตา">ตา</option>
+                                <option value="ยาย">ยาย</option>
+                                <option value="ญาติ">ญาติ</option>
+                            </select>
+                        </div>
+                        <!-- <div class="col-md-12">
+                            <label for="daily_income" class="form-label">รายได้วันละ</label>
+                            <select id="inputState" class="form-select" name="daily_income" [(ngModel)]="daily_income">
+                                
+                                <option value="0">กรุณาเลือก</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="150">150</option>
+                                <option value="200">200</option>
+                                <option value="250">250</option>
+                                <option value="300">300</option>
+                                <option value="450">450</option>
+                                <option value="500">500</option>
+                            </select>
+                            <label for="daily_income" class="form-label">บาท</label>
+                        </div>  -->
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">สิ่งที่ผู้ปกครองต้องการให้โรงเรียนช่วยเหลือนักเรียน</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="want_schools_to_help_students" [(ngModel)]="want_schools_to_help_students"
+                                        id="want_schools_to_help_students1" value="ด้านการเงิน" checked>
+                                    <label class="form-check-label" for="want_schools_to_help_students1">
+                                        ด้านการเงิน
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="want_schools_to_help_students" [(ngModel)]="want_schools_to_help_students"
+                                        id="want_schools_to_help_students2" value="ด้านพฤติกรรม"> <label
+                                        class="form-check-label" for="want_schools_to_help_students2">
+                                        ด้านพฤติกรรม
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="want_schools_to_help_students" [(ngModel)]="want_schools_to_help_students"
+                                        id="want_schools_to_help_students3" value="ด้านเศรษฐกิจ"> <label
+                                        class="form-check-label" for="want_schools_to_help_students3">
+                                        ด้านเศรษฐกิจ(เช่น
+                                        ขอรับทุน) </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="want_schools_to_help_students" [(ngModel)]="want_schools_to_help_students"
+                                        id="want_schools_to_help_students4" value="อื่นๆ"> <label
+                                        class="form-check-label" for="want_schools_to_help_students4"> อื่น
+                                        ๆ </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <!-- <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label
+                                    class="form-label">ความช่วยเหลือที่ครอบครัวเคยได้รับจากหน่วยงานหรือต้องการช่วยเหลือ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="family_used_receive_agency" [(ngModel)]="family_used_receive_agency" id="family_used_receive_agency1" value="เบี้ยสูงอายุ" checked>
+                                    <label class="form-check-label" for="family_used_receive_agency1"> เบี้ยสูงอายุ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="family_used_receive_agency" [(ngModel)]="family_used_receive_agency" id="family_used_receive_agency2" value="เบี้ยพิการ"> <label
+                                        class="form-check-label" for="family_used_receive_agency2"> เบี้ยพิการ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="family_used_receive_agency" [(ngModel)]="family_used_receive_agency" id="family_used_receive_agency3" value="อื่นๆ"> <label
+                                        class="form-check-label" for="family_used_receive_agency3"> อื่นๆ </label></div>
+                            </div>
+                        </fieldset> -->
+                        <div class="col-md-12">
+                            <label class="form-label">ข้อห่วงใยของผู้ปกครองที่มีต่อนักเรียน</label>
+                            <div class="col-sm-12"><textarea class="form-control" style="height: 100px"
+                                    name="caring_for_students" [(ngModel)]="caring_for_students"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="reset" style="margin-right: 5px;" class="btn btn-secondary">รีเซ็ต</button>
+                            <button (click)="submit_relationship()" class="btn btn-primary">ถัดไป</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="is_behavior_and_risk">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">4. พฤติกรรมและความเสี่ยง</h5>
+                    <form class="row g-3">
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.1 สุขภาพ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="health"
+                                        [(ngModel)]="health" id="health1" value="ร่างกายไม่แข็งแรง" checked> <label
+                                        class="form-check-label" for="health1"> ร่างกายไม่แข็งแรง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="health"
+                                        [(ngModel)]="health" id="health2" value="มีโรคประจำตัวหรือเจ็บป่วยบ่อย">
+                                    <label class="form-check-label" for="health2">
+                                        มีโรคประจำตัวหรือเจ็บป่วยบ่อย </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="health"
+                                        [(ngModel)]="health" id="health3" value="มีภาวะทุพโภชนาการ"> <label
+                                        class="form-check-label" for="health3"> มีภาวะทุพโภชนาการ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="health"
+                                        [(ngModel)]="health" id="health4" value="ป่วยเป็นโรคร้ายแรง/เรื้อรัง">
+                                    <label class="form-check-label" for="health4"> ป่วยเป็นโรคร้ายแรง/เรื้อรัง
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="health"
+                                        [(ngModel)]="health" id="health5" value="สมรรถภาพทางร่างกายต่ำ"> <label
+                                        class="form-check-label" for="health5"> สมรรถภาพทางร่างกายต่ำ </label></div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.2 สวัดดิการหรือความปลอดภัย</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety1"
+                                        value="พ่อแม่แยกทางกันหรือแต่งงานใหม่" checked>
+                                    <label class="form-check-label" for="welfare_or_safety1">
+                                        พ่อแม่แยกทางกันหรือแต่งงานใหม่
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety2"
+                                        value="มีบุคคลในครอบครัวเจ็บป่วยด้วยโรคร้ายแรง/เรื้อรัง/ติดต่อ">
+                                    <label class="form-check-label" for="welfare_or_safety2">
+                                        มีบุคคลในครอบครัวเจ็บป่วยด้วยโรคร้ายแรง/เรื้อรัง/ติดต่อ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety3"
+                                        value="บุคคลในครอบครัวเล่นการผนัน"> <label class="form-check-label"
+                                        for="welfare_or_safety3">
+                                        บุคคลในครอบครัวเล่นการผนัน </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety4"
+                                        value="ไม่มีผู้ดูแล"> <label class="form-check-label" for="welfare_or_safety4">
+                                        ไม่มีผู้ดูแล </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety5"
+                                        value="ถูกทารุณ/ทำร้ายจากบุคคลในครอบครัว/เพื่อนบ้าน"> <label
+                                        class="form-check-label" for="welfare_or_safety5">
+                                        ถูกทารุณ/ทำร้ายจากบุคคลในครอบครัว/เพื่อนบ้าน</label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety6"
+                                        value="เล่นการผนัน"> <label class="form-check-label" for="welfare_or_safety6">
+                                        เล่นการผนัน</label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety7"
+                                        value="ที่พักอาศัยในชุมชนแออัดหรือใกล้แหล่งมั่วสุม/สถานเริงรมย์">
+                                    <label class="form-check-label" for="welfare_or_safety7">
+                                        ที่พักอาศัยในชุมชนแออัดหรือใกล้แหล่งมั่วสุม/สถานเริงรมย์</label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety8"
+                                        value="บุคคลในครอบครัวติดสารเสพติด"> <label class="form-check-label"
+                                        for="welfare_or_safety8">
+                                        บุคคลในครอบครัวติดสารเสพติด</label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety" id="welfare_or_safety9"
+                                        value="มีความขัดแย้ง/ทะเลาะกันในครอบครัว">
+                                    <label class="form-check-label" for="welfare_or_safety9">
+                                        มีความขัดแย้ง/ทะเลาะกันในครอบครัว</label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety"
+                                        id="welfare_or_safety10" value="มีความขัดแย้งและมีการใช้ความรุนแรงในครอบครัว">
+                                    <label class="form-check-label" for="welfare_or_safety10">
+                                        มีความขัดแย้งและมีการใช้ความรุนแรงในครอบครัว</label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="welfare_or_safety" [(ngModel)]="welfare_or_safety"
+                                        id="welfare_or_safety11" value="ถูกล่วงละเมิดทางเพศ"> <label
+                                        class="form-check-label" for="welfare_or_safety11">
+                                        ถูกล่วงละเมิดทางเพศ</label></div>
+                            </div>
+                        </fieldset>
+                        <!-- <div class="col-md-4">
+                            <label for="distance_from_home" class="form-label">4.3
+                                ระยะทางระหว่างบ้านไปโรงเรียน(ไป/กับ)</label>
+                            <select id="distance_from_home" class="form-select" name="distance_from_home" [(ngModel)]="distance_from_home">
+                                
+                                <option value="0">-</option>
+                                <option value="1">1 กิโลเมตร</option>
+                                <option value="2">2 กิโลเมตร</option>
+                                <option value="3">3 กิโลเมตร</option>
+                                <option value="4">4 กิโลเมตร</option>
+                                <option value="5">5 กิโลเมตร</option>
+                                <option value="6">6 กิโลเมตร</option>
+                                <option value="7">7 กิโลเมตร</option>
+                                <option value="8">8 กิโลเมตร</option>
+                            </select>
+                        </div> -->
+                        <div class="col-md-4">
+                            <label for="travel_time_hr" class="form-label">4.3 นักเรียนใช้เวลาเดินทางมาโรงเรียน
+                                (ชั่วโมง)</label>
+                            <select id="travel_time_hr" name="travel_time_hr" [(ngModel)]="travel_time_hr"
+                                class="form-select">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">0 ชั่งโมง</option>
+                                <option value="1">1 ชั่วโมง</option>
+                                <option value="2">2 ชั่วโมง</option>
+                                <option value="3">3 ชั่วโมง</option>
+                                <option value="4">4 ชั่วโมง</option>
+                                <option value="5">5 ชั่วโมง</option>
+                                <option value="6">6 ชั่วโมง</option>
+                                <option value="7">7 ชั่วโมง</option>
+                                <option value="8">8 ชั่วโมง</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="travel_time_min" class="form-label">(นาที)</label>
+                            <select id="travel_time_min" name="travel_time_min" [(ngModel)]="travel_time_min"
+                                class="form-select">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="5">5 นาที</option>
+                                <option value="10">10 นาที</option>
+                                <option value="15">15 นาที</option>
+                                <option value="20">20 นาที</option>
+                                <option value="25">25 นาที</option>
+                                <option value="30">30 นาที</option>
+                                <option value="45">45 นาที</option>
+                                <option value="50">50 นาที</option>
+                                <option value="55">55 นาที</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="student_travel_to_school"
+                                class="form-label">การเดินทางของนักเรียนไปโรงเรียน</label>
+                            <select id="student_travel_to_school" name="student_travel_to_school"
+                                [(ngModel)]="student_travel_to_school" class="form-select">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">กรุณาเลือก</option>
+                                <option value="ผู้ปกครองไปส่ง">ผู้ปกครองไปส่ง</option>
+                                <option value="นั่งรถประจำทาง">นั่งรถประจำทาง</option>
+                                <option value="เดินทางไปด้วยตนเอง">เดินทางไปด้วยตนเอง</option>
+                            </select>
+                        </div>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.4 สภาพที่อยู่อาศัย</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="housing_conditions" [(ngModel)]="housing_conditions"
+                                        id="housing_conditions1"
+                                        value="สภาพบ้านชำรุดทรุดโทรม หรือบ้านทำจากวัสดุพื้นฐาน เช่น ใบไม้หรือวัสดุเหลือใช้"
+                                        checked> <label class="form-check-label" for="housing_conditions1">
+                                        สภาพบ้านชำรุดทรุดโทรม หรือ
+                                        บ้านทำจากวัสดุพื้นฐาน เช่น ใบไม้หรือวัสดุเหลือใช้ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="housing_conditions" [(ngModel)]="housing_conditions"
+                                        id="housing_conditions2" value="ไม่มีห้องส้วมในที่อยู่อาศัยและบริเวณ">
+                                    <label class="form-check-label" for="housing_conditions2">
+                                        ไม่มีห้องส้วมในที่อยู่อาศัยและบริเวณ
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.5
+                                    ภาระงานความรับผิดชอบของนักเรียนที่มีต่อครอบครัว</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="student_responsibility" [(ngModel)]="student_responsibility"
+                                        id="student_responsibility1" value="ช่วยที่บ้าน" checked> <label
+                                        class="form-check-label" for="student_responsibility1"> ช่วยที่บ้าน
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="student_responsibility" [(ngModel)]="student_responsibility"
+                                        id="student_responsibility2" value="ช่วยค้าขายเล็กๆน้อยๆ"> <label
+                                        class="form-check-label" for="student_responsibility2">
+                                        ช่วยค้าขายเล็กๆน้อยๆ
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="student_responsibility" [(ngModel)]="student_responsibility"
+                                        id="student_responsibility3" value="ช่วยงานในนาไร่"> <label
+                                        class="form-check-label" for="student_responsibility3">
+                                        ช่วยงานในนาไร่ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="student_responsibility" [(ngModel)]="student_responsibility"
+                                        id="student_responsibility4" value="ช่วยดูแลคนเจ็บป่วย/พิการ">
+                                    <label class="form-check-label" for="student_responsibility4">
+                                        ช่วยดูแลคนเจ็บป่วย/พิการ
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="student_responsibility" [(ngModel)]="student_responsibility"
+                                        id="student_responsibility5" value="อื่นๆ"> <label class="form-check-label"
+                                        for="student_responsibility5"> อื่นๆ
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.6 กิจกรรมยามว่างหรืองานอดิเรก</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby1" value="ดูทีวี/ฟังเพลง" checked> <label
+                                        class="form-check-label" for="hobby1">
+                                        ดูทีวี/ฟังเพลง </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby2" value="อ่านหนังสือ">
+                                    <label class="form-check-label" for="hobby2"> อ่านหนังสือ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby3" value="แว๊น/สก็อย">
+                                    <label class="form-check-label" for="hobby3"> แว๊น/สก็อย </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby4" value="ไปสวนสาธารณะ">
+                                    <label class="form-check-label" for="hobby4"> ไปสวนสาธารณะ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby5" value="ไปเที่ยวห้าง/ดูหนัง"> <label
+                                        class="form-check-label" for="hobby5"> ไปเที่ยวห้าง/ดูหนัง </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby6" value="ไปหาเพื่อน/เพื่อน">
+                                    <label class="form-check-label" for="hobby6"> ไปหาเพื่อน/เพื่อน </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby7" value="เล่นเกมส์คอม/มือถือ"> <label
+                                        class="form-check-label" for="hobby7"> เล่นเกมส์คอม/มือถือ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby8" value="ไปร้านสนุกเกอร์">
+                                    <label class="form-check-label" for="hobby8"> ไปร้านสนุกเกอร์ </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="hobby"
+                                        [(ngModel)]="hobby" id="hobby9" value="อื่นๆ"> <label class="form-check-label"
+                                        for="hobby9"> อื่นๆ </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.7 พฤติกรรมการใช้สารเสพติด</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="drug_use_behavior" [(ngModel)]="drug_use_behavior" id="drug_use_behavior1"
+                                        value="คบเพื่อนในกลุ่มที่ใช้สารเสพติด" checked>
+                                    <label class="form-check-label" for="drug_use_behavior1">
+                                        คบเพื่อนในกลุ่มที่ใช้สารเสพติด
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="drug_use_behavior" [(ngModel)]="drug_use_behavior" id="drug_use_behavior2"
+                                        value="สมาชิกในครอบครัวข้องเกี่ยวกับสารเสพติด">
+                                    <label class="form-check-label" for="drug_use_behavior2">
+                                        สมาชิกในครอบครัวข้องเกี่ยวกับสารเสพติด </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="drug_use_behavior" [(ngModel)]="drug_use_behavior" id="drug_use_behavior3"
+                                        value="อยู่ในสภาพแวดล้อมที่ใช้สารเสพติด">
+                                    <label class="form-check-label" for="drug_use_behavior3">
+                                        อยู่ในสภาพแวดล้อมที่ใช้สารเสพติด
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="drug_use_behavior" [(ngModel)]="drug_use_behavior" id="drug_use_behavior4"
+                                        value="ปัจจุบันเกี่ยวข้องกับสารเสพติด">
+                                    <label class="form-check-label" for="drug_use_behavior4">
+                                        ปัจจุบันเกี่ยวข้องกับสารเสพติด
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="drug_use_behavior" [(ngModel)]="drug_use_behavior" id="drug_use_behavior5"
+                                        value="เป็นผู้ติดบุหรี่ สุรา หรือการใช้สารเสพติดอื่นๆ"> <label
+                                        class="form-check-label" for="drug_use_behavior5"> เป็นผู้ติดบุหรี่
+                                        สุรา
+                                        หรือการใช้สารเสพติดอื่นๆ </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.8 พฤติกรรมการใช้ความรุนแรง</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="violent_behavior" [(ngModel)]="violent_behavior" id="violent_behavior1"
+                                        value="มีการทะเลาะวิวาท" checked> <label class="form-check-label"
+                                        for="violent_behavior1"> มีการทะเลาะวิวาท
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="violent_behavior" [(ngModel)]="violent_behavior" id="violent_behavior2"
+                                        value="ก้าวร้าว เกเร"> <label class="form-check-label" for="violent_behavior2">
+                                        ก้าวร้าว เกเร </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="violent_behavior" [(ngModel)]="violent_behavior" id="violent_behavior3"
+                                        value="ทะเลาะวิวาทเป็นประจำ"> <label class="form-check-label"
+                                        for="violent_behavior3">
+                                        ทะเลาะวิวาทเป็นประจำ
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="violent_behavior" [(ngModel)]="violent_behavior" id="violent_behavior4"
+                                        value="ทำร้ายร่างกายผู้อื่น"> <label class="form-check-label"
+                                        for="violent_behavior4">
+                                        ทำร้ายร่างกายผู้อื่น
+                                    </label>
+                                </div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="violent_behavior" [(ngModel)]="violent_behavior" id="violent_behavior5"
+                                        value="ทำร้ายร่างกายตนเอง"> <label class="form-check-label"
+                                        for="violent_behavior5"> ทำร้ายร่างกายตนเอง
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">4.9 ความพิการ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="sexual_behavior" [(ngModel)]="sexual_behavior" id="sexual_behavior1"
+                                        value="ไม่พิการ" checked> <label class="form-check-label"
+                                        for="sexual_behavior1"> ไม่พิการ
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="sexual_behavior" [(ngModel)]="sexual_behavior" id="sexual_behavior2"
+                                        value="พิการ"> <label class="form-check-label" for="sexual_behavior2">
+                                        พิการ </label>
+                                </div>
+                                <!-- <div class="form-check"> <input class="form-check-input" type="radio"
+                                        name="sexual_behavior" [(ngModel)]="sexual_behavior" id="sexual_behavior" value="ตั้งครรภ์"> <label
+                                        class="form-check-label" for="sexual_behavior3"> ตั้งครรภ์
+                                    </label></div> -->
+                            </div>
+                        </fieldset>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5. พฤติกรรมการเรียนรู้ของนักเรียน</h5>
+                    <form class="row g-3">
+                        <label class="form-label">5.1 ผลการเรียนของนักเรียน</label>
+                        <div class="col-md-3"> <label for="mathematics" class="form-label">คณิตศาสตร์</label>
+                            <select id="mathematics" class="form-select" [(ngModel)]="mathematics" name="mathematics">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="ร">ร.</option>
+                                <option value="มส">มส.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="thai_language" class="form-label">ภาษาไทย</label>
+                            <select id="thai_language" class="form-select" [(ngModel)]="thai_language"
+                                name="thai_language">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="ร">ร.</option>
+                                <option value="มส">มส.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="science" class="form-label">วิทยาศาสตร์</label>
+                            <select id="science" class="form-select" [(ngModel)]="science" name="science">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="ร">ร.</option>
+                                <option value="มส">มส.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3"> <label for="english_language" class="form-label">ภาษาอังกฤษ</label>
+                            <select id="english_language" class="form-select" [(ngModel)]="english_language"
+                                name="english_language">
+                                <!-- <option selected value="0">Choose...</option> -->
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4</option>
+                                <option value="ร">ร.</option>
+                                <option value="มส">มส.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="student_behavior">5.2 พฤติกรรมการแสดงออกของนักเรียน</label>
+                            <div class="col-sm-12"><textarea id="student_behavior" name="student_behavior" [(ngModel)]="student_behavior" class="form-control" style="height: 100px"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="reset" style="margin-right: 5px;" class="btn btn-secondary">รีเซ็ต</button>
+            <button (click)="submit_behavior()" class="btn btn-primary">ถัดไป</button>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="is_student_house_photos">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">6. ภาพถ่ายแนบ นักเรียนที่ได้รับการเยี่ยมบ้าน</h5>
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-check-label" for="gridRadios2">ภาพที่ 1
+                                ภาพถ่ายสภาพบ้านนักเรียน </label>
+                            <div class="col-sm-10">
+                                <!-- <input class="form-control" type="file" id="formFile"> -->
+                                <input type="file" (change)="fileChangeEvent($event)" />
+                                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)"
+                                    (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+                                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+                                <!-- <img [src]="croppedImage" /> -->
+                                <img *ngIf="!is_confirm_image" class="img-fluid" src={{preview_image}}
+                                    style="width: 100%;">
+                                <button *ngIf="is_confirm_image" class="btn btn-primary"
+                                    style="width: 100%;  margin-top: 10px;"
+                                    (click)="upload_image_home()">ยืนยัน</button>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
+                            <label class="form-label" for="img_detail1">รายละเอียดภาพ</label>
+                            <div class="col-sm-10"><textarea id="img_detail1" name="img_detail1" [(ngModel)]="img_detail1" class="form-control" style="height: 100px"></textarea>
+                            </div>
+                        </div> -->
+                        <div class="col-md-12">
+                            <label class="form-check-label" for="gridRadios2">
+                                ภาพที่ 2 ภาพถ่ายสภาพบ้านนักเรียน </label>
+                            <div class="col-sm-10">
+                                <input type="file" (change)="fileChangeEvent1($event)" />
+                                <image-cropper [imageChangedEvent]="imageChangedEvent1" [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped1($event)"
+                                    (imageLoaded)="imageLoaded1()" (cropperReady)="cropperReady1()"
+                                    (loadImageFailed)="loadImageFailed1()"></image-cropper>
+                                <!-- <img [src]="croppedImage" /> -->
+                                <img *ngIf="!is_confirm_image1" class="img-fluid" src={{preview_image1}}
+                                    style="width: 100%;">
+                                <button *ngIf="is_confirm_image1" class="btn btn-primary"
+                                    style="width: 100%;  margin-top: 10px;"
+                                    (click)="upload_image_home1()">ยืนยัน</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-check-label" for="gridRadios2">
+                                ภาพที่ 3 ภาพถ่ายสภาพบ้านนักเรียน </label>
+                            <div class="col-sm-10">
+                                <input type="file" (change)="fileChangeEvent2($event)" />
+                                <image-cropper [imageChangedEvent]="imageChangedEvent2" [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped2($event)"
+                                    (imageLoaded)="imageLoaded2()" (cropperReady)="cropperReady2()"
+                                    (loadImageFailed)="loadImageFailed2()"></image-cropper>
+                                <!-- <img [src]="croppedImage" /> -->
+                                <img *ngIf="!is_confirm_image2" class="img-fluid" src={{preview_image2}}
+                                    style="width: 100%;">
+                                <button *ngIf="is_confirm_image2" class="btn btn-primary"
+                                    style="width: 100%;  margin-top: 10px;"
+                                    (click)="upload_image_home2()">ยืนยัน</button>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
+                            <label class="form-label" for="img_detail2">รายละเอียดภาพ</label>
+                            <div class="col-sm-10"><textarea id="img_detail2" name="img_detail2" [(ngModel)]="img_detail2" class="form-control" style="height: 100px"></textarea>
+                            </div>
+                        </div> -->
+                        <!-- <fieldset class="col-md-12">
+                            <div class="col-sm-10">
+                                <label class="form-label">กรุณาระบุรูปถ่ายด้านบนคือ</label>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="photo_above" [(ngModel)]="photo_above"
+                                        id="photo_above1" value="บ้านที่อาศัยอยู่กับพ่อแม่(เป็นเจ้าของ/เช่า)" checked> <label class="form-check-label"
+                                        for="photo_above1"> บ้านที่อาศัยอยู่กับพ่อแม่(เป็นเจ้าของ/เช่า) </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="photo_above" [(ngModel)]="photo_above"
+                                        id="photo_above2" value="บ้านของญาติ/ผู้ปกครองที่ไม่ใช่ญาติ"> <label class="form-check-label"
+                                        for="photo_above2"> บ้านของญาติ/ผู้ปกครองที่ไม่ใช่ญาติ </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="photo_above" [(ngModel)]="photo_above"
+                                        id="photo_above3" value="บ้านหรือที่พักประเภท วัด มูลนิธิ หอพัก โรงงาน อยู่กับนายจ้าง"> <label class="form-check-label"
+                                        for="photo_above3"> บ้านหรือที่พักประเภท วัด มูลนิธิ หอพัก โรงงาน อยู่กับนายจ้าง
+                                    </label></div>
+                                <div class="form-check"> <input class="form-check-input" type="radio" name="photo_above" [(ngModel)]="photo_above"
+                                        id="photo_above4" value="ภาพนักเรียนและป้ายชื่อโรงเรียนเนื่องจากถ่ายภาพบ้านไม่ได้ เพราะบ้านอยู่ต่างอำเภอ/ต่างจังหวัด/ต่างประเทศ หรือไม่ได้รับอนุญาตให้ถ่ายภาพ"> <label class="form-check-label"
+                                        for="photo_above4"> ภาพนักเรียนและป้ายชื่อโรงเรียนเนื่องจากถ่ายภาพบ้านไม่ได้ เพราะบ้านอยู่ต่างอำเภอ/ต่างจังหวัด/ต่างประเทศ หรือไม่ได้รับอนุญาตให้ถ่ายภาพ
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset> -->
+                        <div class="col-md-12 google-map-wrapper">
+                            <label class="form-label">ตำแหน่งที่ตั้ง</label>
+                            <div class="col-sm-10" *ngIf="apiLoaded | async">
+                                <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
+                                    (mapClick)="addMarker($event)">
+                                    <map-marker *ngFor="let markerPosition of markerPositions"
+                                        [position]="markerPosition" [options]="markerOptions"></map-marker>
+                                    <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
+                                </google-map>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="reset" style="margin-right: 5px;" class="btn btn-secondary">รีเซ็ต</button>
+                            <button (click)="submit_photoandlocation()" class="btn btn-primary">บันทึกข้อมูล</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

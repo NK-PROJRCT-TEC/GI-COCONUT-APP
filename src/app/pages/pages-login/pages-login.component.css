@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Kanit-Regular";
+
+    src: url("../../../assets/fonts/Kanit-Regular.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+span,
+a,
+h1,
+h5,
+h6,
+p,
+label,
+option,
+select,
+input,
+text,
+textarea,
+button {
+    font-family: Kanit-Regular;
+    /* font-size: 2vw; */
+}
+
+
+/* .... */
+section{
+    /* background: url('../../../assets/img/coconut.jpg') no-repeat center center; */
+   -webkit-background-size: 100% 100%;
+   -moz-background-size: 100% 100%;
+   -o-background-size: 100% 100%;
+   background-size: 100% 100%;
+}
+/* font THSARABUN */
+@font-face {
+    font-family: "THSarabunNew";
+
+    src: url("../../../assets/fonts/THSarabunNew.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+a,
+h1,
+h5,
+h6,
+p,
+label,
+option,
+select,
+input,
+text,
+textarea,
+button {
+    font-family: THSarabunNew;
+    font-size: 20px;
+    font-weight: bold;
+}

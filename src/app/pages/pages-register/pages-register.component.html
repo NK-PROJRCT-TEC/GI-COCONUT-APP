@@ -1,0 +1,216 @@
+<main>
+   <!-- <div class="carousel-item active"> <img src="assets/img/coconut.jpg" style="opacity: 0.5;" class="d-block w-100">
+   </div> -->
+
+   <div class="container">
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+         <div class="container">
+            <div class="row justify-content-center">
+               <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                  <!-- <div class="d-flex justify-content-center py-4"> <a routerLink="/"
+                        class="logo d-flex align-items-center w-auto"> <img style="max-height: 30cm;"
+                           src="assets/logo/Logo_arda.gif" alt="">
+                     </a>
+                  </div> -->
+                  <div class="card mb-12">
+                     <div class="card-body">
+                        <div class="pt-4 pb-2">
+                           <img style="width: 28%; height: auto;" class="center" src="assets/logo/Logo_arda.gif" alt="">
+                           <h5 class="card-title text-center pb-0 fs-3">สร้างบัญชี</h5>
+                           <p class="text-center small">ป้อนรายละเอียดส่วนบุคคลของคุณเพื่อสร้างบัญชี</p>
+                        </div>
+                        <form class="row g-12 needs-validation" novalidate>
+                           <div class="col-12">
+                              <label for="people_name" class="form-label">ชื่อผู้ผลิต</label> <input type="text"
+                                 name="people_name" [(ngModel)]="people_name" class="form-control" id="people_name"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนชื่อผู้ผลิต!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_localtion_number" class="form-label">ที่ตั้งเลขที่</label> <input
+                                 type="text" name="people_localtion_number" [(ngModel)]="people_localtion_number"
+                                 class="form-control" id="people_localtion_number" required>
+                              <div class="invalid-feedback">โปรดป้อนเลขที่ที่ตั้ง!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_moo" class="form-label">หมู่ที่</label> <input type="text"
+                                 name="people_moo" [(ngModel)]="people_moo" class="form-control" id="people_moo"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนหมู่ที่ที่ตั้ง!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_road" class="form-label">ถนน</label> <input type="text"
+                                 name="people_road" [(ngModel)]="people_road" class="form-control" id="people_road"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนถนน!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_alley" class="form-label">ตรอก/ซอย</label> <input type="text"
+                                 name="people_alley" [(ngModel)]="people_alley" class="form-control" id="people_alley"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนตรอก/ซอย!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_tumbon" class="form-label">ตำบล</label> <input type="text"
+                                 name="people_tumbon" class="form-control" [(ngModel)]="people_tumbon"
+                                 id="people_tumbon" required>
+                              <div class="invalid-feedback">โปรดป้อนตำบล!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_district" class="form-label">อำเภอ</label> <input type="text"
+                                 name="people_district" [(ngModel)]="people_district" class="form-control"
+                                 id="people_district" required>
+                              <div class="invalid-feedback">โปรดป้อนอำเภอ!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_province" class="form-label">จังหวัด</label> <input type="text"
+                                 name="people_province" [(ngModel)]="people_province" class="form-control"
+                                 id="people_province" required>
+                              <div class="invalid-feedback">โปรดป้อนจังหวัด!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_postcode" class="form-label">รหัสไปรษณีย์</label> <input type="text"
+                                 name="people_postcode" [(ngModel)]="people_postcode" class="form-control"
+                                 id="people_postcode" required>
+                              <div class="invalid-feedback">โปรดป้อนรหัสไปรษณีย์!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_phone" class="form-label">โทรศัพย์มือถือ</label> <input type="text"
+                                 name="people_phone" [(ngModel)]="people_phone" class="form-control" id="people_phone"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนโทรศัพย์มือถือ!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_email" class="form-label">อีเมล</label> <input type="email"
+                                 name="people_email" class="form-control" [(ngModel)]="people_email" id="people_email"
+                                 required>
+                              <div class="invalid-feedback">โปรดป้อนที่อยู่อีเมลที่ถูกต้อง!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_cardnumber" class="form-label">เลขบัตรประชาชน</label> <input
+                                 type="text" name="people_cardnumber" [(ngModel)]="people_cardnumber"
+                                 class="form-control" id="people_cardnumber" required>
+                              <div class="invalid-feedback">โปรดป้อนเลขบัตรประชาชน!</div>
+                           </div>
+                           <div class="col-12">
+                              <div class="form-check">
+                                 <input class="form-check-input" name="is_gi_certificate"
+                                    [(ngModel)]="is_gi_certificate" type="checkbox" id="is_gi_certificate">
+                                 <label class="form-check-label" for="is_gi_certificate">มีใบรับรอง GI</label>
+                              </div>
+                           </div>
+                           <div class="col-12" *ngIf="is_gi_certificate">
+                              <label for="inputNumber" class="form-label">ใบรับรอง GI</label>
+                              <div class="col-sm-10">
+                                 <!-- <input class="form-control" type="file" id="formFile"> -->
+                                 <input type="file" (change)="fileChangeEvent($event)" />
+                                 <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)"
+                                    (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+                                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+                                 <!-- <img [src]="croppedImage" /> -->
+                                 <img *ngIf="!is_confirm_image" class="img-fluid" src={{preview_image}}
+                                    style="width: 100%;">
+                                 <button *ngIf="is_confirm_image" class="btn btn-primary"
+                                    style="width: 100%;  margin-top: 10px;"
+                                    (click)="upload_image_home()">ยืนยัน</button>
+                              </div>
+                           </div>
+
+                           <div class="col-12" *ngIf="is_gi_certificate">
+                              <div class="form-check">
+                                 <input class="form-check-input" name="is_dna_certificate"
+                                    [(ngModel)]="is_dna_certificate" type="checkbox" id="is_dna_certificate">
+                                 <label class="form-check-label" for="is_dna_certificate">มีใบรับรองผลตรวจ DNA</label>
+                              </div>
+                           </div>
+                           <div class="col-12" *ngIf="is_gi_certificate && is_dna_certificate">
+                              <label for="inputNumber" class="form-label">ใบรับรองผลตรวจ DNA</label>
+                              <div class="col-sm-10">
+                                 <!-- <input class="form-control" type="file" id="formFile"> -->
+                                 <input type="file" (change)="fileChangeEvent1($event)" />
+                                 <image-cropper [imageChangedEvent]="imageChangedEvent1" [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped1($event)"
+                                    (imageLoaded)="imageLoaded1()" (cropperReady)="cropperReady1()"
+                                    (loadImageFailed)="loadImageFailed1()"></image-cropper>
+                                 <!-- <img [src]="croppedImage" /> -->
+                                 <img *ngIf="!is_confirm_image1" class="img-fluid" src={{preview_image1}}
+                                    style="width: 100%;">
+                                 <button *ngIf="is_confirm_image1" class="btn btn-primary"
+                                    style="width: 100%;  margin-top: 10px;"
+                                    (click)="upload_image_home1()">ยืนยัน</button>
+                              </div>
+                           </div>
+                           <div class="col-12">
+                              <label for="people_password" class="form-label">พาสเวิร์ด</label> <input type="password"
+                                 name="people_password" [(ngModel)]="people_password" class="form-control"
+                                 id="people_password" required>
+                              <div class="invalid-feedback">โปรดป้อนรหัสผ่านของคุณ!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="confirm_people_password" class="form-label">ยืนยันพาสเวิร์ด</label> <input
+                                 type="password" name="confirm_people_password" [(ngModel)]="confirm_people_password"
+                                 (change)="func_confirm_people_password()" class="form-control"
+                                 id="confirm_people_password" required>
+                              <div class="invalid-feedback">โปรดป้อนรหัสผ่านของคุณ!</div>
+                           </div>
+                           <div class="col-12">
+                              <div class="form-check">
+                                 <input class="form-check-input" name="people_term" [(ngModel)]="people_term"
+                                    type="checkbox" id="people_term" required>
+                                 <label class="form-check-label" for="people_term">ยอมรับเงื่อนและข้อตกลง
+                                    <a href="#" data-bs-toggle="modal"
+                                       data-bs-target="#basicModal">เงื่อนไขข้อตกลง</a></label>
+                                 <div class="card">
+                                    <div class="card-body">
+                                       <div class="modal fade" id="basicModal" tabindex="-1">
+                                          <div class="modal-dialog">
+                                             <div class="modal-content">
+                                                <div class="modal-header">
+                                                   <h5 class="modal-title fs-3">เงื่อนไขข้อตกลง</h5>
+                                                   <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                      aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   <div><span>1) จะปฏิบัติตามหลักเกณฑ์และเงื่อนไขต่างๆ
+                                                         ที่กรมวิชาการเกษตร
+                                                         กำหนด</span></div>
+                                                   <div><span>2) ยินยอมให้หน่วยงานรับรองระบบงาน
+                                                         ที่เกี่ยวข้องกับการรับรองดำเนินการสังเกตการณ์การประเมินของคณะผู้ตรวจของกรมวิชาการเกษตรที่แปลงของข้าพเจ้าตามที่ได้รับการร้องขอ
+                                                      </span></div>
+                                                   <div><span>3) ยินยอมให้เปิดเผย ชื่อ ที่อยู่ และแหล่งดำเนินการ
+                                                         ที่สามารถติดต่อได้ ข้าพเจ้าขอรับรองว่าข้อมูลต่างๆ
+                                                         ที่ให้ไว้นี้เป็นความจริงทุกประการ และได้รับ
+
+                                                         หลักเกณฑ์และเงื่อนไขที่เกี่ยวข้องกับการรับรองไว้เรียบร้อยแล้ว</span>
+                                                   </div>
+                                                </div>
+                                                <div class="modal-footer"> <button type="button"
+                                                      class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
+                                                   <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="invalid-feedback">
+                                    <label>คุณต้องเห็นด้วยก่อนที่จะส่งข้อมูล</label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-12"> <button class="btn btn-primary w-100" (click)="submit_people()"
+                                 type="submit">สร้างบัญชี</button></div>
+                           <div class="col-12">
+                              <p class="small mb-0">มีบัญชีอยู่แล้วหรือยัง ? <a
+                                    routerLink="/pages-login">เข้าสู่ระบบ</a></p>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+</main>

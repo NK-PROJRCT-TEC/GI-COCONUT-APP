@@ -1,0 +1,50 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>ข้อมูลนักเรียน</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">หน้าหลัก</a></li>
+            <li class="breadcrumb-item"><a routerLink="/">ตาราง</a></li>
+            <li class="breadcrumb-item active"><a routerLink="/">ข้อมูลนักเรียน</a></li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">รายชื่อนักเรียน</h5>
+                  <p>ค้นหารายชื่อนักเรียน</p>
+                  <table class="table datatable">
+                     <thead>
+                        <tr>
+                           <th scope="col">#</th>
+                           <th scope="col">เลขบัตรประชาชน</th>
+                           <th scope="col">ชื่อ-นามสกุล</th>
+                           <th scope="col">ห้องเรียน</th>
+                           <th scope="col">เยี่ยมบ้าน</th>
+                           <th scope="col">รายละเอียด</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let item of this.arrStudent ;let i = index" [attr.data-index]="item.student_id">
+                           <th scope="row">{{i}}</th>
+                           <td>{{item.student_id_card}}</td>
+                           <td>{{item.student_prefix}}{{item.student_firstname}} {{item.student_surname}}</td>
+                           <td>{{item.student_grade}}</td>
+                           <!-- <td><button type="button" class="btn btn-success"  routerLink="/users-profile" >เยี่ยมบ้าน</button></td> -->
+                           <td><button type="button" class="btn btn-warning"
+                                 (click)="func_info(item)">info</button></td>
+                           <td><button type="button" class="btn btn-success"
+                                 (click)="func_visit_student(item.generate)">เยี่ยมบ้าน</button></td>
+                        </tr>
+
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

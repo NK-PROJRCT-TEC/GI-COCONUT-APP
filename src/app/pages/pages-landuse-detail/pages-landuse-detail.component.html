@@ -1,0 +1,77 @@
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">รายละเอียดแปลงที่ดิน</h5>
+                        <form>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ต้นอ่อน : สีของยอด</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_color_of_shoot}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ลำต้น : กลุ่มของต้นมะพร้าว</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_type_of_coconut}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ลำต้น : เส้นผ่านศูนย์กลาง</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_bole}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ใบ : ความยาวของก้าน</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_petiole_length}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ใบ : ความยาวของใบ</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_leaflet_length}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ช่อ : จำนวนช่อดอกย่อย</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_number_of_spikelets}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ทะลาย : ความยาวก้าน</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_peduncle_length}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ผล : น้ำหนักผลอ่อน</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_young_fruit_weight}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ผล : รูปร่างผล</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].landuse_shape}}" disabled></div>
+                            </div>
+                            <div class="col-md-12 google-map-wrapper">
+                                <label class="form-label" style="font-size: 1.0rem;">ตำแหน่งที่ตั้ง</label>
+                                <div class="col-sm-12" *ngIf="apiLoaded | async">
+                                    <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
+                                        (mapClick)="addMarker($event)">
+                                        <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                                            [options]="markerOptions"></map-marker>
+                                        <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
+                                    </google-map>
+                                </div>
+                            </div>
+                            <!-- <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Submit Button</label>
+                                <div class="col-sm-10"> <button type="submit" class="btn btn-primary">Submit
+                                        Form</button>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

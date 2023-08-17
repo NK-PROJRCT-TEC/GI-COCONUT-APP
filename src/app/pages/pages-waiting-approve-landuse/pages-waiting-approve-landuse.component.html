@@ -1,0 +1,101 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>สถานะการคำขออนุมัติ</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active"><a>สถานะการคำขออนุมัติ</a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">แปลงที่ยืนขออนุมัติ</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"><p style="font-size: 0.8rem;text-align: center;">#</p></th>
+                                <th scope="col"><p style="font-size: 0.8rem;text-align: center;">ตำแหน่งแปลง</p></th>
+                                <th scope="col"><p style="font-size: 0.8rem;text-align: center;">สถานะ</p></th>
+                                <th scope="col"><p style="font-size: 0.8rem;text-align: center;">%</p></th>
+                                <th scope="col"><p style="font-size: 0.8rem;text-align: center;">แก้ไขข้อมูล</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of this.arrLandUse ;let i = index" [attr.data-index]="item.landuse_id">
+                                <th scope="row" style="text-align: center;">{{i+1}}</th>
+
+                                <th style="text-align: center;"> <a href="http://maps.google.com/?q={{item.landuse_lat}},{{item.landuse_lng}}" target="_blank"><i class="ri-map-pin-line" style="font-size: 1.5rem;"></i></a></th>
+                            
+                                <th *ngIf="item.is_status == '1'" style="text-align: center;">
+                                    <p style="color: red;">รออนุมัติ</p>
+                                </th>
+                                <th *ngIf="item.is_status == '0'" style="text-align: center;">
+                                    <p style="color: red;">แจ้งให้แก้ไขเอกสาร</p>
+                                </th>
+                                <th style="text-align: center;" *ngIf="item.is_status == '2'">
+                                    <p style="color: green;">อนุมัติแล้ว</p>
+                                </th>
+                                <th>
+                                    <p style="text-align: center;font-size: 0.8rem;">{{item.landuse_persent}}</p>
+                                </th>
+                                <th style="text-align: center;" *ngIf="item.is_status == '0'">
+                                    <button type="button" class="btn btn-warning"
+                                        (click)="landuse_info(item)">แก้ไข</button>
+                                </th>
+                                <th style="text-align: center;" *ngIf="item.is_status == '1'">
+                                    -
+                                </th>
+                                <th style="text-align: center;" *ngIf="item.is_status == '2'">
+                                    <qrcode [qrdata]="item.certificate" [width]="75" [errorCorrectionLevel]="'M'"></qrcode>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <section class="section dashboard">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">สถานะการลงทะเบียน</h5>
+                                <div class="activity" *ngFor="let item of this.arrHistoryLanduse ;let i = index"
+                                [attr.data-index]="item.people_id">
+                                    <div class="activity-item d-flex"  *ngIf="item.is_status == '1' ">
+                                        <div class="activite-label"><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-dark"><p>รอเจ้าหน้าที่ตรวจสอบข้อมูล</p></div>
+                                    </div>
+                                    <div class="activity-item d-flex" *ngIf="item.is_status == '0'">
+                                        <div class="activite-label"><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-danger"><p>แก้ไขข้อมูล</p>
+                                            <button type="button" class="btn btn-success" 
+                                            (click)="func_reject_info(item.people_generate)">แก้ไข</button>
+                                            <p>หมายเหตุ : {{item.history_remark}}{{i+1}}{{item.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item d-flex" *ngIf="item.is_status == '2'">
+                                        <div ><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-primary"><p>อนุมัติแล้ว</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section> -->
+</main>

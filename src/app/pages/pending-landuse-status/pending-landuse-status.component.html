@@ -1,0 +1,108 @@
+<main id="main" class="main">
+    <!-- <div class="pagetitle">
+        <h1>General Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">General</li>
+            </ol>
+        </nav>
+    </div> -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">สถานะคำร้องขอขั้นทะเบียน</h5>
+                        <form class="row g-3">
+                            <div class="col-md-3">
+                                <label for="status_ap" class="form-label">สถานะ</label>
+                                <select id="status_ap" class="form-select" (change)="func_filter_status()"
+                                    [(ngModel)]="status_ap" name="status_ap">
+                                    <!-- <option selected value="0">Choose...</option> -->
+                                    <option selected value="all">สถานะทั้งหมด</option>
+                                    <option selected value="1">รออนุมัติการสมัคร</option>
+                                    <option style="color: red;" value="0">แจ้งให้แก้ไขข้อมูลการสมัคร</option>
+                                    <option class="text-success" value="2">อนุมัติการสมัครแล้ว</option>
+                                    <option value="qt_1">รอดำเนินการตรวจสอบเอกสาร</option>
+                                    <option style="color: red;" value="qt_0">แจ้งให้แก้ไขเอกสาร</option>
+                                    <option class="text-success" value="qt_2">อนุมัติการตรวจสอบเอกสารแล้ว</option>
+                                </select>
+                            </div>
+                        </form>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">#</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">ตำแหน่งแปลงที่ดิน</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">วันที่ยื่นขอลงทะเบียน</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">รายละเอียด</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">สถานะ</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">reject</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 0.8rem;text-align: center;">อนุมัติ</p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of this.arrladnuse ;let i = index"
+                                    [attr.data-index]="item.landuse_id">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td style="text-align: center;"> <a
+                                            href="http://maps.google.com/?q={{item.landuse_lat}},{{item.landuse_lng}}"
+                                            target="_blank"><i class="ri-map-pin-line"
+                                                style="font-size: 1.5rem;"></i></a></td>
+                                    <td style="text-align: center;">{{item.landuse_timestamp | date:'yyyy-MM-dd H:mm:ss' }}</td>
+                                    <td style="text-align: center;"><button type="button" class="btn btn-warning"
+                                            (click)="pages_profile_info(item.landuse_id)">รายละเอียด</button></td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '0'">
+                                        <p style="color: red;">รอแก้ข้อมูลการสมัคร</p>
+                                    </td>
+                                    <td  style="text-align: center;" *ngIf="item.is_status == '0'">
+                                        <p>-</p>
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '0'">
+                                        <p>-</p>
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '1'">
+                                        <p style="color: red;">รออนุมัติ</p>
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '1' and item.history_remark">
+                                        <button type="button" class="btn btn-warning"
+                                            (click)="reject_status(item)">reject</button>
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '1'">
+                                        <button type="button" class="btn btn-success"
+                                            (click)="approve_status(item)">อนุมัติ</button>
+                                        </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '2'">
+                                        -
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '2'">
+                                        <p>-</p>
+                                    </td>
+                                    <td style="text-align: center;" *ngIf="item.is_status == '2'">
+                                        <p style="color: green;">อนุมัติแล้ว</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

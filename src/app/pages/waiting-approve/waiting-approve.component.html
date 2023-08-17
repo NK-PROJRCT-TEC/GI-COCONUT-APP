@@ -1,0 +1,51 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>สถานะการอนุมัติ</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">หน้าหลัก</a></li>
+                <li class="breadcrumb-item active"><a>สถานะการอนุมัติ</a></li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">สถานะการลงทะเบียน</h5>
+                                <div class="activity" *ngFor="let item of this.arrHistory ;let i = index"
+                                [attr.data-index]="item.people_id">
+                                    <div class="activity-item d-flex"  *ngIf="item.history_approve_is_status == '1' ">
+                                        <div class="activite-label"><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-dark"><p>รอตรวจสอบข้อมูลการสมัครจากเจ้าหน้าที่</p></div>
+                                    </div>
+                                    <div class="activity-item d-flex" *ngIf="item.history_approve_is_status == '0'">
+                                        <div class="activite-label"><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-danger"><p>แก้ไขข้อมูล</p>
+                                            <button type="button" class="btn btn-success" *ngIf="arrlength == i+1"
+                                            (click)="func_reject_info(item.people_generate)">แก้ไข</button>
+                                            <p>หมายเหตุ : {{item.history_remark}}{{i+1}}{{item.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item d-flex" *ngIf="item.history_approve_is_status == '2'">
+                                        <div ><p>{{item.history_timestamp | date: 'dd-MM-yyyy'}}</p></div>
+                                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                        <div class="activity-content" class="fw-bold text-primary"><p>อนุมัติแล้ว</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</main>
