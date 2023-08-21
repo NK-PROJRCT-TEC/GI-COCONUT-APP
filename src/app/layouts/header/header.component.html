@@ -3,15 +3,15 @@
          class="logo d-flex align-items-center"> <img  src="assets/img/logo/logo.jpg" alt=""> <span
             class="d-none d-lg-block">Admin</span> </a> <i (click)="sidebarToggle()"
          class="bi bi-list toggle-sidebar-btn"></i></div>
-   <div class="search-bar">
+   <!-- <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query"
             placeholder="Search" title="Enter search keyword"> <button type="submit" title="Search"><i
                class="bi bi-search"></i></button></form>
-   </div>
+   </div> -->
    <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-         <li class="nav-item d-block d-lg-none"> <a class="nav-link nav-icon search-bar-toggle " href="#"> <i
-                  class="bi bi-search"></i> </a></li>
+         <!-- <li class="nav-item d-block d-lg-none"> <a class="nav-link nav-icon search-bar-toggle " href="#"> <i
+                  class="bi bi-search"></i> </a></li> -->
          <!-- <li class="nav-item dropdown">
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i class="bi bi-bell"></i> <span
                   class="badge bg-primary badge-number">4</span> </a>
@@ -121,18 +121,19 @@
          </li> -->
          <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> 
-               <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">  -->
+               <img *ngIf="people_image_profile" src="{{people_image_profile}}" alt="Profile" class="rounded-circle"> 
+               <img *ngIf="people_image_profile == ''" src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> 
                <span class="d-none d-md-block dropdown-toggle ps-2">{{people_name}}</span> </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                <li class="dropdown-header">
                   <h6>{{people_name}}</h6>
-                  <span>Farmer</span>
+                  <span style="font-size: 18px;">ชาวไร่</span>
                </li>
                <li>
                   <hr class="dropdown-divider">
                </li>
                <li> <a class="dropdown-item d-flex align-items-center" style="cursor:pointer;" (click)="peopleprofile()"> <i
-                        class="bi bi-person"></i> <span>My Profile</span> </a></li>
+                        class="bi bi-person"></i> <span >โปรไฟล์ของฉัน</span> </a></li>
                <li>
                   <hr class="dropdown-divider">
                </li>
@@ -147,7 +148,7 @@
                   <hr class="dropdown-divider">
                </li>
                <li> <a class="dropdown-item d-flex align-items-center" style="cursor:pointer;"> <i
-                        class="bi bi-box-arrow-right"></i> <span (click)="SignOut()">Sign Out</span> </a></li>
+                        class="bi bi-box-arrow-right"></i> <span  (click)="SignOut()">ออกจากระบบ</span> </a></li>
             </ul>
          </li>
       </ul>
@@ -281,13 +282,13 @@
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                <li class="dropdown-header">
                   <h6>{{employee_name}}</h6>
-                  <span>Employee</span>
+                  <span>ผู้อนุมัติ</span>
                </li>
                <li>
                   <hr class="dropdown-divider">
                </li>
                <li> <a class="dropdown-item d-flex align-items-center" routerLink="/user-profile"> <i
-                        class="bi bi-person"></i> <span>My Profile</span> </a></li>
+                        class="bi bi-person"></i> <span>โปรไฟล์ของฉัน</span> </a></li>
                <li>
                   <hr class="dropdown-divider">
                </li>
@@ -302,7 +303,7 @@
                   <hr class="dropdown-divider">
                </li>
                <li> <a class="dropdown-item d-flex align-items-center" style="cursor:pointer;"> <i
-                        class="bi bi-box-arrow-right"></i> <span (click)="SignOutEmployee()">Sign Out</span> </a></li>
+                        class="bi bi-box-arrow-right"></i> <span (click)="SignOutEmployee()">ออกจากระบบ</span> </a></li>
             </ul>
          </li>
       </ul>

@@ -12,9 +12,10 @@ export class PagesRegisterService {
   private InsertHistoryUrl: string = `${this.env.API_PATH}/InsertHistory`;
   constructor(private http: HttpClient) {
   }
-  InsertRegisterinfo(people_name: string, people_localtion_number: string, people_moo: string, people_road: string, people_alley: string, people_tumbon: string, people_district: string, people_province: string, people_postcode: string, people_phone: string, people_email: string, people_cardnumber: string, is_gi: number, gi_certificates: string, is_dna: number, dna_certificates: string, people_password: string, is_term: number, is_status: string, people_generate: string) {
+  InsertRegisterinfo(people_image_profile: string, people_name: string, people_localtion_number: string, people_moo: string, people_road: string, people_alley: string, people_tumbon: string, people_district: string, people_province: string, people_postcode: string, people_phone: string, people_email: string, people_cardnumber: string, is_gi: number, gi_certificates: string, is_dna: number, dna_certificates: string, people_password: string, is_term: number, is_status: string, people_generate: string) {
     return this.http.post(this.InsertRegisterinfoUrl,
       {
+        people_image_profile: people_image_profile,
         people_name: people_name,
         people_localtion_number: people_localtion_number,
         people_moo: people_moo,

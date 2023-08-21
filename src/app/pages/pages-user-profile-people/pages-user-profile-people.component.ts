@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PagesUserProfilePeopleService } from './shared/pages-user-profile-people.service';
 import { peopleModel } from 'src/app/model/peopleModel';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 //google map
 // import { HttpClient } from '@angular/common/http';
 // import { Observable, of } from 'rxjs';
@@ -13,11 +14,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./pages-user-profile-people.component.css']
 })
 export class PagesUserProfilePeopleComponent  implements OnInit {
+  username:any;
   people_generate:any;
   markerPositions: google.maps.LatLngLiteral[] = [];
   arrpeopleModel: any[] = [];
   objpeopleModel: peopleModel = new peopleModel();
-  constructor(private PagesUserProfilePeopleService: PagesUserProfilePeopleService) {
+  constructor(private PagesUserProfilePeopleService: PagesUserProfilePeopleService, private router: Router) {
     // this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs', 'callback')
     //   .pipe(
     //     map(() => true),
@@ -25,6 +27,11 @@ export class PagesUserProfilePeopleComponent  implements OnInit {
     //   );
   }
   ngOnInit(): void {
+    this.username = localStorage.getItem("username");
+    console.log(this.username);
+    if (this.username == null) {
+      this.router.navigate(['pages-login']);
+    }
     this.people_generate = localStorage.getItem("profile_people_generate");
     console.log(this.people_generate);
     this.PagesUserProfilePeopleService.SelectProfilePeopleinfo(this.people_generate).subscribe((res: any) => {

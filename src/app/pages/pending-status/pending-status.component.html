@@ -35,15 +35,15 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">ชื่อ</th>
+                                    <th scope="col">ชื่อ - สกุล</th>
                                     <th scope="col">เบอร์โทรศัพท์</th>
                                     <th scope="col">เลขบัตรประชาชน</th>
-                                    <th scope="col">ใบอนุมัติ</th>
-                                    <th scope="col">วันที่สมัคร</th>
-                                    <th scope="col">รายละเอียด</th>
-                                    <th scope="col">สถานะ</th>
-                                    <th scope="col">แก้ไข</th>
-                                    <th scope="col">อนุมัติ</th>
+                                    <!-- <th scope="col">ใบอนุมัติ</th> -->
+                                    <th scope="col" style="text-align: center;">วันที่สมัคร</th>
+                                    <th scope="col" style="text-align: center;">รายละเอียด</th>
+                                    <th scope="col" style="text-align: center;">สถานะ</th>
+                                    <th scope="col" style="text-align: center;">แก้ไข</th>
+                                    <th scope="col" style="text-align: center;">อนุมัติ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,38 +53,38 @@
                                     <td>{{item.people_name}}</td>
                                     <td>{{item.people_phone}}</td>
                                     <td>{{item.people_cardnumber}}</td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="carousel-item active"> <img src="{{item.people_image_profile}}"
                                                 class="d-block w-100"></div>
-                                    </td>
-                                    <td>{{item.people_timestamp | date:"HH:mm:ss dd-MM-YYYY" }}</td>
-                                    <td><button type="button" class="btn btn-warning"
+                                    </td> -->
+                                    <td style="text-align: center;">{{item.people_timestamp | date:"dd-MM-YYYY HH:mm:ss"  }}</td>
+                                    <td style="text-align: center;"><button type="button" class="btn btn-warning"
                                         (click)="pages_profile_info(item.people_generate)">รายละเอียด</button></td>
-                                    <td *ngIf="item.is_status == '0'">
+                                    <td *ngIf="item.is_status == '0'" style="text-align: center;">
                                         <p style="color: red;">รอแก้ข้อมูลการสมัคร</p>
                                     </td>
-                                    <td *ngIf="item.is_status == '0'">
+                                    <td *ngIf="item.is_status == '0'" style="text-align: center;">
                                         <p>-</p>
                                     </td>
-                                    <td *ngIf="item.is_status == '0'">
+                                    <td *ngIf="item.is_status == '0'" style="text-align: center;">
                                         <p>-</p>
                                     </td>
-                                    <td *ngIf="item.is_status == '1'">
+                                    <td *ngIf="item.is_status == '1'" style="text-align: center;">
                                         <p style="color: red;">รออนุมัติ</p>
                                     </td>
-                                    <td *ngIf="item.is_status == '1' and item.history_remark">
-                                        <button type="button" class="btn btn-warning"
+                                    <td *ngIf="item.is_status == '1' and item.history_remark" style="text-align: center;">
+                                        <button type="button" class="btn btn-warning" 
                                             (click)="reject_status(item)">แก้ไข</button>
                                     </td>
-                                    <td *ngIf="item.is_status == '1'"><button type="button" class="btn btn-success"
+                                    <td *ngIf="item.is_status == '1'" style="text-align: center;"><button type="button" class="btn btn-success" 
                                         (click)="approve_status(item.people_generate)">อนุมัติ</button></td>
-                                    <td *ngIf="item.is_status == '2'">
+                                    <td *ngIf="item.is_status == '2'" style="text-align: center;">
                                         -
                                     </td>
-                                    <td *ngIf="item.is_status == '2'">
+                                    <td *ngIf="item.is_status == '2'" style="text-align: center;">
                                         <p>-</p>
                                     </td>
-                                    <td *ngIf="item.is_status == '2'">
+                                    <td *ngIf="item.is_status == '2'" style="text-align: center;">
                                         <p style="color: green;">อนุมัติแล้ว</p>
                                     </td>
                                 </tr>

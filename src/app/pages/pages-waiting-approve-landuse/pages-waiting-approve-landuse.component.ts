@@ -11,10 +11,18 @@ export class PagesWaitingApproveLanduseComponent implements OnInit {
   is_status: any = "1";
   arrLandUse: any[] = [];
   test: any = "www.google.com";
+  username:any;
+  password:any;
   constructor(private PagesWaitingApproveLanduseService: PagesWaitingApproveLanduseService, private router: Router) {
 
   }
   ngOnInit(): void {
+    this.username = localStorage.getItem("username");
+    this.password = localStorage.getItem("password");
+    console.log(this.username);
+    if (this.username == null) {
+      this.router.navigate(['pages-login']);
+    }
     this.people_generate = localStorage.getItem('people_generate');
     this.PagesWaitingApproveLanduseService.SelectLandusebyPeopleGenerateAndStatus(this.people_generate).subscribe((res: any) => {
       if (res) {

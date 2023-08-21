@@ -17,7 +17,7 @@ export class PagesLoginComponent implements OnInit {
   ngOnInit(): void {
     this.username = "admin@gmail.com";
     this.password = "123456";
-    console.log("TEST UPDATE GITHUB");
+    // console.log("TEST UPDATE GITHUB");
   }
   dashboard() {
     // localStorage.setItem("username", this.username);
@@ -28,10 +28,13 @@ export class PagesLoginComponent implements OnInit {
     this.PagesLoginService.Login(this.username, this.password).subscribe((res: any) => {
       if (res.length > 0) {
         // console.log(res);
+        localStorage.setItem("username",this.username);
+        localStorage.setItem("password",this.password);
         localStorage.setItem("people_name", res[0].people_name);
         localStorage.setItem("people_generate", res[0].people_generate);
         localStorage.setItem("is_status", res[0].is_status);
         localStorage.setItem("who_is", "people");
+        localStorage.setItem('people_image_profile',res[0].people_image_profile);
         if (res[0].is_status == '2') {
           // this.router.navigate(['pages-land-information']);
           this.router.navigate(['dashboard']);

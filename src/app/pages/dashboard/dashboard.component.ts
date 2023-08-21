@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private router: Router) { }
   username: any;
   password: any;
   isDragging = false;
@@ -21,11 +21,12 @@ export class DashboardComponent implements OnInit {
     // s.type = "text/javascript";
     // s.src = "../assets/js/main.js";
     // this.elementRef.nativeElement.appendChild(s);
-    // this.username = localStorage.getItem("username");
-    // this.password = localStorage.getItem("password");
-    // if (this.username == null) {
-    //   window.open('pages-route-login', '_self');
-    // }
+    this.username = localStorage.getItem("username");
+    this.password = localStorage.getItem("password");
+    console.log(this.username);
+    if (this.username == null) {
+      this.router.navigate(['pages-login']);
+    }
   }
   
   // insert_detail_student() {

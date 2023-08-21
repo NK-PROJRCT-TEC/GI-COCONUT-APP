@@ -21,7 +21,8 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
   styleUrls: ['./pages-land-information.component.css']
 })
 export class PagesLandInformationComponent implements OnInit {
-
+  username: any;
+  password: any;
   //google map
   apiLoaded: Observable<boolean>;
   options: google.maps.MapOptions = {
@@ -39,26 +40,42 @@ export class PagesLandInformationComponent implements OnInit {
   prefix: any;
   prefix1: any;
   //INFORMATION
-  color_of_shoot: any;
-  type_of_coconut: any;
-  bole: any;
-  petiole_length: any;
-  leaflet_length: any;
-  number_of_spikelets: any;
-  peduncle_length: any;
-  young_fruit_weight: any;
-  shape: any;
+  feature_trunk_description: any;
+  feature_trunk_circumference1: any;
+  feature_trunk_circumference2: any;
+  feature_leaf_path_length: any;
+  feature_leaf_stalk_length: any;
+  feature_leaf_minor_length: any;
+  feature_leaflet_count: any;
+  feature_stem_axis_length: any;
+  feature_female_flower_count: any;
+  feature_inflorescence_count: any;
+  feature_vertical_pericarp_feature_inflorescence_count: any;
+  feature_pericarp_circumference1: any;
+  feature_pericarp_circumference2: any;
+  feature_pericarp_color: any;
+  feature_seed_shape: any;
+  feature_water_sweetness: any;
+  feature_flesh_thickness: any;
   //is information
-  is_color_of_shoot: boolean = false;
-  is_type_of_coconut = false;
-  is_bole = false;
-  is_petiole_length = false;
-  is_leaflet_length = false;
-  is_number_of_spikelets = false;
-  is_peduncle_length = false;
-  is_young_fruit_weight = false;
-  is_shape = false;
-  constructor(httpClient: HttpClient, private PagesLandInformationService: PagesLandInformationService,private router: Router) {
+  is_feature_trunk_description: boolean = false;
+  is_feature_trunk_circumference = false;
+  is_feature_leaf_path_length = false;
+  is_feature_leaf_stalk_length = false;
+  is_feature_leaf_minor_length = false;
+  is_feature_leaflet_count = false;
+  is_feature_stem_axis_length = false;
+  is_feature_female_flower_count = false;
+  is_feature_inflorescence_count = false;
+  //province
+  province: any[] = [];
+  amphures: any[] = [];
+  districts: any[] = [];
+  selected_province: any;
+  selected_amphures: any;
+  selected_districts: any;
+  postal_code:any;
+  constructor(httpClient: HttpClient, private PagesLandInformationService: PagesLandInformationService, private router: Router) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs', 'callback')
       .pipe(
         map(() => true),
@@ -67,6 +84,29 @@ export class PagesLandInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem("username");
+    this.password = localStorage.getItem("password");
+    console.log(this.username);
+    if (this.username == null) {
+      this.router.navigate(['pages-login']);
+    }
+    this.PagesLandInformationService.SelectProvinces().subscribe((res: any) => {
+      if (res) {
+        this.province = res;
+      }
+    });
+    this.PagesLandInformationService.SelectAmphures().subscribe((res: any) => {
+      if (res) {
+        this.amphures = res;
+        this.selected_amphures = res;
+      }
+    });
+    this.PagesLandInformationService.SelectDistricts().subscribe((res: any) => {
+      if (res) {
+        this.districts = res;
+        this.selected_districts = res;
+      }
+    });
   }
   center: google.maps.LatLngLiteral = { lat: 15.3071549, lng: 101.3606676 };
   zoom = 10;
@@ -97,24 +137,24 @@ export class PagesLandInformationComponent implements OnInit {
     const myDiv = document.getElementById('progress_percent')!;
     myDiv.style.width = '25%';
   }
-  func_color_of_shoot() {
-    console.log(this.color_of_shoot);
+  func_feature_trunk_description() {
+    console.log(this.feature_trunk_description);
 
-    if (this.is_color_of_shoot == false && this.color_of_shoot == "เขียว") {
+    if (this.is_feature_trunk_description == false && this.feature_trunk_description == "เขียว") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_color_of_shoot = true;
-    } else if (this.is_color_of_shoot == true && this.color_of_shoot != "เขียว") {
+      this.is_feature_trunk_description = true;
+    } else if (this.is_feature_trunk_description == true && this.feature_trunk_description != "เขียว") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_color_of_shoot = false;
-    } else if (this.is_color_of_shoot == false && this.color_of_shoot != "เขียว") {
+      this.is_feature_trunk_description = false;
+    } else if (this.is_feature_trunk_description == false && this.feature_trunk_description != "เขียว") {
 
     } else {
       Swal.fire({
@@ -123,23 +163,23 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_type_of_coconut() {
-    console.log(this.type_of_coconut);
-    if (this.is_type_of_coconut == false && this.type_of_coconut == "กลุ่มลูกผสม") {
+  func_feature_trunk_circumference() {
+    console.log(this.feature_trunk_circumference1);
+    if (this.is_feature_trunk_circumference == false && this.feature_trunk_circumference1 == "กลุ่มลูกผสม") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_type_of_coconut = true;
-    } else if (this.is_type_of_coconut == true && this.type_of_coconut != "กลุ่มลูกผสม") {
+      this.is_feature_trunk_circumference = true;
+    } else if (this.is_feature_trunk_circumference == true && this.feature_trunk_circumference1 != "กลุ่มลูกผสม") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_type_of_coconut = false;
-    } else if (this.is_type_of_coconut == false && this.type_of_coconut != "กลุ่มลูกผสม") {
+      this.is_feature_trunk_circumference = false;
+    } else if (this.is_feature_trunk_circumference == false && this.feature_trunk_circumference1 != "กลุ่มลูกผสม") {
 
     } else {
       Swal.fire({
@@ -148,23 +188,23 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_bole() {
-    console.log(this.bole);
-    if (this.is_bole == false && this.bole == "ปานกลาง") {
+  func_feature_leaf_path_length() {
+    console.log(this.feature_leaf_path_length);
+    if (this.is_feature_leaf_path_length == false && this.feature_leaf_path_length == "ปานกลาง") {
       var value = 5;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_bole = true;
-    } else if (this.is_bole == true && this.bole != "ปานกลาง") {
+      this.is_feature_leaf_path_length = true;
+    } else if (this.is_feature_leaf_path_length == true && this.feature_leaf_path_length != "ปานกลาง") {
       var value = -5;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_bole = false;
-    } else if (this.is_bole == false && this.bole != "ปานกลาง") {
+      this.is_feature_leaf_path_length = false;
+    } else if (this.is_feature_leaf_path_length == false && this.feature_leaf_path_length != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -173,23 +213,23 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_petiole_length() {
-    console.log(this.petiole_length);
-    if (this.is_petiole_length == false && this.petiole_length == "ปานกลาง") {
+  func_feature_leaf_stalk_length() {
+    console.log(this.feature_leaf_stalk_length);
+    if (this.is_feature_leaf_stalk_length == false && this.feature_leaf_stalk_length == "ปานกลาง") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_petiole_length = true;
-    } else if (this.is_petiole_length == true && this.petiole_length != "ปานกลาง") {
+      this.is_feature_leaf_stalk_length = true;
+    } else if (this.is_feature_leaf_stalk_length == true && this.feature_leaf_stalk_length != "ปานกลาง") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_petiole_length = false;
-    } else if (this.is_petiole_length == false && this.petiole_length != "ปานกลาง") {
+      this.is_feature_leaf_stalk_length = false;
+    } else if (this.is_feature_leaf_stalk_length == false && this.feature_leaf_stalk_length != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -198,24 +238,24 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_leaflet_length() {
-    console.log(this.leaflet_length);
+  func_feature_leaf_minor_length() {
+    console.log(this.feature_leaf_minor_length);
 
-    if (this.is_leaflet_length == false && this.leaflet_length == "ปานกลาง") {
+    if (this.is_feature_leaf_minor_length == false && this.feature_leaf_minor_length == "ปานกลาง") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_leaflet_length = true;
-    } else if (this.is_leaflet_length == true && this.leaflet_length != "ปานกลาง") {
+      this.is_feature_leaf_minor_length = true;
+    } else if (this.is_feature_leaf_minor_length == true && this.feature_leaf_minor_length != "ปานกลาง") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_leaflet_length = false;
-    } else if (this.is_leaflet_length == false && this.leaflet_length != "ปานกลาง") {
+      this.is_feature_leaf_minor_length = false;
+    } else if (this.is_feature_leaf_minor_length == false && this.feature_leaf_minor_length != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -225,24 +265,24 @@ export class PagesLandInformationComponent implements OnInit {
     }
 
   }
-  func_number_of_spikelets() {
-    console.log(this.number_of_spikelets);
+  func_feature_leaflet_count() {
+    console.log(this.feature_leaflet_count);
 
-    if (this.is_number_of_spikelets == false && this.number_of_spikelets == "ปานกลาง") {
+    if (this.is_feature_leaflet_count == false && this.feature_leaflet_count == "ปานกลาง") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_number_of_spikelets = true;
-    } else if (this.is_number_of_spikelets == true && this.number_of_spikelets != "ปานกลาง") {
+      this.is_feature_leaflet_count = true;
+    } else if (this.is_feature_leaflet_count == true && this.feature_leaflet_count != "ปานกลาง") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_number_of_spikelets = false;
-    } else if (this.is_number_of_spikelets == false && this.number_of_spikelets != "ปานกลาง") {
+      this.is_feature_leaflet_count = false;
+    } else if (this.is_feature_leaflet_count == false && this.feature_leaflet_count != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -251,25 +291,25 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_peduncle_length() {
-    console.log(this.peduncle_length);
+  func_feature_stem_axis_length() {
+    console.log(this.feature_stem_axis_length);
 
 
-    if (this.is_peduncle_length == false && this.peduncle_length == "ปานกลาง") {
+    if (this.is_feature_stem_axis_length == false && this.feature_stem_axis_length == "ปานกลาง") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_peduncle_length = true;
-    } else if (this.is_peduncle_length == true && this.peduncle_length != "ปานกลาง") {
+      this.is_feature_stem_axis_length = true;
+    } else if (this.is_feature_stem_axis_length == true && this.feature_stem_axis_length != "ปานกลาง") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_peduncle_length = false;
-    } else if (this.is_peduncle_length == false && this.peduncle_length != "ปานกลาง") {
+      this.is_feature_stem_axis_length = false;
+    } else if (this.is_feature_stem_axis_length == false && this.feature_stem_axis_length != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -278,25 +318,25 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_young_fruit_weight() {
-    console.log(this.young_fruit_weight);
+  func_feature_female_flower_count() {
+    console.log(this.feature_female_flower_count);
 
 
-    if (this.is_young_fruit_weight == false && this.young_fruit_weight == "ปานกลาง") {
+    if (this.is_feature_female_flower_count == false && this.feature_female_flower_count == "ปานกลาง") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_young_fruit_weight = true;
-    } else if (this.is_young_fruit_weight == true && this.young_fruit_weight != "ปานกลาง") {
+      this.is_feature_female_flower_count = true;
+    } else if (this.is_feature_female_flower_count == true && this.feature_female_flower_count != "ปานกลาง") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_young_fruit_weight = false;
-    } else if (this.is_young_fruit_weight == false && this.young_fruit_weight != "ปานกลาง") {
+      this.is_feature_female_flower_count = false;
+    } else if (this.is_feature_female_flower_count == false && this.feature_female_flower_count != "ปานกลาง") {
 
     } else {
       Swal.fire({
@@ -305,27 +345,27 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
-  func_shape() {
-    // console.log(this.shape);
+  func_feature_inflorescence_count() {
+    // console.log(this.feature_inflorescence_count);
     // this.valuenow = "90%";
     // const myDiv = document.getElementById('progress_percent')!;
     // myDiv.style.width = '90%';
 
-    if (this.is_shape == false && this.shape == "ลูกแพร์") {
+    if (this.is_feature_inflorescence_count == false && this.feature_inflorescence_count == "ลูกแพร์") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_shape = true;
-    } else if (this.is_shape == true && this.shape != "ลูกแพร์") {
+      this.is_feature_inflorescence_count = true;
+    } else if (this.is_feature_inflorescence_count == true && this.feature_inflorescence_count != "ลูกแพร์") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
-      this.is_shape = false;
-    } else if (this.is_shape == false && this.shape != "ลูกแพร์") {
+      this.is_feature_inflorescence_count = false;
+    } else if (this.is_feature_inflorescence_count == false && this.feature_inflorescence_count != "ลูกแพร์") {
 
     } else {
       Swal.fire({
@@ -334,21 +374,25 @@ export class PagesLandInformationComponent implements OnInit {
       })
     }
   }
+  func_feature_seed_shape() {
+
+  }
   submit_land_information() {
-    console.log(this.color_of_shoot)
-    console.log(this.type_of_coconut)
-    console.log(this.bole)
-    console.log(this.petiole_length)
-    console.log(this.leaflet_length)
-    console.log(this.number_of_spikelets)
-    console.log(this.peduncle_length)
-    console.log(this.young_fruit_weight)
-    console.log(this.shape)
+    console.log(this.feature_trunk_description)
+    console.log(this.feature_trunk_circumference1)
+    console.log(this.feature_trunk_circumference2);
+    console.log(this.feature_leaf_path_length)
+    console.log(this.feature_leaf_stalk_length)
+    console.log(this.feature_leaf_minor_length)
+    console.log(this.feature_leaflet_count)
+    console.log(this.feature_stem_axis_length)
+    console.log(this.feature_female_flower_count)
+    console.log(this.feature_inflorescence_count)
     console.log(this.valuenow)
     console.log(this.lat);
     console.log(this.lng);
     this.people_generate = localStorage.getItem('people_generate');
-    this.PagesLandInformationService.InsertLanduseInfo(this.color_of_shoot, this.type_of_coconut, this.bole, this.petiole_length, this.leaflet_length, this.number_of_spikelets, this.peduncle_length, this.young_fruit_weight, this.shape, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
+    this.PagesLandInformationService.InsertLanduseInfo(this.feature_trunk_description, this.feature_trunk_circumference1, this.feature_leaf_path_length, this.feature_leaf_stalk_length, this.feature_leaf_minor_length, this.feature_leaflet_count, this.feature_stem_axis_length, this.feature_female_flower_count, this.feature_inflorescence_count, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
       if (res) {
         console.log(res[0].landuse_id);
         this.PagesLandInformationService.InsertHistoryLanduse(this.people_generate, "1", res[0].landuse_id).subscribe((res: any) => {
@@ -368,12 +412,28 @@ export class PagesLandInformationComponent implements OnInit {
                   title: '<h5 style="font-family: Kanit-Regular;">บันทึกข้อมูลเรียนร้อย</h5>'
                 })
                 this.router.navigate(['pages-waiting-approve-landuse']);
-              } 
+              }
             })
 
           }
         });
       }
     });
+  }
+  func_province(e: any) {
+    var code = e.target.value;
+    this.selected_amphures = this.amphures.filter(option => option.province_id == Number(code));
+    console.log(this.selected_amphures);
+  }
+  func_amphures(e: any){
+    var code = e.target.value;
+    console.log(code);
+    this.selected_districts = this.districts.filter(option => option.amphure_id == Number(code));
+    console.log(this.selected_districts);
+  }
+  func_districts(e: any){
+    var code = e.target.value;
+    this.postal_code = code;
+    console.log(code);
   }
 }

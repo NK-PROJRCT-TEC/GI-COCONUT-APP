@@ -18,13 +18,17 @@ export class PagesRegisterComponent implements OnInit {
   is_dna: any;
   imageChangedEvent: any = '';
   imageChangedEvent1: any = '';
+  imageChangedEvent2: any = '';
   croppedImage: any = '';
   croppedImage1: any = '';
+  croppedImage2: any = '';
   preview_image: any = '';
   preview_image1: any = '';
+  preview_image2: any = '';
   convertFile1!: File;
   is_confirm_image: boolean = false;
   is_confirm_image1: boolean = false;
+  is_confirm_image2: boolean = false;
   is_status: any;
   //people
   people_name: any = "นพพร";
@@ -51,7 +55,7 @@ export class PagesRegisterComponent implements OnInit {
   constructor(private PagesRegisterService: PagesRegisterService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+
   }
 
   fileChangeEvent(event: any): void {
@@ -118,6 +122,29 @@ export class PagesRegisterComponent implements OnInit {
     // this.people_image_profile = jpegBlob;
     // console.log(jpegBlob);
   }
+  fileChangeEvent2(event: any): void {
+    this.imageChangedEvent2 = event;
+    this.is_confirm_image2 = true;
+  }
+  imageCropped2(event: ImageCroppedEvent) {
+    this.croppedImage2 = event.base64;
+  }
+  imageLoaded2() {
+    // show cropper
+  }
+  cropperReady2() {
+    // cropper ready
+  }
+  loadImageFailed2() {
+    // show message
+  }
+  upload_image_home2() {
+    this.preview_image2 = this.croppedImage2;
+    this.croppedImage2 = '';
+    this.imageChangedEvent2 = '';
+    this.is_confirm_image2 = false;
+    this.people_image_profile = this.preview_image2;
+  }
   submit_people() {
     this.is_status = "1";
     this.people_generate = uuidv4();
@@ -155,6 +182,9 @@ export class PagesRegisterComponent implements OnInit {
       } else {
         this.is_term = 0;
       }
+      if(this.people_image_profile == undefined){
+        this.people_image_profile = '';
+      }
       console.log(this.people_name);
       console.log(this.people_localtion_number);
       console.log(this.people_moo);
@@ -175,7 +205,8 @@ export class PagesRegisterComponent implements OnInit {
       console.log(this.is_term);
       console.log(this.is_status);
       console.log(this.people_generate);
-      this.PagesRegisterService.InsertRegisterinfo(this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
+      console.log(this.people_image_profile);
+      this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile,this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
         if (res) {
           this.PagesRegisterService.InsertHistory(this.people_generate, this.is_status).subscribe((res: any) => {
             if (res) {

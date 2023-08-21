@@ -12,6 +12,11 @@ export class PagesLandInformationService {
   private SelectLandUseInfoUrl: string = `${this.env.API_PATH}/SelectLandUseInfo`;
   private InsertLanduseInfoUrl: string = `${this.env.API_PATH}/InsertLanduseInfo`;
   private InsertHistoryLanduseUrl: string = `${this.env.API_PATH}/InsertHistoryLanduse`;
+  private SelectProvincesUrl: string = `${this.env.API_PATH}/SelectProvinces`;
+  private SelectAmphuresUrl: string = `${this.env.API_PATH}/SelectAmphures`;
+  private SelectDistrictsUrl: string = `${this.env.API_PATH}/SelectDistricts`;
+
+  
   constructor(private http: HttpClient) {
   }
   SelectProfilePeopleinfo(people_generate: string) {
@@ -28,6 +33,18 @@ export class PagesLandInformationService {
   }
   InsertHistoryLanduse(people_generate: string, is_status: string, landuse_id: any) {
     return this.http.post(this.InsertHistoryLanduseUrl,
-      { people_generate: people_generate, is_status: is_status,landuse_id:landuse_id });
+      { people_generate: people_generate, is_status: is_status, landuse_id: landuse_id });
+  }
+  SelectProvinces() {
+    return this.http.get(this.SelectProvincesUrl,
+      {});
+  }
+  SelectAmphures() {
+    return this.http.get(this.SelectAmphuresUrl,
+      {});
+  }
+  SelectDistricts() {
+    return this.http.get(this.SelectDistrictsUrl,
+      {});
   }
 }

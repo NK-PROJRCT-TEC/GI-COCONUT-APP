@@ -1,13 +1,21 @@
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>Profile</h1>
-        <!-- <nav>
+    <!-- <div class="pagetitle">
+        <h1>โปรไฟล์</h1>
+        <nav>
           <ol class="breadcrumb">
-             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-             <li class="breadcrumb-item">Users</li>
-             <li class="breadcrumb-item active">Profile</li>
+             <li class="breadcrumb-item"><a routerLink="/">หน้าหลัก</a></li>
+             <li class="breadcrumb-item active"><a routerLink="/pages-user-profile-people">โปรไฟล์</a></li>
           </ol>
-       </nav> -->
+       </nav>
+    </div> -->
+    <div class="pagetitle">
+        <h1>โปรไฟล์</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">หน้าหลัก</a></li>
+                <li class="breadcrumb-item active"><a routerLink="/pages-user-profile-people">โปรไฟล์</a></li>
+            </ol>
+        </nav>
     </div>
     <section class="section profile">
         <div class="row">
@@ -103,6 +111,22 @@
                                     </div>
                                     <div class="col-lg-9 col-md-8">
                                         <p>{{arrpeopleModel[0].people_postcode}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">
+                                        <p>ใบรับรอง GI</p>
+                                    </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        <img src="{{arrpeopleModel[0].gi_certificates}}" alt="Profile" style="width: 100%;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">
+                                        <p>ใบตรวจ DNA</p>
+                                    </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        <img src="{{arrpeopleModel[0].dna_certificates}}" alt="Profile" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="row">
