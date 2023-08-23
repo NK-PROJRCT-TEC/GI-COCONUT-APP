@@ -50,13 +50,14 @@ export class PagesLandInformationComponent implements OnInit {
   feature_stem_axis_length: any;
   feature_female_flower_count: any;
   feature_inflorescence_count: any;
-  feature_vertical_pericarp_feature_inflorescence_count: any;
+  feature_vertical_pericarp_shape: any;
   feature_pericarp_circumference1: any;
   feature_pericarp_circumference2: any;
   feature_pericarp_color: any;
   feature_seed_shape: any;
   feature_water_sweetness: any;
   feature_flesh_thickness: any;
+
   //is information
   is_feature_trunk_description: boolean = false;
   is_feature_trunk_circumference = false;
@@ -67,6 +68,8 @@ export class PagesLandInformationComponent implements OnInit {
   is_feature_stem_axis_length = false;
   is_feature_female_flower_count = false;
   is_feature_inflorescence_count = false;
+  is_feature_vertical_pericarp_shape = false;
+  is_feature_pericarp_circumference = false;
   //province
   province: any[] = [];
   amphures: any[] = [];
@@ -74,18 +77,22 @@ export class PagesLandInformationComponent implements OnInit {
   selected_province: any;
   selected_amphures: any;
   selected_districts: any;
-  postal_code:any;
-  constructor(httpClient: HttpClient, private PagesLandInformationService: PagesLandInformationService, private router: Router) {
+  zip_code: any;
+  is_province:any;
+  is_amphures:any;
+  is_districts:any;
+  is_zip_code:any;
+  constructor(httpClient: HttpClient, private PagesLandInformationService: PagesLandInformationService,private router: Router) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs', 'callback')
       .pipe(
         map(() => true),
-        catchError(() => of(false)),
       );
   }
 
   ngOnInit(): void {
     this.username = localStorage.getItem("username");
     this.password = localStorage.getItem("password");
+    this.people_generate = localStorage.getItem("people_generate");
     console.log(this.username);
     if (this.username == null) {
       this.router.navigate(['pages-login']);
@@ -140,21 +147,21 @@ export class PagesLandInformationComponent implements OnInit {
   func_feature_trunk_description() {
     console.log(this.feature_trunk_description);
 
-    if (this.is_feature_trunk_description == false && this.feature_trunk_description == "เขียว") {
+    if (this.is_feature_trunk_description == false && this.feature_trunk_description == "มีโคนใหญ่") {
       var value = 10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
       this.is_feature_trunk_description = true;
-    } else if (this.is_feature_trunk_description == true && this.feature_trunk_description != "เขียว") {
+    } else if (this.is_feature_trunk_description == true && this.feature_trunk_description != "มีโคนใหญ่") {
       var value = -10;
       this.valuenowInt = value + this.valuenowInt;
       this.valuenow = String(this.valuenowInt) + "%";
       const myDiv = document.getElementById('progress_percent')!;
       myDiv.style.width = this.valuenow;
       this.is_feature_trunk_description = false;
-    } else if (this.is_feature_trunk_description == false && this.feature_trunk_description != "เขียว") {
+    } else if (this.is_feature_trunk_description == false && this.feature_trunk_description != "มีโคนใหญ่") {
 
     } else {
       Swal.fire({
@@ -377,22 +384,42 @@ export class PagesLandInformationComponent implements OnInit {
   func_feature_seed_shape() {
 
   }
+  func_feature_vertical_pericarp_shape() {
+
+  }
+  func_feature_pericarp_circumference() {
+
+  }
+  func_feature_pericarp_color() {
+
+  }
   submit_land_information() {
-    console.log(this.feature_trunk_description)
-    console.log(this.feature_trunk_circumference1)
-    console.log(this.feature_trunk_circumference2);
-    console.log(this.feature_leaf_path_length)
-    console.log(this.feature_leaf_stalk_length)
-    console.log(this.feature_leaf_minor_length)
-    console.log(this.feature_leaflet_count)
-    console.log(this.feature_stem_axis_length)
-    console.log(this.feature_female_flower_count)
-    console.log(this.feature_inflorescence_count)
+    console.log(this.feature_trunk_description); //1
+    console.log(this.feature_trunk_circumference1); //2-1
+    console.log(this.feature_trunk_circumference2); //2-2
+    console.log(this.feature_leaf_path_length); //3
+    console.log(this.feature_leaf_stalk_length); //4
+    console.log(this.feature_leaf_minor_length); //5
+    console.log(this.feature_leaflet_count);     //6
+    console.log(this.feature_stem_axis_length);   //7
+    console.log(this.feature_female_flower_count);//8
+    console.log(this.feature_inflorescence_count) //9
+    console.log(this.feature_vertical_pericarp_shape); //10
+    console.log(this.feature_pericarp_circumference1); //11-1
+    console.log(this.feature_pericarp_circumference2); //11-2
+    console.log(this.feature_pericarp_color); //12
+    console.log(this.feature_seed_shape); //13
+    console.log(this.feature_water_sweetness); //14
+    console.log(this.feature_flesh_thickness); //15
+    console.log(this.is_province);
+    console.log(this.is_amphures);
+    console.log(this.is_districts);
+    console.log(this.zip_code);
     console.log(this.valuenow)
     console.log(this.lat);
     console.log(this.lng);
-    this.people_generate = localStorage.getItem('people_generate');
-    this.PagesLandInformationService.InsertLanduseInfo(this.feature_trunk_description, this.feature_trunk_circumference1, this.feature_leaf_path_length, this.feature_leaf_stalk_length, this.feature_leaf_minor_length, this.feature_leaflet_count, this.feature_stem_axis_length, this.feature_female_flower_count, this.feature_inflorescence_count, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
+    console.log(this.people_generate);
+    this.PagesLandInformationService.InsertLanduseInfo(this.feature_trunk_description,this.feature_trunk_circumference1,this.feature_trunk_circumference2,this.feature_leaf_path_length,this.feature_leaf_stalk_length,this.feature_leaf_minor_length,this.feature_leaflet_count,this.feature_stem_axis_length,this.feature_female_flower_count,this.feature_inflorescence_count,this.feature_vertical_pericarp_shape,this.feature_pericarp_circumference1,this.feature_pericarp_circumference2,this.feature_pericarp_color,this.feature_seed_shape,this.feature_water_sweetness,this.feature_flesh_thickness,this.is_province,this.is_amphures,this.is_districts,this.zip_code,this.valuenow,this.lat,this.lng, this.people_generate, "1").subscribe((res: any) => {
       if (res) {
         console.log(res[0].landuse_id);
         this.PagesLandInformationService.InsertHistoryLanduse(this.people_generate, "1", res[0].landuse_id).subscribe((res: any) => {
@@ -423,17 +450,24 @@ export class PagesLandInformationComponent implements OnInit {
   func_province(e: any) {
     var code = e.target.value;
     this.selected_amphures = this.amphures.filter(option => option.province_id == Number(code));
-    console.log(this.selected_amphures);
+    // console.log(this.selected_amphures);
+    // console.log(code);
+    // this.selected_province = code;
   }
-  func_amphures(e: any){
+  func_amphures(e: any) {
     var code = e.target.value;
-    console.log(code);
     this.selected_districts = this.districts.filter(option => option.amphure_id == Number(code));
-    console.log(this.selected_districts);
+    // console.log(this.selected_districts);
+    // console.log(code);
+    // this.selected_amphures = code;
   }
-  func_districts(e: any){
+  func_districts(e: any) {
     var code = e.target.value;
-    this.postal_code = code;
-    console.log(code);
+    this.is_zip_code = this.districts.filter(option => option.id == Number(code));
+    this.zip_code = this.is_zip_code[0].zip_code;
+    console.log(this.is_province);
+    console.log(this.is_amphures);
+    console.log(this.is_districts);
+    console.log(this.zip_code);
   }
 }

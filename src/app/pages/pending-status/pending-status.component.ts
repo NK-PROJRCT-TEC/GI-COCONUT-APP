@@ -67,6 +67,7 @@ export class PendingStatusComponent {
     });
   }
   func_filter_status() {
+    console.log(this.arrpeopleModel);
     // this.ngOnInit();
     if (this.status_ap == "all") {
       this.arrpeopleModel = this.tempforfilter;
@@ -125,6 +126,7 @@ export class PendingStatusComponent {
   }
   pages_profile_info(people_generate: string) {
     localStorage.setItem("profile_people_generate",people_generate);
+    localStorage.setItem("people_generate",people_generate);
     this.router.navigate(['pages-user-profile-people']);
   }
 

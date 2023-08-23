@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +40,8 @@ import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { WaitingApproveComponent } from './pages/waiting-approve/waiting-approve.component';
 import { SearchStudentComponent } from './pages/search-student/search-student.component';
 import { InsertDetailStudentComponent } from './pages/insert-detail-student/insert-detail-student.component';
-
+//NXG-SPINNER
+// import { NgxSpinnerModule } from "ngx-spinner";
 
 import { FormsModule } from '@angular/forms';
 import { PagesChartComponent } from './pages/pages-chart/pages-chart.component';
@@ -133,7 +134,7 @@ import { PagesCertificateComponent } from './pages/pages-certificate/pages-certi
     HttpClientJsonpModule,
     GoogleMapsModule,
     ImageCropperModule,
-    QRCodeModule
+    QRCodeModule,
     // AgmCoreModule.forRoot({
     //   // please get your own API key here:
     //   // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en

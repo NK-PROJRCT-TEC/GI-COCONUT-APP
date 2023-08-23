@@ -16,7 +16,7 @@ export class PagesLandInformationService {
   private SelectAmphuresUrl: string = `${this.env.API_PATH}/SelectAmphures`;
   private SelectDistrictsUrl: string = `${this.env.API_PATH}/SelectDistricts`;
 
-  
+
   constructor(private http: HttpClient) {
   }
   SelectProfilePeopleinfo(people_generate: string) {
@@ -27,9 +27,9 @@ export class PagesLandInformationService {
     return this.http.post(this.SelectLandUseInfoUrl,
       { people_generate: people_generate });
   }
-  InsertLanduseInfo(color_of_shoot: string, type_of_coconut: string, bole: string, petiole_length: string, leaflet_length: string, number_of_spikelets: string, peduncle_length: string, young_fruit_weight: string, shape: string, valuenow: string, lat: string, lng: string, people_generate: string, is_status: string) {
+  InsertLanduseInfo(feature_trunk_description: string, feature_trunk_circumference1: string, feature_trunk_circumference2: string, feature_leaf_path_length: string, feature_leaf_stalk_length: string, feature_leaf_minor_length: string, feature_leaflet_count: string, feature_stem_axis_length: string, feature_female_flower_count: string, feature_inflorescence_count: string, feature_vertical_pericarp_shape: string, feature_pericarp_circumference1: string, feature_pericarp_circumference2: string, feature_pericarp_color: string, feature_seed_shape: string, feature_water_sweetness: string, feature_flesh_thickness: string, is_province: string, is_amphures: string, is_districts: string, zip_code: string, valuenow: string, lat: string, lng: string, people_generate: string, is_status: string) {
     return this.http.post(this.InsertLanduseInfoUrl,
-      { color_of_shoot: color_of_shoot, type_of_coconut: type_of_coconut, bole: bole, petiole_length: petiole_length, leaflet_length: leaflet_length, number_of_spikelets: number_of_spikelets, peduncle_length: peduncle_length, young_fruit_weight: young_fruit_weight, shape: shape, valuenow: valuenow, lat: lat, lng: lng, people_generate: people_generate, is_status: is_status });
+      { feature_trunk_description: feature_trunk_description, feature_trunk_circumference1: feature_trunk_circumference1, feature_trunk_circumference2: feature_trunk_circumference2, feature_leaf_path_length: feature_leaf_path_length, feature_leaf_stalk_length: feature_leaf_stalk_length, feature_leaf_minor_length: feature_leaf_minor_length, feature_leaflet_count: feature_leaflet_count, feature_stem_axis_length: feature_stem_axis_length, feature_female_flower_count: feature_female_flower_count, feature_inflorescence_count: feature_inflorescence_count, feature_vertical_pericarp_shape: feature_vertical_pericarp_shape, feature_pericarp_circumference1: feature_pericarp_circumference1, feature_pericarp_circumference2: feature_pericarp_circumference2, feature_pericarp_color: feature_pericarp_color, feature_seed_shape: feature_seed_shape, feature_water_sweetness: feature_water_sweetness, feature_flesh_thickness: feature_flesh_thickness, is_province: is_province, is_amphures: is_amphures, is_districts: is_districts, zip_code: zip_code, valuenow: valuenow, lat: lat, lng: lng, people_generate: people_generate, is_status: is_status });
   }
   InsertHistoryLanduse(people_generate: string, is_status: string, landuse_id: any) {
     return this.http.post(this.InsertHistoryLanduseUrl,
