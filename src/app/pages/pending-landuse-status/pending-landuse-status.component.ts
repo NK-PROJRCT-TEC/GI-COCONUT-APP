@@ -43,6 +43,7 @@ export class PendingLanduseStatusComponent {
         this.arrLanduse = res;
         this.tempforfilter = res;
         localStorage.setItem("arrLanduse", JSON.stringify(this.arrLanduse));
+        console.log(this.arrLanduse);
       }
       else {
         Swal.fire({
@@ -54,21 +55,21 @@ export class PendingLanduseStatusComponent {
     this.PagesWaitingApproveLanduseService.SelectProvinces().subscribe((res: any) => {
       if (res) {
         this.province = res;
-        this.selected_province = res;
+        this.filter_province = res;
 
       }
     });
     this.PagesWaitingApproveLanduseService.SelectAmphures().subscribe((res: any) => {
       if (res) {
         this.amphures = res;
-        this.selected_amphures = res;
+        this.filter_amphures = res;
 
       }
     });
     this.PagesWaitingApproveLanduseService.SelectDistricts().subscribe((res: any) => {
       if (res) {
         this.districts = res;
-        this.selected_districts = res;
+        this.filter_districts = res;
       }
     });
   }
@@ -180,14 +181,17 @@ export class PendingLanduseStatusComponent {
   }
   func_filter_province(e: any) {
     var code = e.target.value;
+    this.selected_province = code;
     console.log(code);
-    this.amphures = this.selected_amphures.filter((option: any) => option.province_id == Number(code));
+    this.amphures = this.filter_amphures.filter((option: any) => option.province_id == Number(code));
     // console.log(this.selected_amphures);
     // console.log(code);
     // this.selected_province = code;
   }
   func_filter_amphures(e: any) {
     var code = e.target.value;
+    this.selected_amphures = code;
+    console.log(code);
     // console.log(this.districts);
     // this.districts = this.selected_districts.filter((option: any) => option.districts_id == Number(code));
     // var code = e.target.value;
@@ -197,10 +201,12 @@ export class PendingLanduseStatusComponent {
     this.PagesWaitingApproveLanduseService.SelectDistrictsByAmphureId(code).subscribe((res: any) => {
       if (res) {
         this.districts = res;
+        console.log(this.districts);
       }
     });
   }
   func_filter_districts(e: any) {
-
+    this.selected_districts = e.target.value;
+    console.log(this.selected_districts);
   }
 }

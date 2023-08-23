@@ -7,57 +7,121 @@
                         <h5 class="card-title">รายละเอียดแปลงที่ดิน</h5>
                         <form>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ต้นอ่อน : สีของยอด</label>
+                                <label class="col-sm-2 col-form-label">1.ลักษณะโคนต้นมะพร้าว</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_color_of_shoot}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_trunk_description}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ลำต้น : กลุ่มของต้นมะพร้าว</label>
-                                <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_type_of_coconut}}" disabled></div>
+                                <label class="col-sm-12 col-form-label">2.ระยะรอบโคนต้น
+                                    ​(วัด2จุด)​</label>
+                                <div class="col-sm-2"></div>
+                                <label class="col-sm-3 col-form-label">1) เหนือพื้นดิน​ 20
+                                    ซม.​</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="text-align: center;"
+                                        value="{{arr_landuse_info[0].feature_trunk_circumference1}}" disabled>
+                                </div>
+                                <label class="col-sm-3 col-form-label">2) เหนือระดับพื้นดิน
+                                    150 ซม.​​</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" style="text-align: center;"
+                                        value="{{arr_landuse_info[0].feature_trunk_circumference2}}" disabled>
+                                </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ลำต้น : เส้นผ่านศูนย์กลาง</label>
+                                <label class="col-sm-2 col-form-label">3.ระยะรอยทางใบ (ถี่-ห่าง) วัดระยะรอยทางใบที่ ​1
+                                    ​ถึง ​17</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_bole}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_leaf_path_length}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ใบ : ความยาวของก้าน</label>
+                                <label class="col-sm-2 col-form-label">4.ความยาวก้านทางใบ</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_petiole_length}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_leaf_stalk_length}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ใบ : ความยาวของใบ</label>
+                                <label class="col-sm-2 col-form-label">5.ความยาวทางใบช่วงที่มีใบย่อย</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_leaflet_length}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_leaf_minor_length}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ช่อ : จำนวนช่อดอกย่อย</label>
+                                <label class="col-sm-2 col-form-label">6.จำนวนใบย่อย (ข้างซ้าย)</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_number_of_spikelets}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_leaflet_count}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ทะลาย : ความยาวก้าน</label>
+                                <label class="col-sm-2 col-form-label">7.ความยาวแกนกลางจั่น​ ช่วงที่มีระเเง้</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_peduncle_length}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_stem_axis_length}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ผล : น้ำหนักผลอ่อน</label>
+                                <label class="col-sm-2 col-form-label">8.จำนวนดอกตัวเมีย</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_young_fruit_weight}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_female_flower_count}}" disabled></div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" style="font-size: 1.0rem;">ผล : รูปร่างผล</label>
+                                <label class="col-sm-2 col-form-label">9.จำนวนระแง้</label>
                                 <div class="col-sm-10"> <input type="text" class="form-control"
-                                        value="{{arr_landuse_info[0].landuse_shape}}" disabled></div>
+                                        value="{{arr_landuse_info[0].feature_inflorescence_count}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">10.ทรงผลทั้งเปลือก​แนวตั้ง (รูปไข่, ทรงกลม,
+                                    วงรี)</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].feature_vertical_pericarp_shape}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-12 col-form-label">11.ความยาวรอบผล(วัดแนวตั้งและแนวนอน)</label>
+                                <label class="col-sm-2 col-form-label"></label>
+                                <label class="col-sm-2 col-form-label">วัดแนวตั้ง</label>
+                                <div class="col-sm-3"> <input type="text" class="form-control" style="text-align: center;"
+                                        value="{{arr_landuse_info[0].feature_pericarp_circumference1}}" disabled></div>
+                                <label class="col-sm-2 col-form-label">แนวนอน</label>
+                                <div class="col-sm-3"> <input type="text" class="form-control" style="text-align: center;"
+                                        value="{{arr_landuse_info[0].feature_pericarp_circumference2}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">12.สีผิวของเปลือกผล(เขียวเข้ม, เขียวใบตอง, เขียวมรกต)​</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].feature_pericarp_color}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">13.รูปร่างของเมล็ด (กะลาไร้เปลือก)​( ทรงกลม, ทรงหยดน้ำ, วงรี)​</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].feature_seed_shape}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">14.ความหวานของน้ำ</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].feature_water_sweetness}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">15.ความหนาของเนื้อ</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].feature_flesh_thickness}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">จังหวัด</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].provinces_name_th}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">จังหวัด</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].amphures_name_th}}" disabled></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">จังหวัด</label>
+                                <div class="col-sm-10"> <input type="text" class="form-control"
+                                        value="{{arr_landuse_info[0].districts_name_th}}" disabled></div>
                             </div>
                             <div class="col-md-12 google-map-wrapper">
-                                <label class="form-label" style="font-size: 1.0rem;">ตำแหน่งที่ตั้ง</label>
+                                <label class="form-label">ตำแหน่งที่ตั้ง</label>
                                 <div class="col-sm-12" *ngIf="apiLoaded | async">
                                     <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
                                         (mapClick)="addMarker($event)">
-                                        <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                                            [options]="markerOptions"></map-marker>
+                                        <map-marker *ngFor="let markerPosition of markerPositions"
+                                            [position]="markerPosition" [options]="markerOptions"></map-marker>
                                         <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
                                     </google-map>
                                 </div>
