@@ -39,6 +39,7 @@ testem.log
 src/environments/environment.prod.ts
 ./android
 android/*
+capacitor.config.ts
 
 # System files
 .DS_Store
