@@ -37,9 +37,9 @@ yarn-error.log
 testem.log
 /typings
 src/environments/environment.prod.ts
-./android
-android/*
-capacitor.config.ts
+#./android
+#android/*
+#capacitor.config.ts
 
 # System files
 .DS_Store
