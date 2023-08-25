@@ -30,21 +30,13 @@ import { ChartsApexchartsComponent } from './components/charts-apexcharts/charts
 import { IconsBootstrapComponent } from './components/icons-bootstrap/icons-bootstrap.component';
 import { IconsRemixComponent } from './components/icons-remix/icons-remix.component';
 import { IconsBoxiconsComponent } from './components/icons-boxicons/icons-boxicons.component';
-import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
-import { PagesFaqComponent } from './pages/pages-faq/pages-faq.component';
-import { PagesContactComponent } from './pages/pages-contact/pages-contact.component';
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
 import { PagesLoginComponent } from './pages/pages-login/pages-login.component';
-import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
-import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { WaitingApproveComponent } from './pages/waiting-approve/waiting-approve.component';
-import { SearchStudentComponent } from './pages/search-student/search-student.component';
-import { InsertDetailStudentComponent } from './pages/insert-detail-student/insert-detail-student.component';
 //NXG-SPINNER
 // import { NgxSpinnerModule } from "ngx-spinner";
 
 import { FormsModule } from '@angular/forms';
-import { PagesChartComponent } from './pages/pages-chart/pages-chart.component';
 //import google map
 import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -53,17 +45,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { QRCodeModule } from 'angularx-qrcode';
 //import images
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { PagesRegisComponent } from './pages/pages-regis/pages-regis.component';
-import { PendingStatusComponent } from './pages/pending-status/pending-status.component';
-import { PagesLoginEmployeeComponent } from './pages/pages-login-employee/pages-login-employee.component';
-import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 import { PagesEditPeopleComponent } from './pages/pages-edit-people/pages-edit-people.component';
 import { PagesUserProfilePeopleComponent } from './pages/pages-user-profile-people/pages-user-profile-people.component';
 import { PagesLandInformationComponent } from './pages/pages-land-information/pages-land-information.component';
-import { PagesRouteLoginComponent } from './pages/pages-route-login/pages-route-login.component';
-import { PagesRegisEmployeeComponent } from './pages/pages-regis-employee/pages-regis-employee.component';
 import { PagesWaitingApproveLanduseComponent } from './pages/pages-waiting-approve-landuse/pages-waiting-approve-landuse.component';
-import { PendingLanduseStatusComponent } from './pages/pending-landuse-status/pending-landuse-status.component';
 import { PagesLanduseDetailComponent } from './pages/pages-landuse-detail/pages-landuse-detail.component';
 import { PagesEditLanduseDetailComponent } from './pages/pages-edit-landuse-detail/pages-edit-landuse-detail.component';
 import { PagesCertificateComponent } from './pages/pages-certificate/pages-certificate.component';
@@ -99,28 +84,13 @@ import { PagesCertificateComponent } from './pages/pages-certificate/pages-certi
     IconsBootstrapComponent,
     IconsRemixComponent,
     IconsBoxiconsComponent,
-    UsersProfileComponent,
-    PagesFaqComponent,
-    PagesContactComponent,
     PagesRegisterComponent,
     PagesLoginComponent,
-    PagesError404Component,
-    PagesBlankComponent,
     WaitingApproveComponent,
-    SearchStudentComponent,
-    InsertDetailStudentComponent,
-    PagesChartComponent,
-    PagesRegisComponent,
-    PendingStatusComponent,
-    PagesLoginEmployeeComponent,
-    DashboardEmployeeComponent,
     PagesEditPeopleComponent,
     PagesUserProfilePeopleComponent,
     PagesLandInformationComponent,
-    PagesRouteLoginComponent,
-    PagesRegisEmployeeComponent,
     PagesWaitingApproveLanduseComponent,
-    PendingLanduseStatusComponent,
     PagesLanduseDetailComponent,
     PagesEditLanduseDetailComponent,
     PagesCertificateComponent
