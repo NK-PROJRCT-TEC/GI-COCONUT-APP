@@ -5,7 +5,9 @@ const config: CapacitorConfig = {
   appName: 'GI-COCONUT',
   webDir: 'dist',
   server: {
-    androidScheme: 'http'
+    androidScheme: 'http',
+    cleartext: true,
+    "allowNavigation": ["*"]
   }
 };
 

@@ -40,6 +40,8 @@ testem.log
 #./android
 #android/*
 #capacitor.config.ts
+/httpTester
+./httpTester/*
 
 # System files
 .DS_Store
