@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'GI-COCONUT',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http'
   }
 };
 
