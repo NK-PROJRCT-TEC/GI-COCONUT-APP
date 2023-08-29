@@ -22,14 +22,12 @@ button {
   font-family: Kanit-Regular;
   /* font-size: 2vw; */
 }
-
 .google-map-wrapper {
   position: relative;
   width: 100%;
   /* padding-bottom: 56.25%; */
   /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
 }
-
 .google-map-wrapper iframe {
   position: absolute;
   top: 0;
@@ -47,12 +45,12 @@ button {
   z-index: 1030;
 }
 
-img {
+/* img {
   min-width: 400px;
   min-height: 300px;
   max-width: 400px;
   max-height: 300px;
-}
+} */
 
 @font-face {
   font-family: "THSarabunNew";

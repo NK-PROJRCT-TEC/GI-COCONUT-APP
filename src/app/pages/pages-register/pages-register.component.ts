@@ -5,13 +5,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import Swal from 'sweetalert2';
 const { v4: uuidv4 } = require('uuid');
 declare const window: any;
-
+import jsPDF from 'jspdf';
+import { myfont } from 'src/environments/myfont';
 @Component({
   selector: 'app-pages-register',
   templateUrl: './pages-register.component.html',
   styleUrls: ['./pages-register.component.css']
 })
 export class PagesRegisterComponent implements OnInit {
+  private font = myfont;
   is_gi_certificate: boolean = false;
   is_gi: any;
   is_dna_certificate: boolean = false;
@@ -144,20 +146,29 @@ export class PagesRegisterComponent implements OnInit {
     this.imageChangedEvent2 = '';
     this.is_confirm_image2 = false;
     this.people_image_profile = this.preview_image2;
+    console.log(this.people_image_profile);
   }
   submit_people() {
     this.is_status = "1";
     this.people_generate = uuidv4();
-
+    console.log(this.people_email);
+    if ( this.people_email == undefined || this.people_email == "") {
+      Swal.fire({
+        icon: 'warning',
+        title: '<h6 style="font-family: THSarabunNew;font-size:24px">กรุณากรอกข้อมูลอีเมล</h6>',
+        confirmButtonText :'<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+        confirmButtonColor:"#0d6efd"
+      })
+    }
     if (this.confirm_people_password != this.people_password) {
       Swal.fire({
         icon: 'warning',
-        title: '<h6 style="font-family: Kanit-Regular;">พาสเวิร์ดไม่ตรงกัน</h6>'
+        title: '<h6 style="font-family: THSarabunNew;">พาสเวิร์ดไม่ตรงกัน</h6>'
       })
     } else if (this.people_term == false || this.people_term == undefined) {
       Swal.fire({
         icon: 'warning',
-        title: '<h6 style="font-family: Kanit-Regular;">กรุณายอมรับเงื่อนไข</h6>'
+        title: '<h6 style="font-family: THSarabunNew;">กรุณายอมรับเงื่อนไข</h6>'
       })
     }
     else {
@@ -182,7 +193,7 @@ export class PagesRegisterComponent implements OnInit {
       } else {
         this.is_term = 0;
       }
-      if(this.people_image_profile == undefined){
+      if (this.people_image_profile == undefined) {
         this.people_image_profile = '';
       }
       console.log(this.people_name);
@@ -206,12 +217,21 @@ export class PagesRegisterComponent implements OnInit {
       console.log(this.is_status);
       console.log(this.people_generate);
       console.log(this.people_image_profile);
-      this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile,this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
-        if (res) {
+      this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile, this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
+        console.log(res.length);
+        if (res.length > 0) {
+          Swal.fire({
+            icon: 'warning',
+            title: '<h6 style="font-family: THSarabunNew;font-size:24px">มีอีเมลอยู่ในระบบแล้ว</h6>',
+            confirmButtonText :'<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+            confirmButtonColor:"#0d6efd"
+          })
+          this.people_email = "";
+        } else {
           this.PagesRegisterService.InsertHistory(this.people_generate, this.is_status).subscribe((res: any) => {
             if (res) {
               Swal.fire({
-                title: '<h5 style="font-family: Kanit-Regular;">บันทึกข้อมูลเรียนร้อย</h5>',
+                title: '<h5 style="font-family: THSarabunNew;">บันทึกข้อมูลเรียนร้อย</h5>',
                 icon: 'success',
                 showCancelButton: false,
                 confirmButtonColor: '#3085d6',
@@ -223,7 +243,6 @@ export class PagesRegisterComponent implements OnInit {
                   // window.location.reload();
                 }
               })
-
             }
           });
         }
@@ -234,7 +253,7 @@ export class PagesRegisterComponent implements OnInit {
     if (this.confirm_people_password != this.people_password) {
       Swal.fire({
         icon: 'warning',
-        title: '<h6 style="font-family: Kanit-Regular;">พาสเวิร์ดไม่ตรงกัน</h6>'
+        title: '<h6 style="font-family: THSarabunNew;">พาสเวิร์ดไม่ตรงกัน</h6>'
       })
     }
   }

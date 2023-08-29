@@ -38,6 +38,7 @@ export class PagesLoginComponent implements OnInit {
         if (res[0].is_status == '2') {
           // this.router.navigate(['pages-land-information']);
           this.router.navigate(['dashboard']);
+          // window.location.href = 'http://gicoconut.nkstec.ac.th/dashboard';
 
         } else {
           this.router.navigate(['waiting-approve']);

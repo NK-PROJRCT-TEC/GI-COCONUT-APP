@@ -42,67 +42,71 @@
                     </div>
                 </form>
                 <div class="card-body">
-                    <h5 class="card-title">แปลงที่ยืนขออนุมัติ</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">ลำดับที่</p>
-                                </th>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">พิกัดแปลงที่ดิน</p>
-                                </th>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">ตำแหน่งแปลง</p>
-                                </th>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">สถานะ</p>
-                                </th>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">ความถูกต้อง</p>
-                                </th>
-                                <th scope="col">
-                                    <p style="font-size: 24px;text-align: center;">แก้ไขข้อมูล</p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of this.arrLandUse ;let i = index" [attr.data-index]="item.landuse_id">
-                                <th scope="row" style="text-align: center;">{{i+1}}</th>
+                    <div class="row">
+                        <h5 class="card-title">แปลงที่ยืนขออนุมัติ</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">ลำดับที่</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">พิกัดแปลงที่ดิน</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">ตำแหน่งแปลง</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">สถานะ</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">ความถูกต้อง</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="font-size: 18px;text-align: center;">แก้ไขข้อมูล</p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of this.arrLandUse ;let i = index"
+                                    [attr.data-index]="item.landuse_id">
+                                    <th scope="row" style="text-align: center;">{{i+1}}</th>
 
-                                <th style="text-align: center;"> <a
-                                        href="http://maps.google.com/?q={{item.landuse_lat}},{{item.landuse_lng}}"
-                                        target="_blank"><i class="ri-map-pin-line" style="font-size: 1.5rem;"></i></a>
-                                </th>
-                                <th style="text-align: center;">
-                                    <p>{{item.districts_name_th}}</p>
-                                </th>
-                                <th *ngIf="item.is_status == '1'" style="text-align: center;">
-                                    <p style="color: green;">รออนุมัติ</p>
-                                </th>
-                                <th *ngIf="item.is_status == '0'" style="text-align: center;">
-                                    <p style="color: red;">แจ้งให้แก้ไขเอกสาร</p>
-                                </th>
-                                <th style="text-align: center;" *ngIf="item.is_status == '2'">
-                                    <p style="color: green;">อนุมัติแล้ว</p>
-                                </th>
-                                <th>
-                                    <p style="text-align: center;">{{item.point}}</p>
-                                </th>
-                                <th style="text-align: center;" *ngIf="item.is_status == '0'">
-                                    <button type="button" class="btn btn-warning"
-                                        (click)="landuse_info(item)">แก้ไข</button>
-                                </th>
-                                <th style="text-align: center;" *ngIf="item.is_status == '1'">
-                                    -
-                                </th>
-                                <th style="text-align: center;" *ngIf="item.is_status == '2'">
-                                    <qrcode [qrdata]="item.certificate" [width]="75" [errorCorrectionLevel]="'M'">
-                                    </qrcode>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <th style="text-align: center;"> <a
+                                            href="http://maps.google.com/?q={{item.landuse_lat}},{{item.landuse_lng}}"
+                                            target="_blank"><i class="ri-map-pin-line"
+                                                style="font-size: 1.5rem;"></i></a>
+                                    </th>
+                                    <th style="text-align: center;">
+                                        <p>{{item.districts_name_th}}</p>
+                                    </th>
+                                    <th *ngIf="item.is_status == '1'" style="text-align: center;">
+                                        <p style="color: green;">รออนุมัติ</p>
+                                    </th>
+                                    <th *ngIf="item.is_status == '0'" style="text-align: center;">
+                                        <p style="color: red;">แจ้งให้แก้ไขเอกสาร</p>
+                                    </th>
+                                    <th style="text-align: center;" *ngIf="item.is_status == '2'">
+                                        <p style="color: green;">อนุมัติแล้ว</p>
+                                    </th>
+                                    <th>
+                                        <p style="text-align: center;">{{item.point}}</p>
+                                    </th>
+                                    <th style="text-align: center;" *ngIf="item.is_status == '0'">
+                                        <button type="button" class="btn btn-warning"
+                                            (click)="landuse_info(item)">แก้ไข</button>
+                                    </th>
+                                    <th style="text-align: center;" *ngIf="item.is_status == '1'">
+                                        -
+                                    </th>
+                                    <th style="text-align: center;" *ngIf="item.is_status == '2'">
+                                        <qrcode [qrdata]="item.certificate" [width]="75" [errorCorrectionLevel]="'M'">
+                                        </qrcode>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

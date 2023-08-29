@@ -1,0 +1,28 @@
+
+@font-face {
+    font-family: "THSarabunNew";
+  
+    src: url("../../../assets/fonts/THSarabunNew.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  a,
+  h1,
+  h2,
+  h5,
+  h6,
+  p,
+  label,
+  option,
+  select,
+  input,
+  text,
+  span,
+  textarea,
+  button {
+    font-family: THSarabunNew;
+    font-size: 20px;
+    font-weight: bold;
+  }
