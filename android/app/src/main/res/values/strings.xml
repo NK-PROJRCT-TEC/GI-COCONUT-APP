@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GI-COCONUT</string>
+    <string name="title_activity_main">GI-COCONUT</string>
+    <string name="package_name">com.gicoconut.app</string>
+    <string name="custom_url_scheme">com.gicoconut.app</string>
+</resources>
