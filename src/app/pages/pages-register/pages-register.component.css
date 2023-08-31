@@ -45,6 +45,7 @@ input,
 text,
 textarea,
 span,
+div,
 button {
     font-family: THSarabunNew;
     font-size: 20px;

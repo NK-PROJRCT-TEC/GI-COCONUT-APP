@@ -20,7 +20,7 @@
                            <p class="text-center small">ป้อนรายละเอียดส่วนบุคคลของคุณเพื่อสร้างบัญชี</p>
                         </div>
                         <form class="row g-12 needs-validation" novalidate>
-                           <div class="col-12" >
+                           <div class="col-12">
                               <label for="inputNumber" class="form-label">รูปโปรไฟล์</label>
                               <div class="col-sm-10">
                                  <!-- <input class="form-control" type="file" id="formFile"> -->
@@ -41,31 +41,68 @@
                               <label for="people_name" class="form-label">ชื่อผู้ผลิต</label> <input type="text"
                                  name="people_name" [(ngModel)]="people_name" class="form-control" id="people_name"
                                  required>
-                              <div class="invalid-feedback">โปรดป้อนชื่อผู้ผลิต!</div>
+                              <div class="invalid-feedback">โปรดป้อน ชื่อผู้ผลิต!</div>
                            </div>
                            <div class="col-12">
                               <label for="people_localtion_number" class="form-label">ที่ตั้งเลขที่</label> <input
                                  type="text" name="people_localtion_number" [(ngModel)]="people_localtion_number"
                                  class="form-control" id="people_localtion_number" required>
-                              <div class="invalid-feedback">โปรดป้อนเลขที่ที่ตั้ง!</div>
+                              <div class="invalid-feedback">โปรดป้อน เลขที่ที่ตั้ง!</div>
                            </div>
                            <div class="col-12">
                               <label for="people_moo" class="form-label">หมู่ที่</label> <input type="text"
                                  name="people_moo" [(ngModel)]="people_moo" class="form-control" id="people_moo"
                                  required>
-                              <div class="invalid-feedback">โปรดป้อนหมู่ที่ที่ตั้ง!</div>
+                              <div class="invalid-feedback">โปรดป้อน หมู่ที่ที่ตั้ง!</div>
                            </div>
                            <div class="col-12">
                               <label for="people_road" class="form-label">ถนน</label> <input type="text"
                                  name="people_road" [(ngModel)]="people_road" class="form-control" id="people_road"
                                  required>
-                              <div class="invalid-feedback">โปรดป้อนถนน!</div>
+                              <div class="invalid-feedback">โปรดป้อน ถนน!</div>
                            </div>
                            <div class="col-12">
                               <label for="people_alley" class="form-label">ตรอก/ซอย</label> <input type="text"
                                  name="people_alley" [(ngModel)]="people_alley" class="form-control" id="people_alley"
                                  required>
-                              <div class="invalid-feedback">โปรดป้อนตรอก/ซอย!</div>
+                              <div class="invalid-feedback">โปรดป้อน ตรอก/ซอย!</div>
+                           </div>
+                           <div class="col-12">
+                              <label for="province" class="form-label">จังหวัด</label>
+                              <select name="province" (change)="func_province($event)" class="form-select"
+                                 [(ngModel)]="is_province">
+                                 <option *ngFor="let p of province" [value]="p.id">
+                                    {{p.name_th}}
+                                 </option>
+                              </select>
+                           </div>
+                           <div class="col-12">
+                              <label for="amphures" class="form-label">อำเภอ</label>
+                              <select name="amphures" (change)="func_amphures($event)" class="form-select"
+                                  [(ngModel)]="is_amphures">
+                                 <option *ngFor="let a of selected_amphures" [value]="a.id">
+                                    {{a.name_th}}
+                                 </option>
+                              </select>
+                           </div>
+                           <div class="col-12">
+                              <label for="districts" class="form-label">ตำบล</label>
+                              <select name="districts" (change)="func_districts($event)" class="form-select"
+                                  [(ngModel)]="is_districts">
+                                 <option *ngFor="let d of selected_districts" [value]="d.id">
+                                    {{d.name_th}}
+                                 </option>
+                              </select>
+                           </div>
+                           <!-- <div class="row">
+                              <div class="col-4">
+                                 <h5 class="card-title">รหัสไปรษณีย์</h5>
+                              </div>
+                              <div class="col-8" style="margin-top: 20px;">
+
+                                 <input type="text" name="zip_code" [(ngModel)]="zip_code"
+                                    style="height: 30px;width: 150px;" class="form-control" id="zip_code" required>
+                              </div>
                            </div>
                            <div class="col-12">
                               <label for="people_tumbon" class="form-label">ตำบล</label> <input type="text"
@@ -84,7 +121,7 @@
                                  name="people_province" [(ngModel)]="people_province" class="form-control"
                                  id="people_province" required>
                               <div class="invalid-feedback">โปรดป้อนจังหวัด!</div>
-                           </div>
+                           </div> -->
                            <div class="col-12">
                               <label for="people_postcode" class="form-label">รหัสไปรษณีย์</label> <input type="text"
                                  name="people_postcode" [(ngModel)]="people_postcode" class="form-control"
@@ -134,14 +171,14 @@
                               </div>
                            </div>
 
-                           <div class="col-12" *ngIf="is_gi_certificate">
+                           <div class="col-12">
                               <div class="form-check">
                                  <input class="form-check-input" name="is_dna_certificate"
                                     [(ngModel)]="is_dna_certificate" type="checkbox" id="is_dna_certificate">
                                  <label class="form-check-label" for="is_dna_certificate">มีใบรับรองผลตรวจ DNA</label>
                               </div>
                            </div>
-                           <div class="col-12" *ngIf="is_gi_certificate && is_dna_certificate">
+                           <div class="col-12" *ngIf="is_dna_certificate">
                               <label for="inputNumber" class="form-label">ใบรับรองผลตรวจ DNA</label>
                               <div class="col-sm-10">
                                  <!-- <input class="form-control" type="file" id="formFile"> -->
@@ -202,8 +239,8 @@
                                                          หลักเกณฑ์และเงื่อนไขที่เกี่ยวข้องกับการรับรองไว้เรียบร้อยแล้ว</span>
                                                    </div>
                                                 </div>
-                                                <div class="modal-footer"> <button type="button"
-                                                      class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
+                                                <div class="modal-footer"> <button type="button" class="btn btn-danger"
+                                                      data-bs-dismiss="modal">ปิด</button>
                                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                                 </div>
                                              </div>

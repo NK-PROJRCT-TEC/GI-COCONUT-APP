@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 declare const window: any;
 import jsPDF from 'jspdf';
 import { myfont } from 'src/environments/myfont';
+import { exit } from 'process';
 @Component({
   selector: 'app-pages-register',
   templateUrl: './pages-register.component.html',
@@ -54,10 +55,40 @@ export class PagesRegisterComponent implements OnInit {
   dna_certificates: any;
   people_image_dna: any;
   people_generate: any;
+  //province
+  province: any[] = [];
+  amphures: any[] = [];
+  districts: any[] = [];
+  selected_province: any;
+  selected_amphures: any;
+  selected_districts: any;
+  zip_code: any;
+  is_province: any;
+  is_amphures: any;
+  is_districts: any;
+  is_zip_code: any;
   constructor(private PagesRegisterService: PagesRegisterService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.PagesRegisterService.SelectProvinces().subscribe((res: any) => {
+      if (res) {
+        this.province = res;
+        localStorage.setItem('province', JSON.stringify(this.province));
 
+      }
+    });
+    this.PagesRegisterService.SelectAmphures().subscribe((res: any) => {
+      if (res) {
+        this.amphures = res;
+        localStorage.setItem('amphures', JSON.stringify(this.amphures));
+      }
+    });
+    this.PagesRegisterService.SelectDistricts().subscribe((res: any) => {
+      if (res) {
+        this.districts = res;
+        localStorage.setItem('districts', JSON.stringify(this.districts));
+      }
+    });
   }
 
   fileChangeEvent(event: any): void {
@@ -152,24 +183,27 @@ export class PagesRegisterComponent implements OnInit {
     this.is_status = "1";
     this.people_generate = uuidv4();
     console.log(this.people_email);
-    if ( this.people_email == undefined || this.people_email == "") {
+    if (this.people_email == undefined || this.people_email == "") {
       Swal.fire({
         icon: 'warning',
         title: '<h6 style="font-family: THSarabunNew;font-size:24px">กรุณากรอกข้อมูลอีเมล</h6>',
-        confirmButtonText :'<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
-        confirmButtonColor:"#0d6efd"
+        confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+        confirmButtonColor: "#0d6efd"
       })
+      return;
     }
     if (this.confirm_people_password != this.people_password) {
       Swal.fire({
         icon: 'warning',
         title: '<h6 style="font-family: THSarabunNew;">พาสเวิร์ดไม่ตรงกัน</h6>'
       })
+      return;
     } else if (this.people_term == false || this.people_term == undefined) {
       Swal.fire({
         icon: 'warning',
         title: '<h6 style="font-family: THSarabunNew;">กรุณายอมรับเงื่อนไข</h6>'
       })
+      return;
     }
     else {
       if (this.gi_certificates == undefined) {
@@ -193,8 +227,41 @@ export class PagesRegisterComponent implements OnInit {
       } else {
         this.is_term = 0;
       }
-      if (this.people_image_profile == undefined) {
-        this.people_image_profile = '';
+      if (this.people_image_profile == undefined || this.people_image_profile == '') {
+        this.people_image_profile = '-';
+      }
+      if (this.gi_certificates == undefined || this.gi_certificates == '') {
+        this.gi_certificates = '-';
+      }
+      if (this.dna_certificates == undefined || this.dna_certificates == '') {
+        this.dna_certificates = '-';
+      }
+      if (this.is_gi == true && this.dna_certificates == '-') {
+        Swal.fire({
+          icon: 'warning',
+          title: '<h6 style="font-family: THSarabunNew;font-size:24px">กรุณาอัพโหลดใบรับรอง GI</h6>',
+          confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+          confirmButtonColor: "#0d6efd"
+        })
+        return;
+      }
+      if (this.is_gi_certificate == true && this.gi_certificates == '-') {
+        Swal.fire({
+          icon: 'warning',
+          title: '<h6 style="font-family: THSarabunNew;font-size:24px">กรุณาอัพโหลดใบรับรอง GI</h6>',
+          confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+          confirmButtonColor: "#0d6efd"
+        })
+        return;
+      }
+      if (this.is_dna_certificate == true && this.dna_certificates == '-') {
+        Swal.fire({
+          icon: 'warning',
+          title: '<h6 style="font-family: THSarabunNew;font-size:24px">กรุณาอัพโหลดใบรับรองตรวจผล DNA</h6>',
+          confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+          confirmButtonColor: "#0d6efd"
+        })
+        return;
       }
       console.log(this.people_name);
       console.log(this.people_localtion_number);
@@ -217,14 +284,24 @@ export class PagesRegisterComponent implements OnInit {
       console.log(this.is_status);
       console.log(this.people_generate);
       console.log(this.people_image_profile);
+      console.log(this.is_province);
+      console.log(this.is_amphures);
+      console.log(this.is_districts);
+      console.log(this.people_postcode);
+
+      this.people_province = this.is_province;
+      this.people_district = this.is_amphures;
+      this.people_tumbon = this.is_districts;
+      
+
       this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile, this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
         console.log(res.length);
         if (res.length > 0) {
           Swal.fire({
             icon: 'warning',
             title: '<h6 style="font-family: THSarabunNew;font-size:24px">มีอีเมลอยู่ในระบบแล้ว</h6>',
-            confirmButtonText :'<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
-            confirmButtonColor:"#0d6efd"
+            confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px">ตกลง</h6>',
+            confirmButtonColor: "#0d6efd"
           })
           this.people_email = "";
         } else {
@@ -240,7 +317,6 @@ export class PagesRegisterComponent implements OnInit {
               }).then((result) => {
                 if (result.isConfirmed) {
                   this.router.navigate(['pages-login']);
-                  // window.location.reload();
                 }
               })
             }
@@ -256,6 +332,29 @@ export class PagesRegisterComponent implements OnInit {
         title: '<h6 style="font-family: THSarabunNew;">พาสเวิร์ดไม่ตรงกัน</h6>'
       })
     }
+  }
+  func_province(e: any) {
+    var code = e.target.value;
+    this.selected_amphures = this.amphures.filter(option => option.province_id == Number(code));
+    // console.log(this.selected_amphures);
+    // console.log(code);
+    // this.selected_province = code;
+  }
+  func_amphures(e: any) {
+    var code = e.target.value;
+    this.selected_districts = this.districts.filter(option => option.amphure_id == Number(code));
+    // console.log(this.selected_districts);
+    // console.log(code);
+    // this.selected_amphures = code;
+  }
+  func_districts(e: any) {
+    var code = e.target.value;
+    this.is_zip_code = this.districts.filter(option => option.id == Number(code));
+    this.people_postcode = this.is_zip_code[0].zip_code;
+    console.log(this.is_province);
+    console.log(this.is_amphures);
+    console.log(this.is_districts);
+    console.log(this.people_postcode);
   }
   // base64ToBlob(base64: string, mime: any) {
   //   mime = mime || '';

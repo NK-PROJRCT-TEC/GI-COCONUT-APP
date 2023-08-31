@@ -131,6 +131,7 @@ export class PagesLandInformationComponent implements OnInit {
     this.PagesLandInformationService.SelectProvinces().subscribe((res: any) => {
       if (res) {
         this.province = res;
+        localStorage.setItem("province",res);
       }
     });
     this.PagesLandInformationService.SelectAmphures().subscribe((res: any) => {

@@ -47,7 +47,7 @@ export class PagesUserProfilePeopleComponent implements OnInit {
       } else {
         Swal.fire({
           icon: 'warning',
-          title: '<h6 style="font-family: Kanit-Regular;">ไม่พบข้อมูล</h6>'
+          title: '<h6 style="font-family: THSarabunNew;">ไม่พบข้อมูล</h6>'
         })
       }
     });

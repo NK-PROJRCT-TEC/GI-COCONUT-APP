@@ -11,6 +11,9 @@ export class PagesEditPeopleService {
   private UpdatePeopleinfoUrl: string = `${this.env.API_PATH}/UpdateStatusPeople`;
   private InsertHistoryUrl: string = `${this.env.API_PATH}/InsertHistory`;
   private SelectPeopleforUpdateUrl: string = `${this.env.API_PATH}/SelectPeopleforUpdate`;
+  private SelectProvincesUrl: string = `${this.env.API_PATH}/SelectProvinces`;
+  private SelectAmphuresUrl: string = `${this.env.API_PATH}/SelectAmphures`;
+  private SelectDistrictsUrl: string = `${this.env.API_PATH}/SelectDistricts`;
   constructor(private http: HttpClient) {
   }
 
@@ -26,6 +29,17 @@ export class PagesEditPeopleService {
     return this.http.post(this.InsertHistoryUrl,
       { people_generate: people_generate, is_status: is_status });
   }
-
+  SelectProvinces() {
+    return this.http.get(this.SelectProvincesUrl,
+      {});
+  }
+  SelectAmphures() {
+    return this.http.get(this.SelectAmphuresUrl,
+      {});
+  }
+  SelectDistricts() {
+    return this.http.get(this.SelectDistrictsUrl,
+      {});
+  }
 
 }

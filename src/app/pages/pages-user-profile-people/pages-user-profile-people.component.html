@@ -46,7 +46,8 @@
                                         <p>รูปโปรไฟล์</p>
                                     </div>
                                     <div class="col-lg-9 col-md-8">
-                                        <img src="{{arrpeopleModel[0].people_image_profile}}" alt="Profile" style="width: 100%;">
+                                        <img src="{{arrpeopleModel[0].people_image_profile}}" alt="Profile"
+                                            style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -125,16 +126,24 @@
                                     <div class="col-lg-3 col-md-4 label">
                                         <p>ใบรับรอง GI</p>
                                     </div>
-                                    <div class="col-lg-9 col-md-8">
-                                        <img src="{{arrpeopleModel[0].gi_certificates}}" alt="Profile" style="width: 100%;">
+                                    <div class="col-lg-9 col-md-8" *ngIf="arrpeopleModel[0].gi_certificates != '-'">
+                                        <img src="{{arrpeopleModel[0].gi_certificates}}" alt="Profile"
+                                            style="width: 100%;">
+                                    </div>
+                                    <div class="col-lg-9 col-md-8" *ngIf="arrpeopleModel[0].gi_certificates == '-'">
+                                        <p>ไฟล์ภาพไม่ถูกอัฟโหลด</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">
                                         <p>ใบตรวจ DNA</p>
                                     </div>
-                                    <div class="col-lg-9 col-md-8">
-                                        <img src="{{arrpeopleModel[0].dna_certificates}}" alt="Profile" style="width: 100%;">
+                                    <div class="col-lg-9 col-md-8" *ngIf="arrpeopleModel[0].dna_certificates != '-'">
+                                        <img src="{{arrpeopleModel[0].dna_certificates}}" alt="Profile"
+                                            style="width: 100%;">
+                                    </div>
+                                    <div class="col-lg-9 col-md-8" *ngIf="arrpeopleModel[0].dna_certificates == '-'">
+                                        <p>ไฟล์ภาพไม่ถูกอัฟโหลด</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -166,9 +175,11 @@
                                         <p>สถานะการลงทะเบียน</p>
                                     </div>
                                     <div class="col-lg-9 col-md-8">
-                                        <p style="color: red;" *ngIf="arrpeopleModel[0].is_status == '0'">รอแก้ข้อมูลการสมัคร</p>
+                                        <p style="color: red;" *ngIf="arrpeopleModel[0].is_status == '0'">
+                                            รอแก้ข้อมูลการสมัคร</p>
                                         <p *ngIf="arrpeopleModel[0].is_status == '1'">รออนุมัติ</p>
-                                        <p style="color: green;" *ngIf="arrpeopleModel[0].is_status == '2'">อนุมัติแล้ว</p>
+                                        <p style="color: green;" *ngIf="arrpeopleModel[0].is_status == '2'">อนุมัติแล้ว
+                                        </p>
                                     </div>
                                 </div>
                             </div>
