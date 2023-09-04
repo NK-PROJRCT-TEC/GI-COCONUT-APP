@@ -22,7 +22,7 @@ export class PagesLoginComponent implements OnInit {
   }
   dashboard() {
     const enteredPasswordHash = CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);
-    this.PagesLoginService.Login(this.username, this.password,enteredPasswordHash).subscribe((res: any) => {
+    this.PagesLoginService.Login(this.username, this.password, enteredPasswordHash).subscribe((res: any) => {
       if (res.length == 1) {
         localStorage.setItem("username", this.username);
         localStorage.setItem("password", this.password);
@@ -44,7 +44,7 @@ export class PagesLoginComponent implements OnInit {
         Swal.fire({
           icon: 'warning',
           title: '<h6 style="font-family: THSarabunNew;font-size:24px;">กรุณากรอกอีเมลล์และพาสเวิร์ดเพื่อเข้าสู่ระบบ</h6>',
-          confirmButtonText : '<h6 style="font-family: THSarabunNew;font-size:24px;">ตกลง</h6>'
+          confirmButtonText: '<h6 style="font-family: THSarabunNew;font-size:24px;">ตกลง</h6>'
         })
       }
     });
