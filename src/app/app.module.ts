@@ -52,6 +52,7 @@ import { PagesWaitingApproveLanduseComponent } from './pages/pages-waiting-appro
 import { PagesLanduseDetailComponent } from './pages/pages-landuse-detail/pages-landuse-detail.component';
 import { PagesEditLanduseDetailComponent } from './pages/pages-edit-landuse-detail/pages-edit-landuse-detail.component';
 import { PagesCertificateComponent } from './pages/pages-certificate/pages-certificate.component';
+import { PagesWaitingApproveLanduseDetailComponent } from './pages/pages-waiting-approve-landuse-detail/pages-waiting-approve-landuse-detail.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { PagesCertificateComponent } from './pages/pages-certificate/pages-certi
     PagesWaitingApproveLanduseComponent,
     PagesLanduseDetailComponent,
     PagesEditLanduseDetailComponent,
-    PagesCertificateComponent
+    PagesCertificateComponent,
+    PagesWaitingApproveLanduseDetailComponent
   ],
   imports: [
     BrowserModule,

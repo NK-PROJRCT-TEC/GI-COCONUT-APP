@@ -9,33 +9,33 @@ import { environment } from 'src/environments/environment.prod';
 export class PagesEditLanduseDetailService {
   private env = environment;
   //OLD
-  private SelectPeopleinfoUrl: string = `${this.env.API_PATH}/SelectPeopleinfo`;
-  private SelectLandUseInfoUrl: string = `${this.env.API_PATH}/SelectLandUseInfo`;
+  private SelectProvincesUrl: string = `${this.env.API_PATH}/SelectProvinces`;
+  private SelectAmphuresUrl: string = `${this.env.API_PATH}/SelectAmphures`;
+  private SelectDistrictsUrl: string = `${this.env.API_PATH}/SelectDistricts`;
   private UpdateLanduseInfoUrl: string = `${this.env.API_PATH}/UpdateLanduseInfo`;
   private InsertHistoryLanduseUrl: string = `${this.env.API_PATH}/InsertHistoryLanduse`;
-  //NEW
-  private SelectLandUseByLandByIDUrl: string = `${this.env.API_PATH}/SelectLandUseByLandByID`;
+
+
   constructor(private http: HttpClient) {
   }
-  SelectProfilePeopleinfo(people_generate: string) {
-    return this.http.post(this.SelectPeopleinfoUrl,
-      { people_generate: people_generate });
+  SelectProvinces() {
+    return this.http.get(this.SelectProvincesUrl,
+      {});
   }
-  SelectLandUseInfo(people_generate: string) {
-    return this.http.post(this.SelectLandUseInfoUrl,
-      { people_generate: people_generate });
+  SelectAmphures() {
+    return this.http.get(this.SelectAmphuresUrl,
+      {});
   }
-  UpdateLanduseInfo(color_of_shoot: string, type_of_coconut: string, bole: string, petiole_length: string, leaflet_length: string, number_of_spikelets: string, peduncle_length: string, young_fruit_weight: string, shape: string, valuenow: string, lat: string, lng: string, people_generate: string, is_status: string, landuse_id: number) {
+  SelectDistricts() {
+    return this.http.get(this.SelectDistrictsUrl,
+      {});
+  }
+  UpdateLanduse(coconut_base_characteristics: string, base_to_ground_distance_20cm: string, base_to_ground_distance_150cm: string, track_measurement_1_to_17: string, leaf_stalk_length: string, leaf_stalk_width: string, length_of_leaf_segment_with_leaflet: string, count_of_left_subleaflets: string, length_of_subleaflet: string, production_jan_to_apr: string, production_may_to_aug: string, production_sep_to_dec: string, production_image: string, husked_fruit_peel_width: string, husked_fruit_peel_length: string, husked_no_fruit_peel_width: string, husked_no_fruit_peel_length: string, boundary_length: string, husk_skin_color: string, seed_structure: string, fresh_fruit_weight: string, plant_age: string, tree_canopy_shape: string, tree_quantity: string, planting_space: string, is_province: string, is_amphures: string, is_districts: string, zip_code: string, landuse_lat: string, landuse_lng: string, is_status: string, landuse_id: string) {
     return this.http.post(this.UpdateLanduseInfoUrl,
-      { color_of_shoot: color_of_shoot, type_of_coconut: type_of_coconut, bole: bole, petiole_length: petiole_length, leaflet_length: leaflet_length, number_of_spikelets: number_of_spikelets, peduncle_length: peduncle_length, young_fruit_weight: young_fruit_weight, shape: shape, valuenow: valuenow, lat: lat, lng: lng, people_generate: people_generate, is_status: is_status, landuse_id: landuse_id });
+      { coconut_base_characteristics: coconut_base_characteristics, base_to_ground_distance_20cm: base_to_ground_distance_20cm, base_to_ground_distance_150cm: base_to_ground_distance_150cm, track_measurement_1_to_17: track_measurement_1_to_17, leaf_stalk_length: leaf_stalk_length, leaf_stalk_width: leaf_stalk_width, length_of_leaf_segment_with_leaflet: length_of_leaf_segment_with_leaflet, count_of_left_subleaflets: count_of_left_subleaflets, length_of_subleaflet: length_of_subleaflet, production_jan_to_apr: production_jan_to_apr, production_may_to_aug: production_may_to_aug, production_sep_to_dec: production_sep_to_dec, production_image: production_image, husked_fruit_peel_width: husked_fruit_peel_width, husked_fruit_peel_length: husked_fruit_peel_length, husked_no_fruit_peel_width: husked_no_fruit_peel_width, husked_no_fruit_peel_length: husked_no_fruit_peel_length, boundary_length: boundary_length, husk_skin_color: husk_skin_color, seed_structure: seed_structure, fresh_fruit_weight: fresh_fruit_weight, plant_age: plant_age, tree_canopy_shape: tree_canopy_shape, tree_quantity: tree_quantity, planting_space: planting_space, is_province: is_province, is_amphures: is_amphures, is_districts: is_districts, zip_code: zip_code, landuse_lat: landuse_lat, landuse_lng: landuse_lng, is_status: is_status, landuse_id: landuse_id });
   }
-  InsertHistoryLanduse(people_generate: string, is_status: string, landuse_id: any) {
+  InsertHistoryLanduse(people_generate: string, is_status: string, landuse_id: string) {
     return this.http.post(this.InsertHistoryLanduseUrl,
       { people_generate: people_generate, is_status: is_status, landuse_id: landuse_id });
-  }
-  //NEW
-  SelectLandUseByLandByID(landuse_id: string) {
-    return this.http.post(this.SelectLandUseByLandByIDUrl,
-      { landuse_id: landuse_id });
   }
 }

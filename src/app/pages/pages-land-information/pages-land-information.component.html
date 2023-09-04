@@ -1,18 +1,18 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs"></script>
 <main id="main" class="main">
     <div class="row">
-        <div class="col-lg-12">
+        <!-- <div class="col-lg-12">
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">บันทึกคำร้องขออนุมัติ</h5>
-                    <h5 class="card-title">ความสำเร็จ</h5>
+                <div class="card-body"> -->
+
+        <!-- <h5 class="card-title">ความสำเร็จ</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                             id="progress_percent" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             <p style="margin-top: 15px;">{{valuenow}}</p>
                         </div>
-                    </div>
-                    <!-- <div class="row" style="text-align: center;">
+                    </div> -->
+        <!-- <div class="row" style="text-align: center;">
                         <div class="col-3">
                             <div style="font-size: 1vw;color: #63dc2a;"><span>นักเรียน</span></div>
                             <i class="bx bxs-contact" style="font-size:50px;color: #63dc2a;"></i>
@@ -31,14 +31,15 @@
                             <i class="bx bxs-file-image" style="font-size:50px;color: #dc5f2a;"></i>
                         </div>
                     </div> -->
-                </div>
+        <!-- </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title col-lg-12">บันทึกคำร้องขออนุมัติ</h5>
                     <h5 class="card-title">ลักษณะ​ สันฐาน​ของมะพร้าวน้ำหอม</h5>
                     <form class="row g-3">
                         <div class="col-md-4">
@@ -87,8 +88,7 @@
                                 <option value="ไม่มีโคน">ไม่มีโคน</option>
                             </select> -->
                             <select id="coconut_base_characteristics" class="form-select"
-                                [(ngModel)]="coconut_base_characteristics" name="coconut_base_characteristics"
-                                >
+                                [(ngModel)]="coconut_base_characteristics" name="coconut_base_characteristics">
                                 <!-- <option selected value="0">Choose...</option> -->
                                 <option selected value="มีโคน">มีโคน</option>
                                 <option value="ไม่มีโคน">ไม่มีโคน</option>
@@ -111,8 +111,8 @@
                                                 <img src="assets/img/nature/2-1.jpg" class="d-block w-100"
                                                     alt="เหนือระดับดับพื้นดิน ​20 ซม.">
                                                 <div class="carousel-caption d-md-block">
-                                                    <h5 style="background-color:black;">เหนือระดับดับพื้นดิน ​20 ซม.​
-                                                    </h5>
+                                                    <!-- <h5 style="background-color:black;">เหนือระดับดับพื้นดิน ​20 ซม.​
+                                                    </h5> -->
                                                     <!-- <p>Some representative placeholder content for the first slide.</p> -->
                                                 </div>
                                             </div>
@@ -120,8 +120,8 @@
                                                 <img src="assets/img/nature/2-2.jpg" class="d-block w-100"
                                                     alt="เหนือระดับดับพื้นดิน 150 ซม.">
                                                 <div class="carousel-caption d-md-block">
-                                                    <h5 style="background-color:black;">เหนือระดับดับพื้นดิน 150 ซม.
-                                                    </h5>
+                                                    <!-- <h5 style="background-color:black;">เหนือระดับดับพื้นดิน 150 ซม.
+                                                    </h5> -->
                                                     <!-- <p>Some representative placeholder content for the second slide.</p> -->
                                                 </div>
                                             </div>
@@ -144,11 +144,13 @@
                                 <option value="กลุ่มลูกผสม">กลุ่มลูกผสม</option>
                                 <option value="กลุ่มต้นไม้สูง">กลุ่มต้นไม้สูง</option>
                             </select> -->
-                            <label for="base_to_ground_distance_20cm" class="form-label">​1) วัดเหนือระดับดับพื้นดิน ​20 ซม.​</label>
+                            <label for="base_to_ground_distance_20cm" class="form-label">​1) วัดเหนือระดับดับพื้นดิน ​20
+                                ซม.​</label>
                             <input type="number" name="	base_to_ground_distance_20cm"
                                 [(ngModel)]="base_to_ground_distance_20cm" class="form-control"
                                 id="base_to_ground_distance_20cm" required>
-                            <label for="base_to_ground_distance_150cm" class="form-label">2) วัดเหนือระดับดับพื้นดิน 150 ซม.</label>
+                            <label for="base_to_ground_distance_150cm" class="form-label">2) วัดเหนือระดับดับพื้นดิน 150
+                                ซม.</label>
                             <input type="number" name="base_to_ground_distance_150cm"
                                 [(ngModel)]="base_to_ground_distance_150cm" class="form-control"
                                 id="base_to_ground_distance_150cm" required>
@@ -205,8 +207,9 @@
                             </div>
                             <label for="track_measurement_1_to_17" class="form-label">ช่วง ​1​ ถึง ​17 รอยทาง
                                 (ซม.)​</label>
-                            <input type="number" name="	track_measurement_1_to_17" [(ngModel)]="track_measurement_1_to_17"
-                                class="form-control" id="track_measurement_1_to_17" required>
+                            <input type="number" name="	track_measurement_1_to_17"
+                                [(ngModel)]="track_measurement_1_to_17" class="form-control"
+                                id="track_measurement_1_to_17" required>
                         </div>
                         <div class="col-md-4">
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
@@ -274,20 +277,19 @@
                             </select> -->
                             <label for="leaf_stalk_length" class="form-label">4.1 ความยาวของก้านทางใบ
                                 (ซม.)​</label>
-                            <input type="number" name="leaf_stalk_length"
-                                [(ngModel)]="leaf_stalk_length" class="form-control"
-                                id="leaf_stalk_length " required>
+                            <input type="number" name="leaf_stalk_length" [(ngModel)]="leaf_stalk_length"
+                                class="form-control" id="leaf_stalk_length " required>
 
 
 
                             <label for="leaf_stalk_width" class="form-label">4.2 ความกว้างของก้านทางใบ
                                 (ซม.)​</label>
-                            <input type="number" name="leaf_stalk_width"
-                                [(ngModel)]="leaf_stalk_width" class="form-control"
-                                id="leaf_stalk_width" required>
+                            <input type="number" name="leaf_stalk_width" [(ngModel)]="leaf_stalk_width"
+                                class="form-control" id="leaf_stalk_width" required>
 
 
-                            <label for="length_of_leaf_segment_with_leaflet" class="form-label">4.3 ความยาวทางใบช่วงที่มีใบย่อย
+                            <label for="length_of_leaf_segment_with_leaflet" class="form-label">4.3
+                                ความยาวทางใบช่วงที่มีใบย่อย
                                 (ซม.)​</label>
                             <input type="number" name="length_of_leaf_segment_with_leaflet"
                                 [(ngModel)]="length_of_leaf_segment_with_leaflet" class="form-control"
@@ -360,9 +362,8 @@
                             </select> -->
                             <label for="length_of_subleaflet" class="form-label">ความยาวของใบย่อย (ซม.)
                                 ​</label>
-                            <input type="number" name="length_of_subleaflet"
-                                [(ngModel)]="length_of_subleaflet" class="form-control"
-                                id="length_of_subleaflet" required>
+                            <input type="number" name="length_of_subleaflet" [(ngModel)]="length_of_subleaflet"
+                                class="form-control" id="length_of_subleaflet" required>
                         </div>
                         <div class="col-md-4">
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
@@ -380,7 +381,8 @@
                                         </div> -->
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="assets/img/nature/6.png" class="d-block w-100" alt="ช่วงผลผลิต">
+                                                <img src="assets/img/nature/6.png" class="d-block w-100"
+                                                    alt="ช่วงผลผลิต">
                                                 <!-- <div class="carousel-caption  d-md-block">
                                                     <h5 style="background-color:black;" >โดยมีสามช่วง</h5>
                                                     <p style="background-color:black;">ม.ค. - เม.ย., พ.ค. - ส.ค., ก.ย. - ธ.ค.</p>
@@ -418,19 +420,16 @@
                                 <option value="มาก">มาก</option>
                             </select> -->
                             <label for="production_jan_to_apr" class="form-label">ช่วง ม.ค. - เม.ย.​</label>
-                            <input type="number" name="production_jan_to_apr"
-                                [(ngModel)]="production_jan_to_apr" class="form-control"
-                                id="production_jan_to_apr" required>
+                            <input type="number" name="production_jan_to_apr" [(ngModel)]="production_jan_to_apr"
+                                class="form-control" id="production_jan_to_apr" required>
 
                             <label for="production_may_to_aug" class="form-label">ช่วง พ.ค. - ส.ค.​</label>
-                            <input type="number" name="production_may_to_aug"
-                                [(ngModel)]="production_may_to_aug" class="form-control"
-                                id="production_may_to_aug" required>
+                            <input type="number" name="production_may_to_aug" [(ngModel)]="production_may_to_aug"
+                                class="form-control" id="production_may_to_aug" required>
 
                             <label for="production_sep_to_dec" class="form-label">ช่วง ก.ย. - ธ.ค.​</label>
-                            <input type="number" name="production_sep_to_dec"
-                                [(ngModel)]="production_sep_to_dec" class="form-control"
-                                id="production_sep_to_dec" required>
+                            <input type="number" name="production_sep_to_dec" [(ngModel)]="production_sep_to_dec"
+                                class="form-control" id="production_sep_to_dec" required>
 
                             <label for="inputNumber" class="form-label">รูปผลผลิต</label>
                             <div class="row">
@@ -454,7 +453,7 @@
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">7. ความกว้างและความยาวของทรงผล (วัดทั้งแนวตั้งและแนวนาน)</h5>
+                                    <h5 class="card-title">7. ความกว้างและความยาวของทรงผล (วัดทั้งแนวตั้งและแนวนอน)</h5>
                                     <div id="carouselExampleCaptions9" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-indicators"> <button type="button"
                                                 data-bs-target="#carouselExampleCaptions9" data-bs-slide-to="0"
@@ -518,7 +517,7 @@
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
-                                <label  class="form-label">ไม่มีเปลือก​</label>
+                                <label class="form-label">ไม่มีเปลือก​</label>
                                 <div class="col-6">
                                     <label for="husked_no_fruit_peel_width" class="form-label">ความกว้าง (ซ.ม.)</label>
                                     <input type="number" name="husked_no_fruit_peel_width"
@@ -551,8 +550,8 @@
                                         </div> -->
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="assets/img/nature/8.png" class="d-block w-100" style="max-width: 100%;max-height: 100%;"
-                                                    alt="ความยาวเส้นรอบวง">
+                                                <img src="assets/img/nature/8.png" class="d-block w-100"
+                                                    style="max-width: 100%;max-height: 100%;" alt="ความยาวเส้นรอบวง">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">ความยาวเส้นรอบวง</h5>
                                                     <!-- <p>Some representative placeholder content for the first slide.</p> -->
@@ -563,9 +562,8 @@
                                 </div>
                             </div>
                             <label for="boundary_length" class="form-label">ความยาวเส้นรอบวง (ซ.ม.)</label>
-                            <input type="number" name="boundary_length"
-                                [(ngModel)]="boundary_length" class="form-control"
-                                id="boundary_length" required>
+                            <input type="number" name="boundary_length" [(ngModel)]="boundary_length"
+                                class="form-control" id="boundary_length" required>
                             <!-- <input type="number" name="feature_inflorescence_count"
                                 [(ngModel)]="feature_inflorescence_count" class="form-control"
                                 id="feature_inflorescence_count" required> -->
@@ -624,9 +622,8 @@
                                 <option value="สีเหลืองทอง">สีเหลืองทอง</option>
                             </select> -->
 
-                            <select id="husk_skin_color " class="form-select"
-                                [(ngModel)]="husk_skin_color " name="husk_skin_color "
-                                >
+                            <select id="husk_skin_color " class="form-select" [(ngModel)]="husk_skin_color "
+                                name="husk_skin_color ">
                                 <option selected value="สีเหลืองนวล">สีเหลืองนวล</option>
                                 <option value="สีเขียวอมเหลือง">สีเขียวอมเหลือง</option>
                                 <option value="สีเหลืองทอง">สีเหลืองทอง</option>
@@ -687,7 +684,7 @@
                                 <option value="วงรี">วงรี</option>
                             </select> -->
                             <select id="seed_structure" class="form-select" [(ngModel)]="seed_structure"
-                                name="seed_structure" >
+                                name="seed_structure">
                                 <option selected value="ทรงกลม">ทรงกลม</option>
                                 <option value="ทรงหยดน้ำ">ทรงหยดน้ำ</option>
                                 <option value="วงรี">วงรี</option>
@@ -746,8 +743,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">12. อายุต้น (ปี)</h5>
-                                    <input type="number" name="plant_age"
-                                        [(ngModel)]="plant_age" class="form-control"
+                                    <input type="number" name="plant_age" [(ngModel)]="plant_age" class="form-control"
                                         id="plant_age" required>
                                 </div>
                             </div>
@@ -770,31 +766,35 @@
                                         </div>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="assets/img/nature/13-1.jpg" class="d-block w-100" alt="ทรงกลม">
+                                                <img src="assets/img/nature/13-1.jpg" class="d-block w-100"
+                                                    alt="ทรงกลม">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">ทรงกลม</h5>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="assets/img/nature/13-2.jpg" class="d-block w-100" alt="ครึ่งวงลกม">
+                                                <img src="assets/img/nature/13-2.jpg" class="d-block w-100"
+                                                    alt="ครึ่งวงลกม">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">ครึ่งวงลกม</h5>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="assets/img/nature/13-3.jpg" class="d-block w-100" alt="รูปตัวเอ็กซ์">
+                                                <img src="assets/img/nature/13-3.jpg" class="d-block w-100"
+                                                    alt="รูปตัวเอ็กซ์">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">รูปตัวเอ็กซ์</h5>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="assets/img/nature/13-4.jpg" class="d-block w-100" alt="ทรงรูปตัวรี">
+                                                <img src="assets/img/nature/13-4.jpg" class="d-block w-100"
+                                                    alt="ทรงรูปตัวรี">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">ทรงรูปตัวรี</h5>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="carousel-control-prev" type="button" 
+                                        <button class="carousel-control-prev" type="button"
                                             data-bs-target="#carouselExampleCaptions15" data-bs-slide="prev"> <span
                                                 class="carousel-control-prev-icon" aria-hidden="true"></span> <span
                                                 class="visually-hidden">Previous</span> </button> <button
@@ -805,8 +805,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <select id="tree_canopy_shape" class="form-select"
-                                [(ngModel)]="tree_canopy_shape" name="tree_canopy_shape">
+                            <select id="tree_canopy_shape" class="form-select" [(ngModel)]="tree_canopy_shape"
+                                name="tree_canopy_shape">
                                 <option selected value="ทรงกลม">ทรงกลม</option>
                                 <option value="ครึ่งวงลกม">ครึ่งวงลกม</option>
                                 <option value="รูปตัวเอ็กซ์">รูปตัวเอ็กซ์</option>
@@ -831,8 +831,8 @@
                                         <div class="col-5">
                                             <label for="tree_quantity" class="form-label">จำนวนต้น</label>
                                             <input type="number" name="tree_quantity" style="height: 35px;"
-                                                [(ngModel)]="tree_quantity" class="form-control"
-                                                id="tree_quantity" required>
+                                                [(ngModel)]="tree_quantity" class="form-control" id="tree_quantity"
+                                                required>
 
                                         </div>
                                         <div class="col-2" style="margin-top: 40px;">
@@ -842,8 +842,8 @@
                                             <label for="feature_female_flower_count" class="form-label">พื้นที่
                                                 (ไร่)</label>
                                             <input type="number" name="planting_space" style="height: 35px;"
-                                                [(ngModel)]="planting_space" class="form-control"
-                                                id="planting_space" required>
+                                                [(ngModel)]="planting_space" class="form-control" id="planting_space"
+                                                required>
 
                                         </div>
                                     </div>
@@ -879,8 +879,8 @@
                                             <h5 class="card-title">ตำบล</h5>
                                         </div>
                                         <div class="col-8" style="margin-top: 20px;">
-                                            <select name="districts" (change)="func_districts($event)" class="form-select"
-                                                style="width: 150px;" [(ngModel)]="is_districts">
+                                            <select name="districts" (change)="func_districts($event)"
+                                                class="form-select" style="width: 150px;" [(ngModel)]="is_districts">
                                                 <option *ngFor="let d of selected_districts" [value]="d.id">
                                                     {{d.name_th}}
                                                 </option>
@@ -893,8 +893,9 @@
                                         </div>
                                         <div class="col-8" style="margin-top: 20px;">
 
-                                            <input type="text" name="zip_code" [(ngModel)]="zip_code" style="height: 30px;width: 150px;"
-                                                class="form-control" id="zip_code" required>
+                                            <input type="text" name="zip_code" [(ngModel)]="zip_code"
+                                                style="height: 30px;width: 150px;" class="form-control" id="zip_code"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
@@ -902,23 +903,27 @@
                         </div>
 
                     </form>
-                    <div class="col-md-12 google-map-wrapper">
-                        <label class="form-label">ตำแหน่งที่ตั้ง</label>
-                        <div class="col-sm-12" *ngIf="apiLoaded | async">
-                            <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
-                                (mapClick)="addMarker($event)">
-                                <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                                    [options]="markerOptions"></map-marker>
-                                <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
-                            </google-map>
-                        </div>
+                    <!-- <div class="col-md-12 google-map-wrapper">
+                        <button data-bs-toggle="modal" class="btn btn-primary"
+                            (click)="getUserLocation()">ค้นหาตำแหน่งของฉัน</button>
+                    </div> -->
+                </div>
+                <div class="col-md-12 google-map-wrapper">
+                    <label class="form-label">ตำแหน่งที่ตั้ง</label>
+                    <div class="col-sm-12" *ngIf="apiLoaded | async">
+                        <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
+                            (mapClick)="addMarker($event)">
+                            <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                                [options]="markerOptions"></map-marker>
+                            <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
+                        </google-map>
                     </div>
+                </div>
 
-                    <div class="text-center" style="margin-top: 10px;">
-                        <button type="reset" style="margin-right: 10px;" class="btn btn-secondary">รีเซ็ต</button>
-                        <button data-bs-toggle="modal" data-bs-target="#verticalycentered" class="btn btn-primary"
-                            (click)="submit_land_information()">บันทึก</button>
-                    </div>
+                <div class="text-center" style="margin-top: 10px;">
+                    <button type="reset" style="margin-right: 10px;" class="btn btn-secondary">รีเซ็ต</button>
+                    <button data-bs-toggle="modal" data-bs-target="#verticalycentered" class="btn btn-primary"
+                        (click)="submit_land_information()">บันทึก</button>
                 </div>
             </div>
         </div>

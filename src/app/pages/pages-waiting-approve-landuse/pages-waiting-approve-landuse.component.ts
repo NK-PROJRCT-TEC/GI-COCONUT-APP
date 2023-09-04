@@ -86,9 +86,9 @@ export class PagesWaitingApproveLanduseComponent implements OnInit {
     // document.body.appendChild(button);
     window.open('https://www.google.co.th/maps?q' + latitude + ',' + longitude + '');
   }
-  landuse_info(obj: any) {
+  reject_landuse_info(obj: any) {
+    localStorage.setItem('jsonlanuse', JSON.stringify(obj));
     this.router.navigate(['pages-edit-landuse-detail']);
-    localStorage.setItem("landuse_id", obj.landuse_id);
   }
   GenerateQRCode(e: any) {
     console.log(e);
@@ -101,5 +101,10 @@ export class PagesWaitingApproveLanduseComponent implements OnInit {
   }
   func_filter_districts() {
 
+  }
+  landuse_info_detail(e: any) {
+    console.log(e.landuse_id);
+    localStorage.setItem('landuse_id',e.landuse_id);
+    this.router.navigate(['pages-waiting-approve-landuse-detail']);
   }
 }

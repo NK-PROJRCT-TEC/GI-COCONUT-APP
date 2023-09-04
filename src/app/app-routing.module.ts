@@ -35,6 +35,7 @@ import { PagesWaitingApproveLanduseComponent } from './pages/pages-waiting-appro
 import { PagesLanduseDetailComponent } from './pages/pages-landuse-detail/pages-landuse-detail.component';
 import { PagesEditLanduseDetailComponent } from './pages/pages-edit-landuse-detail/pages-edit-landuse-detail.component';
 import { PagesCertificateComponent } from './pages/pages-certificate/pages-certificate.component';
+import { PagesWaitingApproveLanduseDetailComponent } from './pages/pages-waiting-approve-landuse-detail/pages-waiting-approve-landuse-detail.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -73,6 +74,8 @@ const routes: Routes = [
   { path: 'pages-landuse-detail', component: PagesLanduseDetailComponent },
   { path: 'pages-edit-landuse-detail', component: PagesEditLanduseDetailComponent },
   { path: 'pages-certificate', component: PagesCertificateComponent },
+  { path: 'pages-waiting-approve-landuse-detail', component: PagesWaitingApproveLanduseDetailComponent },
+  
   
 ];
 

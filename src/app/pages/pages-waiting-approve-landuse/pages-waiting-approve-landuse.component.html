@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <h5 class="card-title" style="margin-left: 20px;">สถานะคำร้องขอขึ้นทะเบียน</h5>
-                <form class="row g-3" style="margin-left: 20px;margin-right: 20px;">
+                <!--<h5 class="card-title" style="margin-left: 20px;">สถานะคำร้องขอขึ้นทะเบียน</h5>
+                 <form class="row g-3" style="margin-left: 20px;margin-right: 20px;">
                     <div class="col-md-4">
                         <label for="province" class="form-label">จังหวัด</label>
                         <select id="province" class="form-select" (change)="func_filter_province()"
@@ -40,7 +40,7 @@
                             </option>
                         </select>
                     </div>
-                </form>
+                </form> -->
                 <div class="card-body">
                     <div class="row">
                         <h5 class="card-title">แปลงที่ยืนขออนุมัติ</h5>
@@ -48,22 +48,25 @@
                             <thead>
                                 <tr>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">ลำดับที่</p>
+                                        <p style="text-align: center;">ลำดับที่</p>
                                     </th>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">พิกัดแปลงที่ดิน</p>
+                                        <p style="text-align: center;">พิกัดแปลงที่ดิน</p>
                                     </th>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">ตำแหน่งแปลง</p>
+                                        <p style="text-align: center;">ตำแหน่งแปลง</p>
                                     </th>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">สถานะ</p>
+                                        <p style="text-align: center;">สถานะ</p>
                                     </th>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">ความถูกต้อง</p>
+                                        <p style="text-align: center;">ความถูกต้อง</p>
                                     </th>
                                     <th scope="col">
-                                        <p style="font-size: 18px;text-align: center;">แก้ไขข้อมูล</p>
+                                        <p style="text-align: center;">สถานะคำร้องขอขึ้นทะเบียน</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p style="text-align: center;">แก้ไขข้อมูล</p>
                                     </th>
                                 </tr>
                             </thead>
@@ -92,15 +95,20 @@
                                     <th>
                                         <p style="text-align: center;">{{item.point}}</p>
                                     </th>
+                                    <th>
+                                        <p style="text-align: center;">
+                                            <button type="button" class="btn btn-warning"
+                                            (click)="landuse_info_detail(item)">ตรวจสอบ</button></p>
+                                    </th>
                                     <th style="text-align: center;" *ngIf="item.is_status == '0'">
                                         <button type="button" class="btn btn-warning"
-                                            (click)="landuse_info(item)">แก้ไข</button>
+                                            (click)="reject_landuse_info(item)">แก้ไข</button>
                                     </th>
                                     <th style="text-align: center;" *ngIf="item.is_status == '1'">
                                         -
                                     </th>
                                     <th style="text-align: center;" *ngIf="item.is_status == '2'">
-                                        <qrcode [qrdata]="item.certificate" [width]="75" [errorCorrectionLevel]="'M'">
+                                        <qrcode [qrdata]="item.certificate" [width]="50" [errorCorrectionLevel]="'M'">
                                         </qrcode>
                                     </th>
                                 </tr>

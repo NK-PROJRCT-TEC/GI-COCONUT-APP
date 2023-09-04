@@ -113,6 +113,8 @@ export class PagesLandInformationComponent implements OnInit {
   is_confirm_image: boolean = false;
   is_confirm_image1: boolean = false;
   is_confirm_image2: boolean = false;
+  //find me google map
+  userPosition: { lat: number, lng: number } | null = null;
   constructor(httpClient: HttpClient, private PagesLandInformationService: PagesLandInformationService, private router: Router) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs', 'callback')
       .pipe(
@@ -198,7 +200,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -223,7 +225,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -248,7 +250,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -273,7 +275,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -299,7 +301,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
 
@@ -326,7 +328,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -353,7 +355,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -380,7 +382,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -409,7 +411,7 @@ export class PagesLandInformationComponent implements OnInit {
   //   } else {
   //     Swal.fire({
   //       icon: 'error',
-  //       title: '<h5 style="font-family: Kanit-Regular;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
+  //       title: '<h5 style="font-family: THSarabunNew;">ผิดพลาดกรุณาติดต่อผู้ดูแลระบบ</h5>'
   //     })
   //   }
   // }
@@ -459,32 +461,35 @@ export class PagesLandInformationComponent implements OnInit {
     console.log(this.lat);
     console.log(this.lng);
     console.log(this.people_generate);
-    this.PagesLandInformationService.InsertLanduseInfo(this.coconut_base_characteristics, this.base_to_ground_distance_20cm, this.base_to_ground_distance_150cm, this.track_measurement_1_to_17, this.leaf_stalk_length, this.leaf_stalk_width, this.length_of_leaf_segment_with_leaflet, this.count_of_left_subleaflets, this.length_of_subleaflet, this.production_jan_to_apr, this.production_may_to_aug, this.production_sep_to_dec, this.production_image, this.husked_fruit_peel_width, this.husked_fruit_peel_length, this.husked_no_fruit_peel_width, this.husked_no_fruit_peel_length, this.boundary_length, this.husk_skin_color, this.seed_structure, this.fresh_fruit_weight, this.plant_age, this.tree_canopy_shape, this.tree_quantity, this.planting_space, this.is_province, this.is_amphures, this.is_districts, this.zip_code, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
-      if (res) {
-        console.log(res[0].landuse_id);
-        this.PagesLandInformationService.InsertHistoryLanduse(this.people_generate, "1", res[0].landuse_id).subscribe((res: any) => {
+    Swal.fire({
+      title: '<h5 style="font-family: THSarabunNew;">คุณต้องการบันทึกข้อมูลใช่หรือไม่?</h5>',
+      showCancelButton: true,
+      cancelButtonText: '<h5 style="font-family: THSarabunNew;">ยกเลิก</h5>',
+      cancelButtonColor: "#DD6B55",
+      confirmButtonText: '<h5 style="font-family: THSarabunNew;">บันทึก</h5>',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.PagesLandInformationService.InsertLanduseInfo(this.coconut_base_characteristics, this.base_to_ground_distance_20cm, this.base_to_ground_distance_150cm, this.track_measurement_1_to_17, this.leaf_stalk_length, this.leaf_stalk_width, this.length_of_leaf_segment_with_leaflet, this.count_of_left_subleaflets, this.length_of_subleaflet, this.production_jan_to_apr, this.production_may_to_aug, this.production_sep_to_dec, this.production_image, this.husked_fruit_peel_width, this.husked_fruit_peel_length, this.husked_no_fruit_peel_width, this.husked_no_fruit_peel_length, this.boundary_length, this.husk_skin_color, this.seed_structure, this.fresh_fruit_weight, this.plant_age, this.tree_canopy_shape, this.tree_quantity, this.planting_space, this.is_province, this.is_amphures, this.is_districts, this.zip_code, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
           if (res) {
-            Swal.fire({
-              title: '<h5 style="font-family: Kanit-Regular;">คุณต้องการบันทึกข้อมูลใช่หรือไม่?</h5>',
-              showCancelButton: true,
-              cancelButtonText: '<h5 style="font-family: Kanit-Regular;">ยกเลิก</h5>',
-              cancelButtonColor: "#DD6B55",
-              confirmButtonText: '<h5 style="font-family: Kanit-Regular;">บันทึก</h5>',
-            }).then((result) => {
-              if (result.isConfirmed) {
+            console.log(res[0].landuse_id);
+            this.PagesLandInformationService.InsertHistoryLanduse(this.people_generate, "1", res[0].landuse_id).subscribe((res: any) => {
+              if (res) {
                 Swal.fire({
                   icon: 'success',
                   showConfirmButton: false,
-                  title: '<h5 style="font-family: Kanit-Regular;">บันทึกข้อมูลเรียนร้อย</h5>'
+                  title: '<h5 style="font-family: THSarabunNew;">บันทึกข้อมูลเรียนร้อย</h5>',
+                  confirmButtonText: '<h5 style="font-family: THSarabunNew;">บันทึก</h5>',
                 })
                 this.router.navigate(['pages-waiting-approve-landuse']);
+    
               }
-            })
-
+            });
           }
         });
+        
       }
-    });
+    })
+    
   }
   func_province(e: any) {
     var code = e.target.value;
@@ -541,4 +546,18 @@ export class PagesLandInformationComponent implements OnInit {
     // this.people_image_profile = jpegBlob;
     // console.log(jpegBlob);
   }
+  // getUserLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.userPosition = {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       };
+  //     }, (error) => {
+  //       console.error('ไม่สามารถดึงข้อมูลตำแหน่งได้:', error);
+  //     });
+  //   } else {
+  //     console.error('บราวเซอร์ไม่รองรับ Geolocation API');
+  //   }
+  // }
 }

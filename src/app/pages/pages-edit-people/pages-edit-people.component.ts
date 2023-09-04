@@ -6,12 +6,20 @@ import { peopleModel } from 'src/app/model/peopleModel';
 import Swal from 'sweetalert2';
 const { v4: uuidv4 } = require('uuid');
 declare const window: any;
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-pages-edit-people',
   templateUrl: './pages-edit-people.component.html',
   styleUrls: ['./pages-edit-people.component.css']
 })
 export class PagesEditPeopleComponent {
+  apiLoaded: Observable<boolean>;
+  options: google.maps.MapOptions = {
+    center: { lat: 15.6918913, lng: 100.1145833 },
+    zoom: 15
+  };
   imageChangedEvent: any = '';
   croppedImage: any = '';
   preview_image: any = '';
@@ -72,8 +80,12 @@ export class PagesEditPeopleComponent {
   is_amphures: any[] = [];;
   is_districts: any;
   is_zip_code: any;
-  constructor(private PagesEditPeopleService: PagesEditPeopleService, private router: Router, private route: ActivatedRoute) { }
-
+  constructor(httpClient: HttpClient, private PagesEditPeopleService: PagesEditPeopleService, private router: Router, private route: ActivatedRoute) {
+    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyB6Gmz0etSdLrgauyFXLLRy9P0aLrEKlfs', 'callback')
+      .pipe(
+        map(() => true),
+      );
+  }
   ngOnInit(): void {
     this.people_generate = localStorage.getItem("for_edit_people_generate");
     this.PagesEditPeopleService.SelectPeopleforUpdate(this.people_generate).subscribe((res: any) => {
