@@ -8,6 +8,7 @@ declare const window: any;
 import jsPDF from 'jspdf';
 import { myfont } from 'src/environments/myfont';
 import { exit } from 'process';
+const CryptoJS = require('crypto-js');
 @Component({
   selector: 'app-pages-register',
   templateUrl: './pages-register.component.html',
@@ -303,6 +304,13 @@ export class PagesRegisterComponent implements OnInit {
         showLoaderOnConfirm: true,
       }).then((result) => {
         if (result.isConfirmed) {
+          //encode password
+          const plainPassword = this.people_password;
+          const encryptedPassword = CryptoJS.SHA256(plainPassword).toString(CryptoJS.enc.Hex);
+          // console.log('Encrypted Password:', encryptedPassword);
+          // console.log(typeof (encryptedPassword));
+          this.people_password = encryptedPassword;
+
           this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile, this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.people_password, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
             console.log(res.length);
             if (res.length > 0) {

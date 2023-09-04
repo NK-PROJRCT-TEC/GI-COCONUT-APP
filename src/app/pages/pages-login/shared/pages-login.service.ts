@@ -11,9 +11,9 @@ export class PagesLoginService {
   private ListAutthenUrl: string = `${this.env.API_PATH}/Login`;
   constructor(private http: HttpClient) {
   }
-  Login(username: string, password: string) {
+  Login(username: string, password: string, enteredPasswordHash: string) {
     return this.http.post(this.ListAutthenUrl,
-      { username: username, password: password });
+      { username: username, password: password, enteredPasswordHash: enteredPasswordHash });
   }
 
 }

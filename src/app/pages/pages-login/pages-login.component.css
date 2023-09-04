@@ -19,6 +19,7 @@ select,
 input,
 text,
 textarea,
+div,
 button {
     font-family: Kanit-Regular;
     /* font-size: 2vw; */
