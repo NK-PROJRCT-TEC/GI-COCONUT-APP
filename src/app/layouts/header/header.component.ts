@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { HeaderService } from './shared/header.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,20 +9,25 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router, private HeaderService: HeaderService) { }
   people_name: any;
   people_generate: any;
   employee_name: any;
   employee_generate: any;
-  people_image_profile:any;
+  people_image_profile: any;
   ngOnInit(): void {
     this.people_name = localStorage.getItem("people_name");
     this.people_generate = localStorage.getItem("people_generate");
     this.employee_name = localStorage.getItem("employee_name");
     this.employee_generate = localStorage.getItem("employee_generate");
-    this.people_image_profile = localStorage.getItem("people_image_profile");
+    // this.people_image_profile = localStorage.getItem("people_image_profile");
     // console.log(this.people_name);
     // console.log(this.employee_name);
+    this.HeaderService.GetPeopleImageProfile(this.people_generate).subscribe((res: any) => {
+      if (res) {
+        this.people_image_profile = res[0].people_image_profile;
+      }
+    });
   }
   sidebarToggle() {
     //toggle sidebar function

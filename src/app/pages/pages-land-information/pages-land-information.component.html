@@ -63,17 +63,19 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="assets/img/nature/1-1.png" class="d-block w-100" alt="ไม่มีโคน">
+                                                <img src="assets/img/nature/1-1.png" class="d-block w-100"
+                                                    alt="ไม่มีโคน">
                                                 <div class="carousel-caption  d-md-block">
                                                     <!-- <h5 style="background-color:black;">ไม่มีโคน</h5> -->
                                                     <!-- <p>ไม่มีโคน</p> -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev"> <span
-                                                class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-                                                class="visually-hidden">Previous</span> </button> <button
+                                        <button class="carousel-control-prev" type="button" 
+                                            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev"> 
+                                            <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
+                                            <span class="visually-hidden">Previous</span> </button> 
+                                                <button
                                             class="carousel-control-next" type="button"
                                             data-bs-target="#carouselExampleCaptions" data-bs-slide="next"> <span
                                                 class="carousel-control-next-icon" aria-hidden="true"></span> <span
@@ -98,7 +100,7 @@
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">2. ระยะรอบโคนต้น ​( วัด2จุด ) ​</h5>
+                                    <h5 class="card-title">2. ขนาดรอบโคนต้น ​(วัด 2 จุด) ​</h5>
                                     <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-indicators"> <button type="button"
                                                 data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0"
@@ -144,12 +146,14 @@
                                 <option value="กลุ่มลูกผสม">กลุ่มลูกผสม</option>
                                 <option value="กลุ่มต้นไม้สูง">กลุ่มต้นไม้สูง</option>
                             </select> -->
-                            <label for="base_to_ground_distance_20cm" class="form-label">​1) วัดเหนือระดับดับพื้นดิน ​20
+                            <label for="base_to_ground_distance_20cm" class="form-label">​2.1 วัดเหนือระดับดับพื้นดิน
+                                ​20
                                 ซม.​</label>
                             <input type="number" name="	base_to_ground_distance_20cm"
                                 [(ngModel)]="base_to_ground_distance_20cm" class="form-control"
                                 id="base_to_ground_distance_20cm" required>
-                            <label for="base_to_ground_distance_150cm" class="form-label">2) วัดเหนือระดับดับพื้นดิน 150
+                            <label for="base_to_ground_distance_150cm" class="form-label">2.2 วัดเหนือระดับดับพื้นดิน
+                                150
                                 ซม.</label>
                             <input type="number" name="base_to_ground_distance_150cm"
                                 [(ngModel)]="base_to_ground_distance_150cm" class="form-control"
@@ -159,7 +163,7 @@
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">3. วัดช่วง ​1​ ถึง ​17 รอยทาง</h5>
+                                    <h5 class="card-title">3. วัดช่วง ​1​ ถึง ​16 รอยทาง</h5>
                                     <div id="carouselExampleCaptions2" class="carousel slide" data-bs-ride="carousel">
                                         <!-- <div class="carousel-indicators"> 
                                             <button type="button"
@@ -275,20 +279,23 @@
                                 <option value="ปานกลาง">ปานกลาง</option>
                                 <option value="ยาว">ยาว</option>
                             </select> -->
-                            <label for="leaf_stalk_length" class="form-label">4.1 ความยาวของก้านทางใบ
+
+                            <label for="leaf_stalk_width" class="form-label">A ความกว้างของก้านทางใบ
+                                (ซม.)​</label>
+                            <input type="number" name="leaf_stalk_width" [(ngModel)]="leaf_stalk_width"
+                                class="form-control" id="leaf_stalk_width" required>
+                            <label for="count_of_left_subleaflets" class="form-label">B จำนวนใบย่อยข้างซ้าย (จำนวนใบ)
+                                ​</label>
+                            <input type="number" name="count_of_left_subleaflets"
+                                [(ngModel)]="count_of_left_subleaflets" class="form-control"
+                                id="count_of_left_subleaflets" required>
+                            <label for="leaf_stalk_length" class="form-label">C ความยาวของก้านทางใบ
                                 (ซม.)​</label>
                             <input type="number" name="leaf_stalk_length" [(ngModel)]="leaf_stalk_length"
                                 class="form-control" id="leaf_stalk_length " required>
 
 
-
-                            <label for="leaf_stalk_width" class="form-label">4.2 ความกว้างของก้านทางใบ
-                                (ซม.)​</label>
-                            <input type="number" name="leaf_stalk_width" [(ngModel)]="leaf_stalk_width"
-                                class="form-control" id="leaf_stalk_width" required>
-
-
-                            <label for="length_of_leaf_segment_with_leaflet" class="form-label">4.3
+                            <label for="length_of_leaf_segment_with_leaflet" class="form-label">D
                                 ความยาวทางใบช่วงที่มีใบย่อย
                                 (ซม.)​</label>
                             <input type="number" name="length_of_leaf_segment_with_leaflet"
@@ -296,11 +303,7 @@
                                 id="length_of_leaf_segment_with_leaflet" required>
 
 
-                            <label for="count_of_left_subleaflets" class="form-label">4.4 จำนวนใบย่อยข้างซ้าย (จำนวนใบ)
-                                ​</label>
-                            <input type="number" name="count_of_left_subleaflets"
-                                [(ngModel)]="count_of_left_subleaflets" class="form-control"
-                                id="count_of_left_subleaflets" required>
+
 
                         </div>
                         <div class="col-md-4">
@@ -463,7 +466,8 @@
                                         </div>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="assets/img/nature/7-1.png" class="d-block w-100" alt="มีเปลือก">
+                                                <img src="assets/img/nature/7-1.png" class="d-block w-100"
+                                                    alt="มีเปลือก">
                                                 <div class="carousel-caption d-md-block">
                                                     <!-- <h5 style="background-color: black;">มีเปลือก</h5> -->
                                                     <!-- <p>Some representative placeholder content for the first slide.</p> -->
@@ -694,7 +698,7 @@
                             <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">11. น้ำหนักของผลสด : ทั้งเปลือง</h5>
+                                    <h5 class="card-title">11. น้ำหนักของผลสดทั้งเปลือก</h5>
                                     <div id="carouselExampleCaptions14" class="carousel slide" data-bs-ride="carousel">
                                         <!-- <div class="carousel-indicators"> <button type="button"
                                                 data-bs-target="#carouselExampleCaptions14" data-bs-slide-to="0"
@@ -707,7 +711,7 @@
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
                                                 <img src="assets/img/nature/11.png" class="d-block w-100"
-                                                    alt="น้ำหนักของผลสด (ทั้งเปลือง)">
+                                                    alt="น้ำหนักของผลสด (ทั้งเปลือก)">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <!-- <h5>First slide label</h5> -->
                                                     <!--  <p>Some representative placeholder content for the first slide.</p> -->
@@ -734,7 +738,7 @@
                                 <option value="รูปไข่กลับ">รูปไข่กลับ</option>
                                 <option value="ลูกแพร์">ลูกแพร์</option>
                             </select> -->
-                            <label for="fresh_fruit_weight" class="form-label">น้ำหนักของผลสด : ทั้งเปลือง
+                            <label for="fresh_fruit_weight" class="form-label">น้ำหนักของผลสดทั้งเปลือก
                                 (กรัม)</label>
                             <input type="number" name="fresh_fruit_weight" [(ngModel)]="fresh_fruit_weight"
                                 class="form-control" id="fresh_fruit_weight" required>
@@ -776,7 +780,7 @@
                                                 <img src="assets/img/nature/13-2.jpg" class="d-block w-100"
                                                     alt="ครึ่งวงลกม">
                                                 <div class="carousel-caption d-md-block">
-                                                    <h5 style="background-color: black;">ครึ่งวงลกม</h5>
+                                                    <h5 style="background-color: black;">ครึ่งวงกลม</h5>
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -790,7 +794,7 @@
                                                 <img src="assets/img/nature/13-4.jpg" class="d-block w-100"
                                                     alt="ทรงรูปตัวรี">
                                                 <div class="carousel-caption d-md-block">
-                                                    <h5 style="background-color: black;">ทรงรูปตัวรี</h5>
+                                                    <h5 style="background-color: black;">ทรงรูปตัววี</h5>
                                                 </div>
                                             </div>
                                         </div>

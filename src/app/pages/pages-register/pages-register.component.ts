@@ -35,20 +35,22 @@ export class PagesRegisterComponent implements OnInit {
   is_confirm_image2: boolean = false;
   is_status: any;
   //people
-  people_name: any = "นพพร";
-  people_localtion_number: any = "250/1";
-  people_moo: any = "1";
-  people_road: any = "-";
-  people_alley: any = "-";
-  people_tumbon: any = "ตาสัง";
-  people_district: any = "บรรพตพิสัย";
-  people_province: any = "นครสวรรค์";
-  people_postcode: any = "60180";
-  people_phone: any = "0852721407";
-  people_email: any = "admin@gmail.com";
-  people_cardnumber: any = "1600500166873";
-  people_password: any = "123456";
-  confirm_people_password: any = "123456";
+  people_name: any;
+  people_localtion_number: any;
+  people_moo: any;
+  people_road: any;
+  people_alley: any;
+  people_tumbon: any;
+  people_district: any;
+  people_province: any;
+  people_postcode: any;
+  people_phone: any;
+  people_email: any;
+  people_cardnumber: any;
+  //ความหวาน
+  coconut_water_sweetness: any;
+  people_password: any;
+  confirm_people_password: any;
   people_term: any;
   is_term: any;
   people_image_profile: any;
@@ -311,7 +313,7 @@ export class PagesRegisterComponent implements OnInit {
           // console.log(typeof (encryptedPassword));
           // this.people_password = encryptedPassword;
 
-          this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile, this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, encryptedPassword, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
+          this.PagesRegisterService.InsertRegisterinfo(this.people_image_profile, this.people_name, this.people_localtion_number, this.people_moo, this.people_road, this.people_alley, this.people_tumbon, this.people_district, this.people_province, this.people_postcode, this.people_phone, this.people_email, this.people_cardnumber, this.is_gi, this.gi_certificates, this.is_dna, this.dna_certificates, this.coconut_water_sweetness, encryptedPassword, this.is_term, this.is_status, this.people_generate).subscribe((res: any) => {
             console.log(res.length);
             if (res.length > 0) {
               Swal.fire({

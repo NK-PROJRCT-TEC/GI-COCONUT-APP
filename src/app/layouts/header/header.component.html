@@ -1,5 +1,5 @@
-<header id="header" class="header fixed-top d-flex align-items-center" *ngIf="this.people_name">
-   <div class="d-flex align-items-center justify-content-between"> <a routerLink="/dashboard"
+<header id="header" class="header fixed-top d-flex align-items-center" *ngIf="this.people_name" style="height: 110px;" mu>
+   <div class="d-flex align-items-center justify-content-between" style="margin-top: 50px;"> <a routerLink="/dashboard"
          class="logo d-flex align-items-center"> <img  src="assets/img/logo/logo.jpg" alt="">
           <!-- <span class="d-none d-lg-block">Admin</span>  -->
          </a>  <i (click)="sidebarToggle()"
@@ -120,7 +120,7 @@
                <li class="dropdown-footer"> <a href="#">Show all messages</a></li>
             </ul>
          </li> -->
-         <li class="nav-item dropdown pe-3">
+         <li class="nav-item dropdown pe-3" style="margin-top: 50px;">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> 
                <img *ngIf="people_image_profile" src="{{people_image_profile}}" alt="Profile" class="rounded-circle"> 
                <img *ngIf="people_image_profile == ''" src="assets/img/logo/person.jpeg" alt="Profile" class="rounded-circle"> 

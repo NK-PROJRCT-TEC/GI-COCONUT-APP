@@ -15,7 +15,7 @@ export class PagesRegisterService {
   private SelectDistrictsUrl: string = `${this.env.API_PATH}/SelectDistricts`;
   constructor(private http: HttpClient) {
   }
-  InsertRegisterinfo(people_image_profile: string, people_name: string, people_localtion_number: string, people_moo: string, people_road: string, people_alley: string, people_tumbon: string, people_district: string, people_province: string, people_postcode: string, people_phone: string, people_email: string, people_cardnumber: string, is_gi: number, gi_certificates: string, is_dna: number, dna_certificates: string, people_password: string, is_term: number, is_status: string, people_generate: string) {
+  InsertRegisterinfo(people_image_profile: string, people_name: string, people_localtion_number: string, people_moo: string, people_road: string, people_alley: string, people_tumbon: string, people_district: string, people_province: string, people_postcode: string, people_phone: string, people_email: string, people_cardnumber: string, is_gi: number, gi_certificates: string, is_dna: number, dna_certificates: string, coconut_water_sweetness: string, people_password: string, is_term: number, is_status: string, people_generate: string) {
     return this.http.post(this.InsertRegisterinfoUrl,
       {
         people_image_profile: people_image_profile,
@@ -35,6 +35,7 @@ export class PagesRegisterService {
         gi_certificates: gi_certificates,
         is_dna: is_dna,
         dna_certificates: dna_certificates,
+        coconut_water_sweetness:coconut_water_sweetness,
         people_password: people_password,
         is_term: is_term,
         is_status: is_status,

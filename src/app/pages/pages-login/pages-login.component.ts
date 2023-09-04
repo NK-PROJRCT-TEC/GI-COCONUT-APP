@@ -16,21 +16,23 @@ export class PagesLoginComponent implements OnInit {
   constructor(private PagesLoginService: PagesLoginService, private router: Router) { }
 
   ngOnInit(): void {
-    this.username = "admin@gmail.com";
-    this.password = "123456";
     // console.log("TEST UPDATE GITHUB");
   }
   dashboard() {
     const enteredPasswordHash = CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);
+    console.log(this.username);
+    console.log(this.password);
+    console.log(enteredPasswordHash);
     this.PagesLoginService.Login(this.username, this.password, enteredPasswordHash).subscribe((res: any) => {
       if (res.length == 1) {
+        console.log(res);
         localStorage.setItem("username", this.username);
-        localStorage.setItem("password", this.password);
+        localStorage.setItem("password", enteredPasswordHash);
         localStorage.setItem("people_name", res[0].people_name);
         localStorage.setItem("people_generate", res[0].people_generate);
         localStorage.setItem("is_status", res[0].is_status);
         localStorage.setItem("who_is", "people");
-        localStorage.setItem('people_image_profile', res[0].people_image_profile);
+        // localStorage.setItem('people_image_profile', res[0].people_image_profile);
 
         if (res[0].is_status == '2') {
           this.router.navigate(['dashboard']);

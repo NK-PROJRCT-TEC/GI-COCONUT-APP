@@ -196,13 +196,20 @@
                               </div>
                            </div>
                            <div class="col-12">
-                              <label for="people_password" class="form-label">พาสเวิร์ด</label> <input type="password"
+                              <label for="coconut_water_sweetness" class="form-label">ความหวานของน้ำมะพร้าว (องศาบริกซ์)</label> <input type="number"
+                                 name="coconut_water_sweetness" [(ngModel)]="coconut_water_sweetness" class="form-control"
+                                 id="coconut_water_sweetness">
+                              <!-- <div class="invalid-feedback">โปรดป้อนรหัสผ่านของคุณ!</div> -->
+                           </div>
+                           <div class="col-12">
+                              <label for="people_password" class="form-label">รหัสผ่าน</label> <input type="password"
                                  name="people_password" [(ngModel)]="people_password" class="form-control"
                                  id="people_password" required>
                               <div class="invalid-feedback">โปรดป้อนรหัสผ่านของคุณ!</div>
                            </div>
+
                            <div class="col-12">
-                              <label for="confirm_people_password" class="form-label">ยืนยันพาสเวิร์ด</label> <input
+                              <label for="confirm_people_password" class="form-label">ยืนยันรหัสผ่าน</label> <input
                                  type="password" name="confirm_people_password" [(ngModel)]="confirm_people_password"
                                  (change)="func_confirm_people_password()" class="form-control"
                                  id="confirm_people_password" required>
