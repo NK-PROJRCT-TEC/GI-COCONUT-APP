@@ -71,12 +71,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="carousel-control-prev" type="button" 
-                                            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev"> 
-                                            <span class="carousel-control-prev-icon" aria-hidden="true" style="color: black;"></span>
-                                            <span class="visually-hidden">Previous</span> </button> 
-                                                <button
-                                            class="carousel-control-next" type="button"
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"
+                                                style="color: black;"></span>
+                                            <span class="visually-hidden">Previous</span> </button>
+                                        <button class="carousel-control-next" type="button"
                                             data-bs-target="#carouselExampleCaptions" data-bs-slide="next"> <span
                                                 class="carousel-control-next-icon" aria-hidden="true"></span> <span
                                                 class="visually-hidden">Next</span> </button>
@@ -633,8 +633,7 @@
                                 <option value="สีเหลืองทอง">สีเหลืองทอง</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
-                            <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
+                        <!-- <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">10. รูปร่างของเมล็ด(กะลาไร้เปลือก)​​
@@ -654,7 +653,6 @@
                                                 <img src="assets/img/s9.jpeg" class="d-block w-100" alt="ทรงกลม">
                                                 <div class="carousel-caption d-md-block">
                                                     <h5 style="background-color: black;">ทรงกลม</h5>
-                                                    <!-- <p>Some representative placeholder content for the second slide.</p> -->
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
@@ -681,63 +679,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <select id="seed_structure" class="form-select" [(ngModel)]="seed_structure"
-                                name="seed_structure" (change)="func_feature_seed_shape()">
-                                <option selected value="ทรงกลม">ทรงกลม</option>
-                                <option value="ทรงหยดน้ำ">ทรงหยดน้ำ</option>
-                                <option value="วงรี">วงรี</option>
-                            </select> -->
                             <select id="seed_structure" class="form-select" [(ngModel)]="seed_structure"
                                 name="seed_structure">
                                 <option selected value="ทรงกลม">ทรงกลม</option>
                                 <option value="ทรงหยดน้ำ">ทรงหยดน้ำ</option>
                                 <option value="วงรี">วงรี</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="col-md-4">
-                            <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">11. น้ำหนักของผลสดทั้งเปลือก</h5>
+                                    <h5 class="card-title">10. น้ำหนักของผลสดทั้งเปลือก</h5>
                                     <div id="carouselExampleCaptions14" class="carousel slide" data-bs-ride="carousel">
-                                        <!-- <div class="carousel-indicators"> <button type="button"
-                                                data-bs-target="#carouselExampleCaptions14" data-bs-slide-to="0"
-                                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carouselExampleCaptions14"
-                                                data-bs-slide-to="1" aria-label="Slide 2"></button> <button
-                                                type="button" data-bs-target="#carouselExampleCaptions14"
-                                                data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        </div> -->
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
                                                 <img src="assets/img/nature/11.png" class="d-block w-100"
                                                     alt="น้ำหนักของผลสด (ทั้งเปลือก)">
                                                 <div class="carousel-caption d-none d-md-block">
-                                                    <!-- <h5>First slide label</h5> -->
-                                                    <!--  <p>Some representative placeholder content for the first slide.</p> -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#carouselExampleCaptions14" data-bs-slide="prev"> <span
-                                                class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-                                                class="visually-hidden">Previous</span> </button> <button
-                                            class="carousel-control-next" type="button"
-                                            data-bs-target="#carouselExampleCaptions14" data-bs-slide="next"> <span
-                                                class="carousel-control-next-icon" aria-hidden="true"></span> <span
-                                                class="visually-hidden">Next</span> </button> -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- <select id="feature_inflorescence_count" class="form-select"
-                                [(ngModel)]="feature_inflorescence_count" name="feature_inflorescence_count"
-                                (change)="func_feature_inflorescence_count()">
-                                <option selected value="กลม">กลม</option>
-                                <option value="รูปไข่">รูปไข่</option>
-                                <option value="รูปรี">รูปรี</option>
-                                <option value="รูปไข่กลับ">รูปไข่กลับ</option>
-                                <option value="ลูกแพร์">ลูกแพร์</option>
-                            </select> -->
                             <label for="fresh_fruit_weight" class="form-label">น้ำหนักของผลสดทั้งเปลือก
                                 (กรัม)</label>
                             <input type="number" name="fresh_fruit_weight" [(ngModel)]="fresh_fruit_weight"
@@ -746,17 +710,16 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">12. อายุต้น (ปี)</h5>
+                                    <h5 class="card-title">11. อายุต้น (ปี)</h5>
                                     <input type="number" name="plant_age" [(ngModel)]="plant_age" class="form-control"
                                         id="plant_age" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <!-- <label for="prefix" class="form-label">คำนำหน้า</label> -->
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">13. ทรงพุ่ม</h5>
+                                    <h5 class="card-title">12. ทรงพุ่ม</h5>
                                     <div id="carouselExampleCaptions15" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-indicators"> <button type="button"
                                                 data-bs-target="#carouselExampleCaptions15" data-bs-slide-to="0"
@@ -912,6 +875,7 @@
                             (click)="getUserLocation()">ค้นหาตำแหน่งของฉัน</button>
                     </div> -->
                 </div>
+
                 <div class="col-md-12 google-map-wrapper">
                     <label class="form-label">ตำแหน่งที่ตั้ง</label>
                     <div class="col-sm-12" *ngIf="apiLoaded | async">

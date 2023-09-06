@@ -58,7 +58,8 @@ export class PagesLandInformationComponent implements OnInit {
   husked_no_fruit_peel_width: any;
   husked_no_fruit_peel_length: any;
   boundary_length: any;
-  seed_structure: any;
+  //ข้อ 10
+  // seed_structure: any; 
   husk_skin_color: any;
   fresh_fruit_weight: any;
   plant_age: any;
@@ -447,7 +448,7 @@ export class PagesLandInformationComponent implements OnInit {
     console.log(this.husked_no_fruit_peel_length);//7.4
     console.log(this.boundary_length);//8
     console.log(this.husk_skin_color);//9
-    console.log(this.seed_structure);//10
+    // console.log(this.seed_structure);//10
     console.log(this.fresh_fruit_weight);//11
     console.log(this.plant_age);//12
     console.log(this.tree_canopy_shape);//13
@@ -469,7 +470,7 @@ export class PagesLandInformationComponent implements OnInit {
       confirmButtonText: '<h5 style="font-family: THSarabunNew;">บันทึก</h5>',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.PagesLandInformationService.InsertLanduseInfo(this.coconut_base_characteristics, this.base_to_ground_distance_20cm, this.base_to_ground_distance_150cm, this.track_measurement_1_to_17, this.leaf_stalk_length, this.leaf_stalk_width, this.length_of_leaf_segment_with_leaflet, this.count_of_left_subleaflets, this.length_of_subleaflet, this.production_jan_to_apr, this.production_may_to_aug, this.production_sep_to_dec, this.production_image, this.husked_fruit_peel_width, this.husked_fruit_peel_length, this.husked_no_fruit_peel_width, this.husked_no_fruit_peel_length, this.boundary_length, this.husk_skin_color, this.seed_structure, this.fresh_fruit_weight, this.plant_age, this.tree_canopy_shape, this.tree_quantity, this.planting_space, this.is_province, this.is_amphures, this.is_districts, this.zip_code, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
+        this.PagesLandInformationService.InsertLanduseInfo(this.coconut_base_characteristics, this.base_to_ground_distance_20cm, this.base_to_ground_distance_150cm, this.track_measurement_1_to_17, this.leaf_stalk_length, this.leaf_stalk_width, this.length_of_leaf_segment_with_leaflet, this.count_of_left_subleaflets, this.length_of_subleaflet, this.production_jan_to_apr, this.production_may_to_aug, this.production_sep_to_dec, this.production_image, this.husked_fruit_peel_width, this.husked_fruit_peel_length, this.husked_no_fruit_peel_width, this.husked_no_fruit_peel_length, this.boundary_length, this.husk_skin_color, this.fresh_fruit_weight, this.plant_age, this.tree_canopy_shape, this.tree_quantity, this.planting_space, this.is_province, this.is_amphures, this.is_districts, this.zip_code, this.valuenow, this.lat, this.lng, this.people_generate, "1").subscribe((res: any) => {
           if (res) {
             console.log(res[0].landuse_id);
             this.PagesLandInformationService.InsertHistoryLanduse(this.people_generate, "1", res[0].landuse_id).subscribe((res: any) => {

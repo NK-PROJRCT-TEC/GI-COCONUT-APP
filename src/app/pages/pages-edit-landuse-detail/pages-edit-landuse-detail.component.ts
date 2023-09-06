@@ -98,7 +98,7 @@ export class PagesEditLanduseDetailComponent implements OnInit {
   husked_no_fruit_peel_length: any;
   boundary_length: any;
   husk_skin_color: any;
-  seed_structure: any;
+  // seed_structure: any;// 10
   fresh_fruit_weight: any;
   plant_age: any;
   tree_canopy_shape: any;
@@ -469,7 +469,7 @@ export class PagesEditLanduseDetailComponent implements OnInit {
       confirmButtonText: '<h5 style="font-family: THSarabunNew;">บันทึก</h5>',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.PagesEditLanduseDetailService.UpdateLanduse(this.coconut_base_characteristics.toString(), this.base_to_ground_distance_20cm.toString(), this.base_to_ground_distance_150cm.toString(), this.track_measurement_1_to_17.toString(), this.leaf_stalk_length.toString(), this.leaf_stalk_width.toString(), this.length_of_leaf_segment_with_leaflet.toString(), this.count_of_left_subleaflets.toString(), this.length_of_subleaflet.toString(), this.production_jan_to_apr.toString(), this.production_may_to_aug.toString(), this.production_sep_to_dec.toString(), this.production_image.toString(), this.husked_fruit_peel_width.toString(), this.husked_fruit_peel_length.toString(), this.husked_no_fruit_peel_width.toString(), this.husked_no_fruit_peel_length.toString(), this.boundary_length.toString(), this.husk_skin_color.toString(), this.seed_structure.toString(), this.fresh_fruit_weight.toString(), this.plant_age.toString(), this.tree_canopy_shape.toString(), this.tree_quantity.toString(), this.planting_space.toString(), this.is_province.toString(), this.is_amphures.toString(), this.is_districts.toString(), this.zip_code.toString(), this.landuse_lat.toString(),this.landuse_lng.toString(),"1", this.landuse_id).subscribe((res: any) => {
+        this.PagesEditLanduseDetailService.UpdateLanduse(this.coconut_base_characteristics.toString(), this.base_to_ground_distance_20cm.toString(), this.base_to_ground_distance_150cm.toString(), this.track_measurement_1_to_17.toString(), this.leaf_stalk_length.toString(), this.leaf_stalk_width.toString(), this.length_of_leaf_segment_with_leaflet.toString(), this.count_of_left_subleaflets.toString(), this.length_of_subleaflet.toString(), this.production_jan_to_apr.toString(), this.production_may_to_aug.toString(), this.production_sep_to_dec.toString(), this.production_image.toString(), this.husked_fruit_peel_width.toString(), this.husked_fruit_peel_length.toString(), this.husked_no_fruit_peel_width.toString(), this.husked_no_fruit_peel_length.toString(), this.boundary_length.toString(), this.husk_skin_color.toString(), this.fresh_fruit_weight.toString(), this.plant_age.toString(), this.tree_canopy_shape.toString(), this.tree_quantity.toString(), this.planting_space.toString(), this.is_province.toString(), this.is_amphures.toString(), this.is_districts.toString(), this.zip_code.toString(), this.landuse_lat.toString(),this.landuse_lng.toString(),"1", this.landuse_id).subscribe((res: any) => {
           if (res == "OK") {
             this.PagesEditLanduseDetailService.InsertHistoryLanduse(this.people_generate, "1", this.landuse_id).subscribe((res: any) => {
               if (res) {
