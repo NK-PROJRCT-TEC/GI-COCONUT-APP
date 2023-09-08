@@ -185,7 +185,7 @@ export class PagesRegisterComponent implements OnInit {
   submit_people() {
     this.is_status = "1";
     this.people_generate = uuidv4();
-    console.log(this.people_email);
+    // console.log(this.people_email);
     if (this.people_email == undefined || this.people_email == "") {
       Swal.fire({
         icon: 'warning',
@@ -266,32 +266,34 @@ export class PagesRegisterComponent implements OnInit {
         })
         return;
       }
-      console.log(this.people_name);
-      console.log(this.people_localtion_number);
-      console.log(this.people_moo);
-      console.log(this.people_road);
-      console.log(this.people_alley);
-      console.log(this.people_tumbon);
-      console.log(this.people_district);
-      console.log(this.people_province);
-      console.log(this.people_postcode);
-      console.log(this.people_phone);
-      console.log(this.people_email);
-      console.log(this.people_cardnumber);
-      console.log(this.is_gi);
-      console.log(this.gi_certificates);
-      console.log(this.is_dna);
-      console.log(this.dna_certificates);
-      console.log(this.people_password);
-      console.log(this.is_term);
-      console.log(this.is_status);
-      console.log(this.people_generate);
-      console.log(this.people_image_profile);
-      console.log(this.is_province);
-      console.log(this.is_amphures);
-      console.log(this.is_districts);
-      console.log(this.people_postcode);
-
+      // console.log(this.people_name);
+      // console.log(this.people_localtion_number);
+      // console.log(this.people_moo);
+      // console.log(this.people_road);
+      // console.log(this.people_alley);
+      // console.log(this.people_tumbon);
+      // console.log(this.people_district);
+      // console.log(this.people_province);
+      // console.log(this.people_postcode);
+      // console.log(this.people_phone);
+      // console.log(this.people_email);
+      // console.log(this.people_cardnumber);
+      // console.log(this.is_gi);
+      // console.log(this.gi_certificates);
+      // console.log(this.is_dna);
+      // console.log(this.dna_certificates);
+      // console.log(this.people_password);
+      // console.log(this.is_term);
+      // console.log(this.is_status);
+      // console.log(this.people_generate);
+      // console.log(this.people_image_profile);
+      // console.log(this.is_province);
+      // console.log(this.is_amphures);
+      // console.log(this.is_districts);
+      // console.log(this.people_postcode);
+      if (this.coconut_water_sweetness == undefined) {
+        this.coconut_water_sweetness = '';
+      }
       this.people_province = this.is_province;
       this.people_district = this.is_amphures;
       this.people_tumbon = this.is_districts;
