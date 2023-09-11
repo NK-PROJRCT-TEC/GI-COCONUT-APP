@@ -15,8 +15,6 @@ button {
     font-family: Kanit-Regular;
     /* font-size: 2vw; */
 }
-
-
 /* font THSARABUN */
 @font-face {
     font-family: "THSarabunNew";
@@ -38,8 +36,13 @@ select,
 input,
 text,
 textarea,
+span,
 button {
     font-family: THSarabunNew;
     font-size: 20px;
     font-weight: bold;
+}
+
+img{
+    width: 100%;
 }
