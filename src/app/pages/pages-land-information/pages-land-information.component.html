@@ -39,7 +39,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title col-lg-12">บันทึกคำร้องขออนุมัติ</h5>
+                    <h5 class="card-title col-lg-12">บันทึกคำร้องขอขึ้นทะเบียน</h5>
                     <h5 class="card-title">ลักษณะ​ สันฐาน​ของมะพร้าวน้ำหอม</h5>
                     <form class="row g-3">
                         <div class="col-md-4">
@@ -776,7 +776,7 @@
                             <select id="tree_canopy_shape" class="form-select" [(ngModel)]="tree_canopy_shape"
                                 name="tree_canopy_shape">
                                 <option selected value="ทรงกลม">ทรงกลม</option>
-                                <option value="ครึ่งวงลกม">ครึ่งวงลกม</option>
+                                <option value="ครึ่งวงกลม">ครึ่งวงกลม</option>
                                 <option value="รูปตัวเอ็กซ์">รูปตัวเอ็กซ์</option>
                                 <option value="ทรงรูปตัวรี">ทรงรูปตัวรี</option>
                             </select>
@@ -878,7 +878,7 @@
                 </div>
 
                 <div class="col-md-12 google-map-wrapper">
-                    <label class="form-label">ตำแหน่งที่ตั้ง</label>
+                    <label class="form-label" style="margin-left: 10px;">ตำแหน่งที่ตั้ง</label>
                     <div class="col-sm-12" *ngIf="apiLoaded | async">
                         <google-map height="400px" width="100%" [center]="center" [zoom]="zoom"
                             (mapClick)="addMarker($event)">
